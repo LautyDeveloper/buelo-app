@@ -11,7 +11,7 @@ export default function SideBar() {
         <nav>
           <ul>
             <li>
-              <a href="">Inicio</a>
+              <Link to="/">Inicio</Link>
             </li>
 
             <li>
@@ -19,7 +19,7 @@ export default function SideBar() {
             </li>
 
             <li>
-              <a href="">Turnos</a>
+              <Link to="/turnos">Turnos</Link>
             </li>
 
             <li>
