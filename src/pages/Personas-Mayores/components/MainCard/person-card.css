@@ -1,0 +1,88 @@
+.person-card {
+  width: 100%;
+  height: 450px;
+  background-color: #eef3f7;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.person-card .person-card-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.person-card .person-card-header .image-container {
+  width: 200px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+}
+.person-card .person-card-header .image-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-color: antiquewhite;
+}
+
+.person-card .person-card-header .text-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.person-card .person-card-header .text-container strong {
+  font-size: 1.8rem;
+  color: #016597;
+}
+
+.person-card .person-card-header .text-container .text-footer {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.person-card button {
+  width: 90%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: #016597;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .person-card {
+    width: 40%;
+    height: 200px;
+  }
+  .person-card .person-card-header {
+    flex-direction: row;
+    width: 90%;
+  }
+  .person-card .person-card-header .image-container {
+    width: 100px;
+    height: 100px;
+  }
+  .person-card .person-card-header .text-container {
+    width: 70%;
+  }
+  .person-card button {
+    height: 40px;
+  }
+}

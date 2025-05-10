@@ -1,4 +1,5 @@
 import "./side-bar.css";
+import { Link } from "react-router-dom";
 
 export default function SideBar() {
   return (
@@ -14,7 +15,7 @@ export default function SideBar() {
             </li>
 
             <li>
-              <a href="">Personas Mayores</a>
+              <Link to="/personas-mayores">Personas Mayores</Link>
             </li>
 
             <li>
