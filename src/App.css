@@ -6,7 +6,6 @@
 }
 
 main {
-  width: 100vw;
   height: auto;
   display: grid;
   place-items: center;

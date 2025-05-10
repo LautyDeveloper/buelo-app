@@ -5,7 +5,9 @@ export default function TopBar({ page }) {
     <div className="topbar-container">
       <div className="topbar-content">
         <h1>{page}</h1>
-        <button>🤶</button>
+        <button>
+          {window.innerWidth < 768 ? "🤶" : "🤶 Lucrecia Bacigalupo"}
+        </button>
       </div>
     </div>
   );

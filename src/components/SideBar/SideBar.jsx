@@ -38,7 +38,7 @@ export default function SideBar() {
           </ul>
         </nav>
       </div>
-      <div className="account-container">
+      <div className="sidebar-account-container">
         <div className="account-info-container">
           <img src="" alt="" />
           <div className="account-text">

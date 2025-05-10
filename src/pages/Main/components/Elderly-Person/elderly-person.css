@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 400px;
   height: 80px;
 }
 
@@ -25,22 +25,36 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  gap: 10px;
   width: 75%;
 }
 .elderly-person .elderly-person-info h2 {
-  font-size: clamp(1.7rem, 6vw, 2.1rem);
+  font-size: clamp(1.7rem, 6vw, 2rem);
   color: #7b2cbf;
+  width: fit-content;
 }
 
 .elderly-person .elderly-person-info .elderly-person-footer {
-  width: 100%;
+  width: fit-content;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 50px;
 }
 
 .elderly-person .elderly-person-info .elderly-person-footer p {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 6vw, 1.2em);
   color: #666666;
   font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .elderly-person {
+    width: 40%;
+    height: 100px;
+  }
+  .elderly-person .elderly-person-img-container {
+    width: 100px;
+    height: 100px;
+  }
 }
