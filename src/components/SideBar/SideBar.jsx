@@ -27,7 +27,7 @@ export default function SideBar() {
             </li>
 
             <li>
-              <a href="">Notas</a>
+              <Link to="/notas">Notas</Link>
             </li>
 
             <li>
