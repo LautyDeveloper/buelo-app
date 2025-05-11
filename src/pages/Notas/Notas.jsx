@@ -1,5 +1,46 @@
 import "./notas.css";
+import Layout from "../../components/Layout/Layout";
+import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
+import Nota from "./components/Nota/Nota";
 
 export default function Notas() {
-  return <h1>Notas</h1>;
+  return (
+    <Layout>
+      <SectionsHeader title={"Notas Familiares"} label={"Añadir un Nota"} />
+      <div className="notas-container">
+        <Nota
+          title={"Revisar la Presion"}
+          date={"05 de Mayo"}
+          time={"18:23hs"}
+          note={
+            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
+          }
+        />
+        <Nota
+          title={"Revisar la Presion"}
+          date={"05 de Mayo"}
+          time={"18:23hs"}
+          note={
+            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
+          }
+        />
+        <Nota
+          title={"Revisar la Presion"}
+          date={"05 de Mayo"}
+          time={"18:23hs"}
+          note={
+            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
+          }
+        />
+        <Nota
+          title={"Revisar la Presion"}
+          date={"05 de Mayo"}
+          time={"18:23hs"}
+          note={
+            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
+          }
+        />
+      </div>
+    </Layout>
+  );
 }
