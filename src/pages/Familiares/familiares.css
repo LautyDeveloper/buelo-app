@@ -1,0 +1,16 @@
+.familiares-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 90%;
+}
+
+@media screen and (min-width: 768px) {
+  .familiares-container {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
