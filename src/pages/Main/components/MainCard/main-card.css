@@ -50,14 +50,19 @@
   justify-content: space-between;
 }
 
-.main-card .main-card-footer button {
+.main-card .main-card-footer button, .main-card .main-card-footer a {
   background-color: transparent;
   border: 2px solid var(--primaryFontColor);
   border-radius: 10px;
+  font-weight: 500;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: var(--primaryFontColor);
 }
 
 .main-card .main-card-footer .see-all-btn {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   width: 75%;
   height: 100%;
 }

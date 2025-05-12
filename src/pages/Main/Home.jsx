@@ -17,6 +17,7 @@ export default function Home() {
           backColor={"#D0E6FF"}
           textColor={"#0051AF"}
           labelButton={"Ver todos los Turnos"}
+          url={"/turnos"}
         >
           <ShiftCard />
         </MainCard>
@@ -37,6 +38,7 @@ export default function Home() {
           backColor={"#E8DEFF"}
           textColor={"#6D33F3"}
           labelButton={"Ver todas las Notas"}
+          url={"/notas"}
         >
           <NoteCard />
         </MainCard>

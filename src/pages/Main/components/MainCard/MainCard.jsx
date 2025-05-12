@@ -6,6 +6,7 @@ export default function MainCard({
   backColor,
   textColor,
   labelButton,
+  url,
   children,
 }) {
   return (
@@ -17,7 +18,9 @@ export default function MainCard({
       <div className="main-card-content">
         {children}
         <div className="main-card-footer">
-          <button className="see-all-btn">{labelButton}</button>
+          <a className="see-all-btn" href={url}>
+            {labelButton}
+          </a>
           <button className="add-btn">+</button>
         </div>
       </div>
