@@ -6,7 +6,11 @@ import Turno from "./components/Turno/Turno";
 export default function Turnos() {
   return (
     <Layout>
-      <SectionsHeaders title={"Turnos Medicos"} label={"Agregar Turno"} />
+      <SectionsHeaders
+        title={"Turnos Medicos"}
+        label={"Agregar Turno"}
+        color={"var(--shiftsFontColor)"}
+      />
       <div className="turnos-container">
         <Turno
           date={"12 de Mayo"}

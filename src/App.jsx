@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Turnos from "./pages/Turnos/Turnos.jsx";
 import Notas from "./pages/Notas/Notas.jsx";
 import Familiares from "./pages/Familiares/Familiares.jsx";
+import "./styles/themes.css";
 
 function App() {
   return (

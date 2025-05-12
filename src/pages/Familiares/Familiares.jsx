@@ -8,6 +8,7 @@ export default function Familiares() {
       <SectionsHeader
         title={"Familiares Vinculados"}
         label={"Agregar un Familiar"}
+        color={"var(--familiarColor)"}
       />
       <div className="familiares-container">
         <Familiar name={"Lautaro Aquino"} />

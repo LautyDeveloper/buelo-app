@@ -30,7 +30,7 @@
 }
 .elderly-person .elderly-person-info h2 {
   font-size: clamp(1.7rem, 6vw, 2rem);
-  color: #7b2cbf;
+  color: var(--CTAColor);
   width: fit-content;
 }
 
@@ -44,7 +44,7 @@
 
 .elderly-person .elderly-person-info .elderly-person-footer p {
   font-size: clamp(1rem, 6vw, 1.2em);
-  color: #666666;
+  color: var(--secondaryFontColor);
   font-weight: 600;
 }
 

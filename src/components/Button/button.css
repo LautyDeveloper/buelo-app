@@ -1,5 +1,5 @@
 .button {
-  background-color: #7b2cbf;
+  background-color: var(--CTAColor);
   color: white;
   width: 250px;
   height: 45px;

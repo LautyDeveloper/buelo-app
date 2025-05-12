@@ -1,0 +1,18 @@
+:root {
+  --baseBackgroundColor: #f9fafb;
+  --sectionsBackgroundColor: #eef3f7;
+  --primaryFontColor: #333333;
+  --secondaryFontColor: #666666;
+  --CTAColor: #7b2cbf;
+
+  --shiftsBackgrounColor: #d0e6ff;
+  --shiftsFontColor: #0051af;
+  --medicineBackgroundColor: #d6f5e3;
+  --medicineFontColor: #26aa5d;
+  --notesBackgroundColor: #e8deff;
+  --notesFontColor: #6d33f3;
+
+  --elderlyPersonColor: #016597;
+
+  --familiarColor: #0681b6;
+}

@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #eef3f7;
+  background-color: var(--sectionsBackgroundColor);
   border-radius: 10px;
   margin-top: 30px;
 }
@@ -28,7 +28,7 @@
 .main-card .main-card-header p {
   font-size: 1.2rem;
   font-weight: 500;
-  color: #666666;
+  color: var(--secondaryFontColor);
 }
 
 .main-card .main-card-content {
@@ -52,7 +52,7 @@
 
 .main-card .main-card-footer button {
   background-color: transparent;
-  border: 2px solid #000;
+  border: 2px solid var(--primaryFontColor);
   border-radius: 10px;
 }
 

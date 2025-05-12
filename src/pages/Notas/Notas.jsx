@@ -6,7 +6,11 @@ import Nota from "./components/Nota/Nota";
 export default function Notas() {
   return (
     <Layout>
-      <SectionsHeader title={"Notas Familiares"} label={"Añadir un Nota"} />
+      <SectionsHeader
+        title={"Notas Familiares"}
+        label={"Añadir un Nota"}
+        color={"var(--notesFontColor)"}
+      />
       <div className="notas-container">
         <Nota
           title={"Revisar la Presion"}
