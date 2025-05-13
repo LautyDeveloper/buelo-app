@@ -1,4 +1,6 @@
 import "./main-card.css";
+import { useState } from "react";
+import ModalForm from "../../../../components/ModalForm/ModalForm";
 
 export default function MainCard({
   icon,
@@ -9,7 +11,10 @@ export default function MainCard({
   labelButton,
   url,
   children,
+  form,
 }) {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <div className="main-card">
       <div className="main-card-header" style={{ backgroundColor: backColor }}>
@@ -24,9 +29,21 @@ export default function MainCard({
           <a className="see-all-btn" href={url}>
             {labelButton}
           </a>
-          <button className="add-btn">+</button>
+          <button onClick={() => setModalOpen(true)} className="add-btn">
+            +
+          </button>
         </div>
       </div>
+      <ModalForm
+        title={"Agregar Nuevo Turno"}
+        parragraph={
+          "Completa los detalles del Turno. Indicando los siguientes datos"
+        }
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+      >
+        {form}
+      </ModalForm>
     </div>
   );
 }

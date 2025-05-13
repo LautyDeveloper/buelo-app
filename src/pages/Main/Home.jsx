@@ -7,8 +7,14 @@ import ShiftCard from "./components/Shift-Card/ShiftCard";
 import { CalendarClock } from "lucide-react";
 import { Pill } from "lucide-react";
 import { ClipboardPenLine } from "lucide-react";
+import {
+  AddShiftForm,
+  AddMedicineForm,
+  AddNoteForm,
+} from "../../components/AddForms/AddForms";
 
 import "./home.css";
+import ModalForm from "../../components/ModalForm/ModalForm";
 
 export default function Home({ theme, setTheme }) {
   return (
@@ -23,6 +29,7 @@ export default function Home({ theme, setTheme }) {
           textColor={"var(--shiftsFontColor)"}
           labelButton={"Ver todos los Turnos"}
           url={"/turnos"}
+          form={<AddShiftForm />}
         >
           <ShiftCard />
         </MainCard>
@@ -34,6 +41,7 @@ export default function Home({ theme, setTheme }) {
           backColor={"var(--medicineBackgroundColor)"}
           textColor={"var(--medicineFontColor)"}
           labelButton={"Ver todas las Medicinas"}
+          form={<AddMedicineForm />}
         >
           <MedicineCard />
         </MainCard>
@@ -48,6 +56,9 @@ export default function Home({ theme, setTheme }) {
           url={"/notas"}
         >
           <NoteCard />
+          <ModalForm>
+            <AddNoteForm />
+          </ModalForm>
         </MainCard>
       </div>
     </Layout>
