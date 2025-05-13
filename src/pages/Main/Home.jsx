@@ -29,6 +29,10 @@ export default function Home({ theme, setTheme }) {
           textColor={"var(--shiftsFontColor)"}
           labelButton={"Ver todos los Turnos"}
           url={"/turnos"}
+          modalTitle={"Agregar Nuevo Turno"}
+          modalParragraph={
+            "Completa los detalles del Turno. Indicando los siguientes datos"
+          }
           form={<AddShiftForm />}
         >
           <ShiftCard />
@@ -41,6 +45,10 @@ export default function Home({ theme, setTheme }) {
           backColor={"var(--medicineBackgroundColor)"}
           textColor={"var(--medicineFontColor)"}
           labelButton={"Ver todas las Medicinas"}
+          modalTitle={"Agregar Nueva Medicacion"}
+          modalParragraph={
+            "Completa los detalles de la Medicacion. Indicando los siguientes datos"
+          }
           form={<AddMedicineForm />}
         >
           <MedicineCard />
@@ -54,11 +62,13 @@ export default function Home({ theme, setTheme }) {
           textColor={"var(--notesFontColor)"}
           labelButton={"Ver todas las Notas"}
           url={"/notas"}
+          modalTitle={"Agregar Nueva Nota"}
+          modalParragraph={
+            "Completa los detalles de la Nota. Indicando los siguientes datos"
+          }
+          form={<AddNoteForm />}
         >
           <NoteCard />
-          <ModalForm>
-            <AddNoteForm />
-          </ModalForm>
         </MainCard>
       </div>
     </Layout>

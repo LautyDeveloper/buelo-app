@@ -11,6 +11,8 @@ export default function MainCard({
   labelButton,
   url,
   children,
+  modalTitle,
+  modalParragraph,
   form,
 }) {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -35,10 +37,8 @@ export default function MainCard({
         </div>
       </div>
       <ModalForm
-        title={"Agregar Nuevo Turno"}
-        parragraph={
-          "Completa los detalles del Turno. Indicando los siguientes datos"
-        }
+        title={modalTitle}
+        parragraph={modalParragraph}
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
       >
