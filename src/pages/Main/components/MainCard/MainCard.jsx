@@ -1,6 +1,7 @@
 import "./main-card.css";
 
 export default function MainCard({
+  icon,
   title,
   phrase,
   backColor,
@@ -12,7 +13,9 @@ export default function MainCard({
   return (
     <div className="main-card">
       <div className="main-card-header" style={{ backgroundColor: backColor }}>
-        <h1 style={{ color: textColor }}>{title}</h1>
+        <h1 style={{ color: textColor }}>
+          {icon} {title}
+        </h1>
         <p>{phrase}</p>
       </div>
       <div className="main-card-content">

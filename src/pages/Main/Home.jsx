@@ -4,6 +4,10 @@ import MainCard from "./components/MainCard/MainCard";
 import MedicineCard from "./components/Medicine-Card/Medicine-Card";
 import NoteCard from "./components/Note-Card/NoteCard";
 import ShiftCard from "./components/Shift-Card/ShiftCard";
+import { CalendarClock } from "lucide-react";
+import { Pill } from "lucide-react";
+import { ClipboardPenLine } from "lucide-react";
+
 import "./home.css";
 
 export default function Home({ theme, setTheme }) {
@@ -12,6 +16,7 @@ export default function Home({ theme, setTheme }) {
       <ElderlyPerson />
       <div className="content-container">
         <MainCard
+          icon={<CalendarClock />}
           title={"Turnos Proximos"}
           phrase={"Citas medicas programadas"}
           backColor={"var(--shiftsBackgrounColor)"}
@@ -23,6 +28,7 @@ export default function Home({ theme, setTheme }) {
         </MainCard>
 
         <MainCard
+          icon={<Pill />}
           title={"Medicacion de Hoy"}
           phrase={"Citas medicas programadas"}
           backColor={"var(--medicineBackgroundColor)"}
@@ -33,6 +39,7 @@ export default function Home({ theme, setTheme }) {
         </MainCard>
 
         <MainCard
+          icon={<ClipboardPenLine />}
           title={"Notas Familiares"}
           phrase={"Citas medicas programadas"}
           backColor={"var(--notesBackgroundColor)"}
