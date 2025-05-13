@@ -3,9 +3,9 @@ import Layout from "../../components/Layout/Layout";
 import SectionsHeaders from "../../components/Sections-Header/SectionsHeader";
 import Turno from "./components/Turno/Turno";
 
-export default function Turnos() {
+export default function Turnos({ theme, setTheme }) {
   return (
-    <Layout>
+    <Layout theme={theme} setTheme={setTheme}>
       <SectionsHeaders
         title={"Turnos Medicos"}
         label={"Agregar Turno"}

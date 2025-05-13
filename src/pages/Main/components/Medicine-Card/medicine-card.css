@@ -31,7 +31,8 @@
   display: grid;
   place-items: center;
   border-radius: 20px;
-  color: white;
+    color: var(--badgeFontColor);
+
   font-weight: 600;
   background-color: var(--medicineFontColor);
 }

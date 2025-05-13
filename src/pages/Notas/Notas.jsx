@@ -3,9 +3,9 @@ import Layout from "../../components/Layout/Layout";
 import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
 import Nota from "./components/Nota/Nota";
 
-export default function Notas() {
+export default function Notas({ theme, setTheme }) {
   return (
-    <Layout>
+    <Layout theme={theme} setTheme={setTheme}>
       <SectionsHeader
         title={"Notas Familiares"}
         label={"Añadir un Nota"}

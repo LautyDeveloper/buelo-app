@@ -6,16 +6,16 @@ import NoteCard from "./components/Note-Card/NoteCard";
 import ShiftCard from "./components/Shift-Card/ShiftCard";
 import "./home.css";
 
-export default function Home() {
+export default function Home({ theme, setTheme }) {
   return (
-    <Layout page={"DashBoard"}>
+    <Layout page={"DashBoard"} theme={theme} setTheme={setTheme}>
       <ElderlyPerson />
       <div className="content-container">
         <MainCard
           title={"Turnos Proximos"}
           phrase={"Citas medicas programadas"}
-          backColor={"#D0E6FF"}
-          textColor={"#0051AF"}
+          backColor={"var(--shiftsBackgrounColor)"}
+          textColor={"var(--shiftsFontColor)"}
           labelButton={"Ver todos los Turnos"}
           url={"/turnos"}
         >
@@ -25,8 +25,8 @@ export default function Home() {
         <MainCard
           title={"Medicacion de Hoy"}
           phrase={"Citas medicas programadas"}
-          backColor={"#D6F5E3"}
-          textColor={"#26AA5D"}
+          backColor={"var(--medicineBackgroundColor)"}
+          textColor={"var(--medicineFontColor)"}
           labelButton={"Ver todas las Medicinas"}
         >
           <MedicineCard />
@@ -35,8 +35,8 @@ export default function Home() {
         <MainCard
           title={"Notas Familiares"}
           phrase={"Citas medicas programadas"}
-          backColor={"#E8DEFF"}
-          textColor={"#6D33F3"}
+          backColor={"var(--notesBackgroundColor)"}
+          textColor={"var(--notesFontColor)"}
           labelButton={"Ver todas las Notas"}
           url={"/notas"}
         >

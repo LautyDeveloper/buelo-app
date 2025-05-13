@@ -2,9 +2,9 @@ import "./familiares.css";
 import Layout from "../../components/Layout/Layout";
 import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
 import Familiar from "./components/Familiar/Familiar.jsx";
-export default function Familiares() {
+export default function Familiares({ theme, setTheme }) {
   return (
-    <Layout>
+    <Layout theme={theme} setTheme={setTheme}>
       <SectionsHeader
         title={"Familiares Vinculados"}
         label={"Agregar un Familiar"}

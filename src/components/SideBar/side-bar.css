@@ -9,6 +9,7 @@
   place-items: center;
   border-bottom: 2px solid var(--secondaryFontColor);
   font-size: clamp(1rem, 6vw, 1.2rem);
+  color: var(--primaryFontColor);
 }
 .sidebar-container .sidebar-nav-container {
   height: 100%;
