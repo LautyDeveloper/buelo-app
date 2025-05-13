@@ -11,6 +11,7 @@
   gap: 50px;
   width: 100%;
   background-color: var(--baseBackgroundColor);
+  border: 2px solid var(--secondaryFontColor);
 }
 
 .main-container main {
@@ -29,7 +30,7 @@
     justify-content: flex-start;
   }
   .main-container {
-    width: 80%;
+    width: 100%;
   }
   .main-container main {
     justify-content: flex-start;

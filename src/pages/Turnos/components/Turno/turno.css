@@ -30,7 +30,7 @@
 }
 
 .turno .turno-header .turno-header-principal h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--shiftsFontColor);
 }
 
@@ -39,12 +39,12 @@
   padding: 5px 20px;
   border-radius: 20px;
   color: white;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
 .turno .turno-header p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--secondaryFontColor);
 }
@@ -71,7 +71,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: var(--secondaryFontColor);
 }
 
@@ -81,6 +81,7 @@
 
 @media screen and (min-width: 768px) {
   .turno {
-    width: 40%;
+    width: 32%;
+    height: 200px;
   }
 }
