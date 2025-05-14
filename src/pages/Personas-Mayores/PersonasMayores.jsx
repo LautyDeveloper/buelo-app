@@ -3,9 +3,9 @@ import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
 import PersonCard from "./components/MainCard/PersonCard";
 import "./personas-mayores.css";
 
-export default function PersonasMayores() {
+export default function PersonasMayores({ theme, setTheme }) {
   return (
-    <Layout page={"Personas Mayores"}>
+    <Layout page={"Personas Mayores"} theme={theme} setTheme={setTheme}>
       <SectionsHeader
         title={"Personas Mayores"}
         label={"Agregar Persona"}

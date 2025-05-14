@@ -40,8 +40,40 @@
 .sidebar-container .sidebar-account-container {
   height: 100px;
   width: 100%;
+  display: grid;
+  place-items: center;
   border-top: 2px solid var(--secondaryFontColor);
 }
+
+.sidebar-container .sidebar-account-container .account-info-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+}
+.sidebar-container .sidebar-account-container .account-info-container img{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+.sidebar-container .sidebar-account-container .account-info-container .account-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2px;
+}
+.sidebar-container .sidebar-account-container .account-info-container .account-text h2{
+  font-size: 1.4rem;
+  color: var(--primaryFontColor);
+  font-weight: 500;
+}
+.sidebar-container .sidebar-account-container .account-info-container .account-text p{
+  font-size: 1rem;
+  color: var(--secondaryFontColor);
+}
+
+
 
 @media screen and (min-width: 768px) {
   .sidebar-container {

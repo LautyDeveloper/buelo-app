@@ -1,0 +1,43 @@
+.persona-mayor-modal-backdrop{
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+}
+
+.persona-mayor-modal{
+  width: 90%;
+  height: 500px;
+  background-color: var(--baseBackgroundColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.persona-mayor-modal .persona-mayor-modal-header{
+  background-color: var(--elderlyPersonColor);
+  width: 100%;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  padding: 20px 30px;
+}
+
+.persona-mayor-modal .persona-mayor-modal-header .header-content{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.persona-mayor-modal .persona-mayor-modal-header .header-content img{
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+
