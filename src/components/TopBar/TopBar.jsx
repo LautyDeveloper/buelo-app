@@ -23,9 +23,7 @@ export default function TopBar({ page, theme, setTheme }) {
     <div className="topbar-container">
       <div className="topbar-content">
         <h1>{page}</h1>
-        <button onClick={toggleTheme}>
-          Cambiar a {theme === "light" ? "oscuro" : "claro"}
-        </button>
+        <button onClick={toggleTheme}>{theme === "light" ? "🌑" : "☀️"}</button>
         <button onClick={toggleList}>
           {window.innerWidth < 768 ? "🤶" : "🤶 Lucrecia Bacigalupo"}
         </button>

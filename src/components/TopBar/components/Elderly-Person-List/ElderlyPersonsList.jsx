@@ -5,7 +5,7 @@ export default function ElderlyPersonsList({ persons }) {
     <div className="elderly-persons-list">
       <ul>
         {persons.map((person, index) => {
-          return <li key={index}>{person.name}</li>;
+          return <li key={index}>🤶 {person.name}</li>;
         })}
       </ul>
     </div>

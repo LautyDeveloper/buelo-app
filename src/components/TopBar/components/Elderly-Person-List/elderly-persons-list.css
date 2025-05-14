@@ -16,12 +16,23 @@
   padding: 0;
   margin: 0;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 2rem;
+  width: 100%;
+  gap: 15px;
 }
 
 .elderly-persons-list li {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   cursor: pointer;
+  color: var(--CTAColor);
+}
+
+@media screen and (min-width: 768px) {
+  .elderly-persons-list ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
 }
