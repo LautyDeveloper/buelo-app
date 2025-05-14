@@ -4,7 +4,7 @@
   border-radius: 10px;
   display: grid;
   place-items: center;
-  background-color: #e8deff;
+  background-color: var(--notesBackgroundColor);
 }
 
 .note-content {
@@ -23,7 +23,7 @@
 }
 .note-content .note-header strong {
   font-size: 1.1rem;
-  color: #333;
+  color: var(--primaryFontColor);
 }
 
 .note-content .note-footer {
@@ -34,7 +34,7 @@
 }
 
 .note-content p {
-  color: #666666;
+  color: var(--secondaryFontColor);
   font-size: 1rem;
   font-weight: 500;
 }

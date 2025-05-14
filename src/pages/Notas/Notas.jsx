@@ -3,10 +3,14 @@ import Layout from "../../components/Layout/Layout";
 import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
 import Nota from "./components/Nota/Nota";
 
-export default function Notas() {
+export default function Notas({ theme, setTheme }) {
   return (
-    <Layout>
-      <SectionsHeader title={"Notas Familiares"} label={"Añadir un Nota"} />
+    <Layout theme={theme} setTheme={setTheme}>
+      <SectionsHeader
+        title={"Notas Familiares"}
+        label={"Añadir un Nota"}
+        color={"var(--notesFontColor)"}
+      />
       <div className="notas-container">
         <Nota
           title={"Revisar la Presion"}

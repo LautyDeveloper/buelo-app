@@ -1,19 +1,16 @@
-.sections-header {
-  width: 100%;
+.familiares-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 20px;
-}
-
-.sections-header h2 {
-  font-size: 2rem;
+  width: 90%;
 }
 
 @media screen and (min-width: 768px) {
-  .sections-header {
+  .familiares-container {
     flex-direction: row;
-    gap: 0;
+    justify-content: space-between;
+    width: 100%;
   }
 }

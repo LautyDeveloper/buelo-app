@@ -1,6 +1,10 @@
 import "./person-card.css";
+import PersonaMayorModal from "../Persona-Mayor-Modal/PersonaMayorModal";
+import { useState } from "react";
 
 export default function PersonCard({ image, name, familiar, age }) {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <div className="person-card">
       <div className="person-card-header">
@@ -15,7 +19,18 @@ export default function PersonCard({ image, name, familiar, age }) {
           </div>
         </div>
       </div>
-      <button>Ver Mas</button>
+      <button onClick={() => setModalOpen(true)}>Ver Mas</button>
+      <PersonaMayorModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        name={name}
+        age={age}
+        familiar={familiar}
+        dni={"123456789"}
+        nTramite={"123456789"}
+        os={"PAMI"}
+        nAfiliado={"123456789"}
+      />
     </div>
   );
 }

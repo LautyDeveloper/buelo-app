@@ -31,7 +31,7 @@ export default function SideBar() {
             </li>
 
             <li>
-              <a href="">Familiares</a>
+              <Link to="/familiares">Familiares</Link>
             </li>
             <li>
               <a href="">Bot de WhatsApp</a>

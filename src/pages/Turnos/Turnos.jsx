@@ -3,10 +3,14 @@ import Layout from "../../components/Layout/Layout";
 import SectionsHeaders from "../../components/Sections-Header/SectionsHeader";
 import Turno from "./components/Turno/Turno";
 
-export default function Turnos() {
+export default function Turnos({ theme, setTheme }) {
   return (
-    <Layout>
-      <SectionsHeaders title={"Turnos Medicos"} label={"Agregar Turno"} />
+    <Layout theme={theme} setTheme={setTheme}>
+      <SectionsHeaders
+        title={"Turnos Medicos"}
+        label={"Agregar Turno"}
+        color={"var(--shiftsFontColor)"}
+      />
       <div className="turnos-container">
         <Turno
           date={"12 de Mayo"}

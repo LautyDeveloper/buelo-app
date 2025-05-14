@@ -1,63 +1,56 @@
-.nota{
-    width: 100%;
-    background-color: #EEF3F7;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+.nota {
+  width: 100%;
+  background-color: var(--sectionsBackgroundColor);
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
-.nota .nota-header{
-    min-height: 100px;
-    background-color: #D0E6FF;
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+.nota .nota-header {
+  min-height: 100px;
+  background-color: var(--notesBackgroundColor);
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.nota .nota-header h2{
-    color: #0051AF;
-    font-size: 2rem;
+.nota .nota-header h2 {
+  color: var(--notesFontColor);
+  font-size: 1.6rem;
 }
-.nota .nota-header p{
-    color: #666;
-    font-size:1.3rem;
+.nota .nota-header p {
+  color: var(--secondaryFontColor);
+  font-size: 1.1rem;
 }
 
-.nota .nota-main{
-    height: 100%;
-    display: grid;
-    place-items: center;
-    padding: 0 20px;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #333;
+.nota .nota-main {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primaryFontColor);
 }
 
 @media screen and (min-width: 768px) {
-    .nota{
-        width: 40%;
-    }
-    .nota .nota-header{
-        align-items: flex-start;
-        padding: 0 20px;
-    }
-    .nota .nota-header h2{
-        font-size: 2.2rem;
-    }
-    .nota .nota-header p{
-        font-size: 1.5rem;
-    }
-    .nota .nota-main{
-        font-size: 1.3rem;
-        text-align: start;
-
-    }
+  .nota {
+    width: 32%;
+    height: 220px;
+  }
+  .nota .nota-header {
+    align-items: flex-start;
+    padding: 0 20px;
+  }
+  .nota .nota-main {
+    text-align: start;
+  }
 }

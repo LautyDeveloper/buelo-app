@@ -4,7 +4,7 @@
   border-radius: 10px;
   display: grid;
   place-items: center;
-  background-color: #d0e6ff;
+  background-color: var(--shiftsBackgrounColor);
 }
 
 .shift-content {
@@ -23,7 +23,7 @@
 }
 .shift-content .shift-header strong {
   font-size: 1.4rem;
-  color: #0051af;
+  color: var(--shiftsFontColor);
 }
 
 .shift-content .shift-header .shift-badge {
@@ -31,13 +31,13 @@
   display: grid;
   place-items: center;
   border-radius: 20px;
-  color: white;
+  color: var(--badgeFontColor);
   font-weight: 600;
-  background-color: #0051af;
+  background-color: var(--shiftsFontColor);
 }
 
 .shift-content p {
-  color: #666666;
+  color: var(--secondaryFontColor);
   font-size: 1.1rem;
   font-weight: 500;
 }

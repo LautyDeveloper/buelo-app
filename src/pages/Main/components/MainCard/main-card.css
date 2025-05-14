@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #eef3f7;
+  background-color: var(--sectionsBackgroundColor);
   border-radius: 10px;
   margin-top: 30px;
 }
@@ -22,13 +22,13 @@
 }
 
 .main-card .main-card-header h1 {
-  font-size: clamp(1.7rem, 2rem, 2rem);
+  font-size: 1.7rem;
 }
 
 .main-card .main-card-header p {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #666666;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--secondaryFontColor);
 }
 
 .main-card .main-card-content {
@@ -50,14 +50,20 @@
   justify-content: space-between;
 }
 
-.main-card .main-card-footer button {
+.main-card .main-card-footer button,
+.main-card .main-card-footer a {
   background-color: transparent;
-  border: 2px solid #000;
+  border: 2px solid var(--primaryFontColor);
   border-radius: 10px;
+  font-weight: 500;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: var(--primaryFontColor);
 }
 
 .main-card .main-card-footer .see-all-btn {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   width: 75%;
   height: 100%;
 }
@@ -69,7 +75,8 @@
 
 @media screen and (min-width: 768px) {
   .main-card {
-    width: 32%;
+    width: 30%;
+    height: 400px;
   }
   .main-card .main-card-header {
     align-items: flex-start;

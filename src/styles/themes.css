@@ -1,0 +1,41 @@
+:root {
+  --baseBackgroundColor: #f9fafb;
+  --sectionsBackgroundColor: #eef3f7;
+  --primaryFontColor: #333333;
+  --secondaryFontColor: #666666;
+  --CTAColor: #7b2cbf;
+
+  --shiftsBackgrounColor: #d0e6ff;
+  --shiftsFontColor: #0051af;
+  --medicineBackgroundColor: #d6f5e3;
+  --medicineFontColor: #26aa5d;
+  --notesBackgroundColor: #e8deff;
+  --notesFontColor: #6d33f3;
+
+  --elderlyPersonColor: #016597;
+
+  --familiarColor: #0681b6;
+
+  --badgeFontColor: #f5f5f5
+}
+
+[data-theme='dark'] {
+  --baseBackgroundColor: #1E1E1E;
+  --sectionsBackgroundColor: #2C2C2C;
+  --primaryFontColor: #f5f5f5;
+  --secondaryFontColor: #b5b5b5;
+  --CTAColor: #5E1F8D;
+
+  --shiftsBackgrounColor: #0051AF;
+  --shiftsFontColor: #D0E6FF;
+  --medicineBackgroundColor: #26aa5d;
+  --medicineFontColor: #d6f5e3;
+  --notesBackgroundColor: #6d33f3;
+  --notesFontColor: #e8deff;
+
+  --elderlyPersonColor: #016597;
+
+  --familiarColor: #0681b6;
+
+  --badgeFontColor: #333333
+}
