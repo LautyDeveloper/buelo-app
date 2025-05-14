@@ -8,6 +8,8 @@
   border-top: none;
   border-right: none;
   border-left: none;
+  position: relative;
+  padding: 1rem;
 }
 
 .topbar-container .topbar-content {
@@ -33,6 +35,13 @@
   border-radius: 10px;
   border: none;
   font-size: 2rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.user-selector {
+  position: relative;
+  display: inline-block;
 }
 
 @media screen and (min-width: 768px) {

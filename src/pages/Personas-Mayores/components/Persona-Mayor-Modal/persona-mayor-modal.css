@@ -1,4 +1,4 @@
-.persona-mayor-modal-backdrop{
+.persona-mayor-modal-backdrop {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.8);
@@ -7,9 +7,10 @@
   z-index: 999;
 }
 
-.persona-mayor-modal{
+.persona-mayor-modal {
   width: 90%;
-  height: 500px;
+  height: 550px;
+  max-width: 500px;
   background-color: var(--baseBackgroundColor);
   display: flex;
   flex-direction: column;
@@ -18,26 +19,124 @@
   border-radius: 10px;
 }
 
-.persona-mayor-modal .persona-mayor-modal-header{
-  background-color: var(--elderlyPersonColor);
+.persona-mayor-modal .persona-mayor-modal-header {
+  background-color: var(--elderlyPersonBackgroundColor);
   width: 100%;
   height: 150px;
   display: grid;
   place-items: center;
-  padding: 20px 30px;
+  padding: 20px 25px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
-.persona-mayor-modal .persona-mayor-modal-header .header-content{
+.persona-mayor-modal .persona-mayor-modal-header .header-content {
   width: 100%;
+  max-width: 400px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.persona-mayor-modal .persona-mayor-modal-header .header-content img{
-  width: 100px;
+.persona-mayor-modal .persona-mayor-modal-header .header-content img {
+  min-width: 100px;
   height: 100px;
   border-radius: 100%;
+  border: 2px solid white;
 }
 
+.persona-mayor-modal .persona-mayor-modal-header .header-content .header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 7px;
+}
+.persona-mayor-modal
+  .persona-mayor-modal-header
+  .header-content
+  .header-text
+  h2 {
+  font-size: 1.5rem;
+  color: var(--elderlyPersonColor);
+}
+.persona-mayor-modal
+  .persona-mayor-modal-header
+  .header-content
+  .header-text
+  .text-footer {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 20px;
+  align-items: centers;
+}
 
+.persona-mayor-modal
+  .persona-mayor-modal-header
+  .header-content
+  .header-text
+  .text-footer
+  p {
+  font-size: 1rem;
+  color: var(--secondaryFontColor);
+}
+
+.persona-mayor-content {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.persona-mayor-content ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  list-style: none;
+  gap: 20px;
+}
+
+.persona-mayor-content ul li {
+  font-size: 1.4rem;
+  color: var(--secondaryFontColor);
+}
+.persona-mayor-content ul li b {
+  color: var(--primaryFontColor);
+}
+
+.persona-mayor-footer {
+  width: 100%;
+  padding: 10px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.persona-mayor-footer button:first-child {
+  background-color: red;
+}
+.persona-mayor-footer button {
+  width: 100%;
+  background-color: var(--CTAColor);
+}
+
+@media screen and (min-width: 768px) {
+  .persona-mayor-modal {
+    height: 500px;
+  }
+  .persona-mayor-modal
+    .persona-mayor-modal-header
+    .header-content
+    .header-text {
+    width: 60%;
+  }
+  .persona-mayor-content ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+}
