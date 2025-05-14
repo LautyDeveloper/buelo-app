@@ -1,0 +1,27 @@
+.elderly-persons-list {
+  width: 100%;
+  background-color: var(--sectionsBackgroundColor);
+  border-top: 1px solid var(--primaryFontColor);
+  color: var(--primaryFontColor);
+  position: absolute;
+  top: 100%; /* justo debajo del topbar */
+  left: 0;
+  z-index: 10;
+  padding: 10px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.elderly-persons-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.elderly-persons-list li {
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
