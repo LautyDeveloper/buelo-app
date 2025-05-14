@@ -30,24 +30,24 @@ export function AddMedicineForm() {
   return (
     <form action="">
       <div className="input-container">
-        <label htmlFor="">Nombre del Consultorio / Hospital</label>
+        <label htmlFor="">Nombre del Medicamento</label>
         <input type="text" />
       </div>
 
       <div className="horizontal-inputs-container">
         <div className="input-container">
-          <label htmlFor="">Dia</label>
+          <label htmlFor="">Dosis</label>
           <input type="text" />
         </div>
 
         <div className="input-container">
-          <label htmlFor="">Horario</label>
+          <label htmlFor="">Frecuencia</label>
           <input type="text" />
         </div>
       </div>
 
       <div className="input-container">
-        <label htmlFor="">Nombre del Profesional</label>
+        <label htmlFor="">Horarios</label>
         <input type="text" />
       </div>
     </form>
@@ -58,24 +58,12 @@ export function AddNoteForm() {
   return (
     <form action="">
       <div className="input-container">
-        <label htmlFor="">Nombre del Consultorio / Hospital</label>
+        <label htmlFor="">Titulo de la Nota</label>
         <input type="text" />
       </div>
 
-      <div className="horizontal-inputs-container">
-        <div className="input-container">
-          <label htmlFor="">Dia</label>
-          <input type="text" />
-        </div>
-
-        <div className="input-container">
-          <label htmlFor="">Horario</label>
-          <input type="text" />
-        </div>
-      </div>
-
       <div className="input-container">
-        <label htmlFor="">Nombre del Profesional</label>
+        <label htmlFor="">Cuerpo de la Nota</label>
         <input type="text" />
       </div>
     </form>
