@@ -123,6 +123,13 @@
   width: 100%;
   background-color: var(--CTAColor);
 }
+.persona-mayor-footer p {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--CTAColor);
+  font-weight: 600;
+}
+
 
 @media screen and (min-width: 768px) {
   .persona-mayor-modal {

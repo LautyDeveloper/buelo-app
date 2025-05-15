@@ -20,7 +20,7 @@ export default function PersonaMayorModal({
           <div className="header-content">
             <img src="" alt="" />
             <div className="header-text">
-              <h2 onClick={onClose}>{name}</h2>
+              <h2>{name}</h2>
               <div className="text-footer">
                 <p>{age} Años</p>
                 <p>{familiar} Familiares a Cargo</p>
@@ -51,6 +51,7 @@ export default function PersonaMayorModal({
         <div className="persona-mayor-footer">
           <button>Eliminar</button>
           <button>Guardar</button>
+          <p onClick={onClose}>Salir</p>
         </div>
       </div>
     </div>
