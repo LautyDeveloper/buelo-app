@@ -1,5 +1,5 @@
 import "./main-card.css";
-import { useState } from "react";
+import useModal from "../../../../hooks/useModal";
 import ModalForm from "../../../../components/ModalForm/ModalForm";
 
 export default function MainCard({
@@ -15,7 +15,7 @@ export default function MainCard({
   modalParragraph,
   form,
 }) {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const { isOpen, openModal, closeModal } = useModal();
 
   return (
     <div className="main-card">
@@ -31,16 +31,17 @@ export default function MainCard({
           <a className="see-all-btn" href={url}>
             {labelButton}
           </a>
-          <button onClick={() => setModalOpen(true)} className="add-btn">
+          <button onClick={openModal} className="add-btn">
             +
           </button>
         </div>
       </div>
+
       <ModalForm
         title={modalTitle}
         parragraph={modalParragraph}
-        isOpen={isModalOpen}
-        onClose={() => setModalOpen(false)}
+        isOpen={isOpen}
+        onClose={closeModal}
       >
         {form}
       </ModalForm>

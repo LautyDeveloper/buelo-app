@@ -2,14 +2,20 @@ import "./notas.css";
 import Layout from "../../components/Layout/Layout";
 import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
 import Nota from "./components/Nota/Nota";
+import useModal from "../../hooks/useModal";
+import ModalForm from "../../components/ModalForm/ModalForm";
+import { AddNoteForm } from "../../components/AddForms/AddForms";
 
 export default function Notas({ theme, setTheme }) {
+  const { isOpen, openModal, closeModal } = useModal();
+
   return (
     <Layout theme={theme} setTheme={setTheme}>
       <SectionsHeader
         title={"Notas Familiares"}
         label={"Añadir un Nota"}
         color={"var(--notesFontColor)"}
+        openModal={openModal}
       />
       <div className="notas-container">
         <Nota
@@ -45,6 +51,16 @@ export default function Notas({ theme, setTheme }) {
           }
         />
       </div>
+      <ModalForm
+        title={"Agregar Nueva Nota"}
+        parragraph={
+          "Completa los datos de tu Persona Mayor, y empeza a gestionar su vida mucho mas facil"
+        }
+        isOpen={isOpen}
+        onClose={closeModal}
+      >
+        <AddNoteForm />
+      </ModalForm>
     </Layout>
   );
 }
