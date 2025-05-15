@@ -1,9 +1,9 @@
 import "./side-bar.css";
 import { Link } from "react-router-dom";
 
-export default function SideBar() {
+export default function SideBar({ isOpen }) {
   return (
-    <div className="sidebar-container">
+    <div className={`sidebar-container ${isOpen ? "open" : ""}`}>
       <div className="sidebar-logo-container">
         <h1>🤶 Buelo App</h1>
       </div>
