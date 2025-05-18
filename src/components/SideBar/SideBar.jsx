@@ -23,7 +23,7 @@ export default function SideBar({ isOpen }) {
             </li>
 
             <li>
-              <a href="">Medicacion</a>
+              <Link to="/medicacion">Medicaciones</Link>
             </li>
 
             <li>
