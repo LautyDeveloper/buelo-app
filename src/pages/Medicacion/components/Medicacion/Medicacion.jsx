@@ -13,7 +13,7 @@ export default function Medicacion({ name, frecuency, dosis, schedules }) {
         </p>
       </div>
       <div className="medicacion-body">
-        <strong>Horarios</strong>
+        <strong>Horarios:</strong>
         <div className="schedules-container">
           {schedules.map((schedule) => {
             return <div className="schedule">{schedule}</div>;

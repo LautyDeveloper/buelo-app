@@ -18,6 +18,24 @@ export default function Medicaciones({ theme, setTheme }) {
           dosis={"2 comprimidos"}
           schedules={["15:00", "20:00"]}
         />
+        <Medicacion
+          name={"Lorsatan 50mg"}
+          frecuency={"Todos los Dias"}
+          dosis={"2 comprimidos"}
+          schedules={["15:00", "20:00"]}
+        />
+        <Medicacion
+          name={"Lorsatan 50mg"}
+          frecuency={"Todos los Dias"}
+          dosis={"2 comprimidos"}
+          schedules={["15:00", "20:00"]}
+        />
+        <Medicacion
+          name={"Lorsatan 50mg"}
+          frecuency={"Todos los Dias"}
+          dosis={"2 comprimidos"}
+          schedules={["15:00", "20:00"]}
+        />
       </div>
     </Layout>
   );
