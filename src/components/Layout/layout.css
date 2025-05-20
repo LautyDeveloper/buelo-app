@@ -12,6 +12,9 @@
   width: 100%;
   background-color: var(--baseBackgroundColor);
   border: 2px solid var(--secondaryFontColor);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 .main-container main {
