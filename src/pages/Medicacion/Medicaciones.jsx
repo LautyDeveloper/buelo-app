@@ -10,7 +10,7 @@ export default function Medicaciones({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
 
   return (
-    <Layout theme={theme} setTheme={setTheme}>
+    <Layout theme={theme} setTheme={setTheme} page={"Medicaciones"}>
       <SectionsHeader
         title={"Medicaciones"}
         label={"Agregar Medicacion"}

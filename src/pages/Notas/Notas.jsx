@@ -10,7 +10,7 @@ export default function Notas({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
 
   return (
-    <Layout theme={theme} setTheme={setTheme}>
+    <Layout theme={theme} setTheme={setTheme} page={"Notas"}>
       <SectionsHeader
         title={"Notas Familiares"}
         label={"Añadir un Nota"}

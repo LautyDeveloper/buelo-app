@@ -10,7 +10,7 @@ export default function Turnos({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
 
   return (
-    <Layout theme={theme} setTheme={setTheme}>
+    <Layout theme={theme} setTheme={setTheme} page={"Turnos"}>
       <SectionsHeaders
         title={"Turnos Medicos"}
         label={"Agregar Turno"}

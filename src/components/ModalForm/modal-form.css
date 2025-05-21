@@ -46,6 +46,10 @@
   align-items: flex-start;
 }
 
+.modal .modal-header p {
+  cursor: pointer;
+}
+
 .modal .modal-header .modal-header-text {
   display: flex;
   flex-direction: column;

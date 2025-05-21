@@ -45,6 +45,7 @@ export default function Home({ theme, setTheme }) {
           backColor={"var(--medicineBackgroundColor)"}
           textColor={"var(--medicineFontColor)"}
           labelButton={"Ver todas las Medicinas"}
+          url={"/medicacion"}
           modalTitle={"Agregar Nueva Medicacion"}
           modalParragraph={
             "Completa los detalles de la Medicacion. Indicando los siguientes datos"
