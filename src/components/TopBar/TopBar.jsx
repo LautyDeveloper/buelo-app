@@ -1,7 +1,5 @@
 import { useState } from "react";
 import ElderlyPersonsList from "./components/Elderly-Person-List/ElderlyPersonsList";
-import { useState } from "react";
-import ElderlyPersonsList from "./components/Elderly-Person-List/ElderlyPersonsList";
 import "./top-bar.css";
 import { Moon, Sun, Menu } from "lucide-react"; // PanelRightClose was unused
 
