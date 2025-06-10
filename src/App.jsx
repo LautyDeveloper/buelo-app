@@ -7,6 +7,7 @@ import Notas from "./pages/Notas/Notas.jsx";
 import Familiares from "./pages/Familiares/Familiares.jsx";
 import "./styles/themes.css";
 import { useEffect, useState } from "react";
+import Medicaciones from "./pages/Medicacion/Medicaciones.jsx";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -26,6 +27,10 @@ function App() {
         <Route
           path="/turnos"
           element={<Turnos theme={theme} setTheme={setTheme} />}
+        />
+        <Route
+          path="/medicacion"
+          element={<Medicaciones theme={theme} setTheme={setTheme} />}
         />
         <Route
           path="/notas"

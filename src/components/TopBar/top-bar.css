@@ -18,14 +18,17 @@
   align-items: center;
   width: 100%;
   min-height: 100%;
-  padding: 0 40px;
 }
 
 .topbar-container .topbar-content h1 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--primaryFontColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
 }
 
 .topbar-container .topbar-content button {
@@ -39,21 +42,56 @@
   place-items: center;
   cursor: pointer;
 }
+.topbar-container .topbar-content .buttons-container{
+  display: flex;
+  gap: 20px;
+}
+.topbar-container .topbar-content .theme-toggle-btn{
+  background-color: transparent;
+  border: 2px solid var(--secondaryFontColor);
+  color: var(--primaryFontColor);
+  padding: 0;
+  height: 60px;
+  width: 60px;
+
+}
+.topbar-container .topbar-content .theme-toggle-btn:hover{
+  background-color: var(--CTAHeaderHovered);
+}
+
 .user-selector {
   position: relative;
   display: inline-block;
 }
+.hamburger-btn {
+  display: block;
+  margin-right: 10px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--primaryFontColor);
+}
 
 @media screen and (min-width: 768px) {
+  .hamburger-btn {
+    display: none !important;
+  }
   .topbar-container {
     min-height: 85px;
   }
   .topbar-container .topbar-content button {
     width: auto;
     padding: 0 20px;
-    height: 45px;
+    height: 50px;
     font-size: 1.2rem;
     font-weight: 500;
     color: white;
   }
+  
+.topbar-container .topbar-content .theme-toggle-btn{
+  height: 50px;
+  width: 50px;
+
+}
 }
