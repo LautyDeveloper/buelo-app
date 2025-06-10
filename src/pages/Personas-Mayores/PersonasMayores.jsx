@@ -19,7 +19,8 @@ export default function PersonasMayores({ theme, setTheme }) {
         openModal={openModal}
       />
       <AnimatedWrapper isVisible={true} animationType="fade">
-        <div className="persons-container">
+        {/* Base utilities for mobile, width remains in CSS for now due to 85% */}
+        <div className="persons-container d-flex flex-column justify-content-center align-items-center gap-6">
           <PersonCard name={"Lucrecia Bacigalupo"} familiar={"3"} age={"65"} />
           <PersonCard name={"Gladys Marinatto"} familiar={"4"} age={"81"} />
           <PersonCard name={"Santiago Aquino"} familiar={"3"} age={"70"} />

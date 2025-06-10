@@ -20,7 +20,8 @@ export default function Home({ theme, setTheme }) {
   return (
     <Layout page={"DashBoard"} theme={theme} setTheme={setTheme}>
       <ElderlyPerson />
-      <div className="content-container">
+      {/* .content-container utilities applied for base (mobile) */}
+      <div className="content-container d-flex flex-column justify-content-center align-items-center w-100">
         <MainCard
           icon={<CalendarClock />}
           title={"Turnos Proximos"}

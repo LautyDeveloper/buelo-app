@@ -1,97 +1,101 @@
 .topbar-container {
-  display: grid;
-  place-items: center;
-  max-width: 100vw;
-  background-color: var(--sectionsBackgroundColor);
-  min-height: 10vh;
-  border: 2px solid var(--secondaryFontColor);
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  position: relative;
-  padding: 1rem;
+  /* display: grid; place-items: center; -> Handled by d-grid place-items-center */
+  max-width: 100vw; /* Specific, kept */
+  background-color: var(--sectionsBackgroundColor); /* Specific, kept */
+  min-height: 10vh; /* Specific, kept */
+  border-bottom: 2px solid var(--secondaryFontColor); /* Specific border style, combined from individual border properties */
+  /* border-top: none; border-right: none; border-left: none; -> Implicit if only border-bottom is set */
+  position: relative; /* Specific, kept */
+  /* padding: 1rem; -> Handled by p-4 (assuming 1rem = 20px, if 1rem=5px then p-4 is 20px, if 1rem=16px, p-4 is 20px. Close enough or adjust utility) */
+  /* Assuming p-4 (20px) is an acceptable substitute for 1rem padding. Or create a .p-1rem utility if needed. */
 }
 
 .topbar-container .topbar-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  min-height: 100%;
+  /* display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 100%; -> Handled by utilities */
+  /* min-height: 100% ensures it fills the parent's height, which is fine. */
 }
 
 .topbar-container .topbar-content h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--primaryFontColor);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3px;
+  /* font-size: 1.5rem; font-weight: 600; color: var(--primaryFontColor); -> Handled by utilities */
+  /* display: flex; justify-content: center; align-items: center; gap: 3px; -> Handled by utilities (gap-1 is 5px, adjust if 3px is critical) */
+  font-family: Arial, Helvetica, sans-serif; /* Specific, kept */
 }
 
+/* Default button style within topbar (for the person selector button before MQ) */
+/* This will be heavily overridden by .btn .btn-primary for the person selector */
+/* And .theme-toggle-btn has its own specific styles */
 .topbar-container .topbar-content button {
-  background-color: var(--CTAColor);
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
-  border: none;
-  font-size: 2rem;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-}
-.topbar-container .topbar-content .buttons-container{
-  display: flex;
-  gap: 20px;
-}
-.topbar-container .topbar-content .theme-toggle-btn{
-  background-color: transparent;
-  border: 2px solid var(--secondaryFontColor);
-  color: var(--primaryFontColor);
-  padding: 0;
-  height: 60px;
-  width: 60px;
-
-}
-.topbar-container .topbar-content .theme-toggle-btn:hover{
-  background-color: var(--CTAHeaderHovered);
+  /* background-color: var(--CTAColor); -> Covered by .btn-primary for person button */
+  width: 60px; /* Specific for mobile person button icon */
+  height: 60px; /* Specific for mobile person button icon */
+  /* border-radius: 10px; -> Covered by .border-radius-md or .btn */
+  /* border: none; -> Covered by .btn */
+  /* font-size: 2rem; -> Covered by .fs-2rem for mobile person button */
+  /* display: grid; place-items: center; -> Covered by .d-grid .place-items-center for person button */
+  cursor: pointer; /* Covered by .btn */
 }
 
-.user-selector {
+.topbar-container .topbar-content .buttons-container {
+  /* display: flex; gap: 20px; -> Handled by d-flex gap-4 */
+}
+
+.topbar-container .topbar-content .theme-toggle-btn {
+  background-color: transparent; /* Specific */
+  border: 2px solid var(--secondaryFontColor); /* Specific */
+  color: var(--primaryFontColor); /* Specific */
+  /* padding: 0; -> Usually default or reset by .btn if it were applied. Here it is not .btn based. */
+  height: 60px; /* Specific */
+  width: 60px; /* Specific */
+  /* border-radius: 10px; -> Added .border-radius-md in JSX */
+  /* display: grid; place-items: center; -> Added .d-grid .place-items-center in JSX */
+  cursor: pointer; /* Specific or from a base button style if it had one */
+}
+
+.topbar-container .topbar-content .theme-toggle-btn:hover {
+  background-color: var(--CTAHeaderHovered); /* Specific */
+}
+
+/* .user-selector class seems unused in the provided JSX, can be removed if not needed elsewhere */
+/* .user-selector {
   position: relative;
   display: inline-block;
-}
+} */
+
 .hamburger-btn {
-  display: block;
-  margin-right: 10px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: var(--primaryFontColor);
+  display: block; /* Specific for mobile, overridden in MQ */
+  margin-right: 10px; /* Specific, or use .mr-2 utility */
+  background: none; /* Specific */
+  border: none; /* Specific, or .border-none utility */
+  font-size: 2rem; /* Specific, or .fs-2rem utility */
+  cursor: pointer; /* Specific */
+  color: var(--primaryFontColor); /* Specific, or .text-primary utility */
 }
 
 @media screen and (min-width: 768px) {
   .hamburger-btn {
-    display: none !important;
+    display: none !important; /* Important to override inline display:block if any */
   }
   .topbar-container {
-    min-height: 85px;
+    min-height: 85px; /* Specific MQ override */
   }
-  .topbar-container .topbar-content button {
-    width: auto;
-    padding: 0 20px;
-    height: 50px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: white;
+
+  /* Styles for the person selector button on desktop */
+  .topbar-container .topbar-content button { /* This selector targets both buttons */
+    /* The Lucrecia button now has .btn .btn-primary. Those define base padding, color, bg, border-radius etc. */
+    /* We only need to specify what's different for desktop for that button */
+    width: auto; /* Override mobile fixed width, specific for this button on desktop */
+    padding-left: 20px; /* Specific padding, or .px-4 */
+    padding-right: 20px;
+    height: 50px; /* Specific height for desktop */
+    font-size: 1.2rem; /* Overrides .fs-2rem from mobile. Use .fs-1-2rem */
+    font-weight: 500; /* Specific, or use .font-weight-600 (since 500 is not a utility) */
+    color: white; /* Ensured by .btn-primary, but can be explicit if needed */
   }
   
-.topbar-container .topbar-content .theme-toggle-btn{
-  height: 50px;
-  width: 50px;
-
-}
+  /* Styles for the theme toggle button on desktop */
+  .topbar-container .topbar-content .theme-toggle-btn {
+    height: 50px; /* Specific height for desktop */
+    width: 50px; /* Specific width for desktop */
+    /* Other properties like border, bg, color, radius, display are inherited or set in base .theme-toggle-btn */
+  }
 }

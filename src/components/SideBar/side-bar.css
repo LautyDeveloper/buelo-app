@@ -1,114 +1,105 @@
+/* Base style for sidebar, hidden on mobile unless .open */
 .sidebar-container {
-  display: none;
+  display: none; /* Default state on small screens */
+  /* Flex utilities (d-flex flex-column etc.) are in JSX, will apply when display is not 'none' */
 }
 
-/* Mostrar si está "abierto" */
-.sidebar-container.open {
-  display: flex;
+/* Styles for when sidebar is open (mobile) or always (desktop via media query) */
+.sidebar-container.open, /* Mobile open state */
+.sidebar-container { /* Base for desktop, display overridden in MQ */
+  /* Common properties for when sidebar is visible */
+  /* flex-direction: column; -> Handled by .flex-column in JSX */
+  /* justify-content: space-between; -> Handled by .justify-content-between in JSX */
+  /* align-items: center; -> Handled by .align-items-center in JSX */
+  /* These utilities will take effect when display is 'flex' */
+}
+
+.sidebar-container.open { /* Mobile toggled state */
+  display: flex; /* This makes the flex utilities in JSX effective */
   position: absolute;
   z-index: 100;
   top: 0;
   left: 0;
-  width: 70%;
-  height: 100vh;
-  background-color: var(--sectionsBackgroundColor);
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border-right: 2px solid var(--secondaryFontColor);
+  width: 70%; /* Specific */
+  height: 100vh; /* Specific */
+  background-color: var(--sectionsBackgroundColor); /* Specific */
+  border-right: 2px solid var(--secondaryFontColor); /* Specific */
 }
 
 .sidebar-container .sidebar-logo-container {
-  width: 100%;
-  min-height: 85px;
-  display: grid;
-  place-items: center;
-  border-bottom: 2px solid var(--secondaryFontColor);
-  font-size: 1rem;
-  color: var(--primaryFontColor);
+  /* width: 100%; -> Handled by .w-100 */
+  min-height: 85px; /* Specific */
+  /* display: grid; place-items: center; -> Handled by .d-grid .place-items-center */
+  border-bottom: 2px solid var(--secondaryFontColor); /* Specific */
+  /* font-size: 1rem; color: var(--primaryFontColor); -> Handled by text utilities in JSX for h1 */
 }
+
 .sidebar-container .sidebar-nav-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  /* height: 100%; width: 100%; display: flex; justify-content: flex-end; align-items: flex-start; -> Utilities in JSX */
 }
+
 .sidebar-container .sidebar-nav-container nav {
-  width: 85%;
-  height: 60%;
+  width: 85%; /* Specific: consider if .w-auto in JSX and this rule are compatible or if one should prevail */
+  height: 60%; /* Specific */
 }
+
 .sidebar-container .sidebar-nav-container nav ul {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  list-style: none;
+  /* width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-around; align-items: flex-start; -> Utilities in JSX */
+  list-style: none; /* Specific */
 }
+
 .sidebar-container .sidebar-nav-container nav ul li a {
-  color: var(--primaryFontColor);
-  text-decoration: none;
-  font-size: 1.4rem;
+  /* color: var(--primaryFontColor); text-decoration: none; font-size: 1.4rem; -> Utilities in JSX */
+  text-decoration: none; /* Kept as base, though utilities might override if they include it */
 }
 
 .sidebar-container .sidebar-account-container {
-  height: 100px;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  border-top: 2px solid var(--secondaryFontColor);
+  /* height: 100px; -> .h-auto in JSX, so this might be overridden or removed if h-auto is sufficient */
+  min-height: 100px; /* Using min-height to ensure it's at least this tall */
+  /* width: 100%; display: grid; place-items: center; -> Utilities in JSX */
+  border-top: 2px solid var(--secondaryFontColor); /* Specific */
 }
 
 .sidebar-container .sidebar-account-container .account-info-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  /* display: flex; justify-content: space-evenly; align-items: center; -> Utilities in JSX */
+  /* width: 80%; height: 80%; -> .w-auto, .h-auto in JSX. These specific percentages might be desired. */
   width: 80%;
   height: 80%;
 }
+
 .sidebar-container .sidebar-account-container .account-info-container img {
-  width: 60px;
-  height: 60px;
-  border-radius: 100%;
+  width: 60px; /* Specific */
+  height: 60px; /* Specific */
+  border-radius: 100%; /* Specific, or a .border-radius-circle utility if created */
 }
-.sidebar-container
-  .sidebar-account-container
-  .account-info-container
-  .account-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 2px;
+
+.sidebar-container .sidebar-account-container .account-info-container .account-text {
+  /* display: flex; flex-direction: column; justify-content: flex-start; gap: 2px; -> Utilities in JSX */
+  /* gap: 2px is very small, .gap-1 is 5px. Kept if 2px is essential, otherwise adjust to utility or keep specific gap. */
+  gap: 2px; /* Specific small gap */
 }
-.sidebar-container
-  .sidebar-account-container
-  .account-info-container
-  .account-text
-  h2 {
-  font-size: 1.4rem;
-  color: var(--primaryFontColor);
+
+.sidebar-container .sidebar-account-container .account-info-container .account-text h2 {
+  /* font-size: 1.4rem; color: var(--primaryFontColor); font-weight: 500; -> Utilities in JSX */
+  /* font-weight: 500; is not a standard utility, .font-weight-normal (400) or .font-weight-600. Kept if 500 is specific. */
   font-weight: 500;
 }
-.sidebar-container
-  .sidebar-account-container
-  .account-info-container
-  .account-text
-  p {
-  font-size: 1rem;
-  color: var(--secondaryFontColor);
+
+.sidebar-container .sidebar-account-container .account-info-container .account-text p {
+  /* font-size: 1rem; color: var(--secondaryFontColor); -> Utilities in JSX */
 }
 
 @media screen and (min-width: 768px) {
   .sidebar-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 18%;
-    height: 100vh;
-    background-color: var(--sectionsBackgroundColor);
-    border-bottom: 2px solid var(--secondaryFontColor);
+    display: flex; /* Ensures it's shown on desktop */
+    /* flex-direction, justify-content, align-items are already in base .sidebar-container selector via JSX utilities */
+    min-width: 18%; /* Specific */
+    height: 100vh; /* Specific */
+    background-color: var(--sectionsBackgroundColor); /* Specific */
+    border-bottom: 2px solid var(--secondaryFontColor); /* Specific */
+    /* Note: .sidebar-container.open specific width/border for mobile is not an issue here due to MQ */
+    position: static; /* Override .open's position:absolute if it was applied */
+    z-index: auto; /* Override .open's z-index */
+    border-right: 2px solid var(--secondaryFontColor); /* Ensure border is consistent or specifically set for desktop */
   }
 }

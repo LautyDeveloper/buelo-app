@@ -1,89 +1,84 @@
 .person-card {
-  width: 100%;
-  height: 450px;
-  background-color: var(--sectionsBackgroundColor);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  /* width: 100%; -> Handled by w-100 */
+  height: 450px; /* Specific height for mobile, kept */
+  background-color: var(--sectionsBackgroundColor); /* Specific, kept */
+  /* border-radius: 10px; -> Handled by border-radius-md */
+  /* display: flex; flex-direction: column; justify-content: space-around; align-items: center; -> Handled by utilities */
 }
 
 .person-card .person-card-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 20px;
+  /* display: flex; flex-direction: column; justify-content: space-between; align-items: center; -> Handled by utilities */
+  /* width: 100%; -> Handled by w-100 */
+  /* gap: 20px; -> Handled by gap-4 */
 }
 
 .person-card .person-card-header .image-container {
-  width: 200px;
-  height: 200px;
-  display: grid;
-  place-items: center;
+  width: 200px; /* Specific, kept */
+  height: 200px; /* Specific, kept */
+  /* display: grid; place-items: center; -> Handled by d-grid place-items-center */
 }
+
 .person-card .person-card-header .image-container img {
-  width: 100%;
-  height: 100%;
-  border-radius: 100%;
-  background-color: antiquewhite;
+  width: 100%; /* Specific */
+  height: 100%; /* Specific */
+  border-radius: 100%; /* Specific, could be .border-radius-circle if exists */
+  background-color: antiquewhite; /* Specific placeholder background */
 }
 
 .person-card .person-card-header .text-container {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+  /* width: 90%; -> Handled by w-90 */
+  /* display: flex; flex-direction: column; justify-content: space-between; align-items: center; -> Handled by utilities */
+  /* gap: 10px; -> Handled by gap-2 */
 }
 
 .person-card .person-card-header .text-container strong {
-  font-size: 1.8rem;
-  color: var(--elderlyPersonColor);
+  /* font-size: 1.8rem; -> Handled by fs-1-8rem (custom, or adjust) */
+  /* color: var(--elderlyPersonColor); -> Handled by inline style (or a utility if this color is common) */
+  font-size: 1.8rem; /* Keeping here if fs-1-8rem is not a standard utility and want to ensure it */
 }
 
 .person-card .person-card-header .text-container .text-footer {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1.2rem;
-  color: var(--secondaryFontColor);
+  /* width: 90%; -> Handled by w-90 */
+  /* display: flex; flex-direction: row; align-items: center; justify-content: space-between; -> Handled by utilities */
+  /* font-size: 1.2rem; color: var(--secondaryFontColor); -> Handled by utilities fs-1-2rem text-secondary */
 }
 
-.person-card button {
-  width: 90%;
-  height: 50px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background-color: #016597;
-  font-size: 1.3rem;
-  color: white;
-  font-weight: 600;
+/* Button styling: .btn provides base (padding, border, outline, cursor, text-decoration, transition, line-height) */
+/* .w-90, .fs-1-3rem, .font-weight-600 are utilities applied in JSX */
+.person-card-button { /* Renamed from '.person-card button' for clarity with .btn */
+  /* width: 90%; -> Handled by w-90 utility */
+  height: 50px; /* Specific height */
+  /* border-radius: 10px; -> From .btn or .border-radius-md (if .btn doesn't set it) */
+  /* border: none; outline: none; -> From .btn */
+  background-color: #016597; /* Specific background color, not .btn-primary */
+  color: white; /* Specific text color */
+  /* font-size: 1.3rem; -> Handled by fs-1-3rem utility */
+  /* font-weight: 600; -> Handled by font-weight-600 utility */
 }
+
 
 @media screen and (min-width: 768px) {
   .person-card {
-    width: 40%;
-    height: 200px;
+    width: 40%; /* Specific responsive width */
+    height: 200px; /* Specific responsive height */
+    /* Flex properties inherited from base utilities if still applicable */
   }
   .person-card .person-card-header {
-    flex-direction: row;
-    width: 90%;
+    flex-direction: row; /* Override .flex-column */
+    width: 90%; /* Specific responsive width */
+    /* gap will be inherited from base utilities (gap-4) unless overridden */
   }
   .person-card .person-card-header .image-container {
-    width: 100px;
-    height: 100px;
+    width: 100px; /* Specific responsive size */
+    height: 100px; /* Specific responsive size */
   }
   .person-card .person-card-header .text-container {
-    width: 70%;
+    width: 70%; /* Specific responsive width */
+    /* gap will be inherited (gap-2) */
+    /* align-items will be inherited (center) or can be overridden here if needed */
   }
-  .person-card button {
-    height: 40px;
+  .person-card-button { /* Targeting .person-card-button for consistency */
+    height: 40px; /* Specific responsive height */
+    /* Other properties inherited from base .person-card-button and utilities */
   }
 }
