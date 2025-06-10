@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import "./persona-mayor-modal.css";
 
 export default function PersonaMayorModal({
@@ -11,14 +12,26 @@ export default function PersonaMayorModal({
   os,
   nAfiliado,
 }) {
-  if (!isOpen) return null;
-
   return (
-    <div className="persona-mayor-modal-backdrop">
-      <div className="persona-mayor-modal">
-        <div className="persona-mayor-modal-header">
-          <div className="header-content">
-            <img src="" alt="" />
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="persona-mayor-modal-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <motion.div
+            className="persona-mayor-modal"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="persona-mayor-modal-header">
+              <div className="header-content">
+                <img src="" alt="" />
             <div className="header-text">
               <h2>{name}</h2>
               <div className="text-footer">
@@ -53,7 +66,9 @@ export default function PersonaMayorModal({
           <button>Guardar</button>
           <p onClick={onClose}>Salir</p>
         </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
