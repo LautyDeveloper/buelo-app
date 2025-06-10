@@ -1,19 +1,18 @@
 .persons-container {
-  /* display: flex; -> Handled by d-flex */
-  /* flex-direction: column; -> Handled by flex-column */
-  /* justify-content: center; -> Handled by justify-content-center */
-  /* align-items: center; -> Handled by align-items-center */
-  width: 85%; /* Specific width for mobile, kept */
-  /* gap: 30px; -> Handled by gap-6 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  gap: 30px;
 }
 
 @media screen and (min-width: 768px) {
   .persons-container {
-    width: 100%; /* Overrides base width */
-    flex-direction: row; /* Overrides .flex-column */
-    flex-wrap: wrap; /* Specific, kept */
-    justify-content: space-between; /* Overrides .justify-content-center */
-    gap: 20px 0; /* Specific multi-value gap for wrapped items, kept */
-                 /* Note: .gap-4 would be 20px for both row and column if that was intended */
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 0;
   }
 }

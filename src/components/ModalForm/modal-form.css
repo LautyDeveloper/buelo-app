@@ -1,109 +1,115 @@
-/* Modal Backdrop: Position, background, and z-index are specific */
 .modal-backdrop {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  /* display: grid; place-items: center; -> Handled by utility classes d-grid place-items-center */
+  display: grid;
+  place-items: center;
   z-index: 999;
 }
 
-/* Modal Container: Specific background, width. Max-width, display, flex, justify, align, gap, border-radius, padding, height are utilities */
 .modal {
   background-color: var(--baseBackgroundColor);
-  width: 90vw; /* Specific width for smaller screens, max-width is utility */
-  /* max-width: 700px; -> Handled by .max-w-700 */
-  /* height: auto; -> Handled by .h-auto */
-  /* display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 30px; -> Utilities */
-  /* border-radius: 10px; -> Handled by .border-radius-md */
-  /* padding: 15px 20px; -> Handled by .py-3 .px-4 utilities */
+  width: 90vw;
+  max-width: 700px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  border-radius: 10px;
+  padding: 15px 20px;
 }
 
-/* Modal Button: Specific height. Other properties from .btn, .btn-primary, .btn-block, .fs-1-3rem, .font-weight-700 */
-.modal-custom-button { /* Was previously targeting '.modal button' */
-  height: 35px; /* Specific height */
-  /* width: 100%; -> Handled by .btn-block */
-  /* border: none; outline: none; background-color: var(--CTAColor); color: #fff; font-size: 1.3rem; font-weight: 700; border-radius: 10px; -> Handled by utilities */
+.modal button {
+  width: 100%;
+  height: 35px;
+  border: none;
+  outline: none;
+  background-color: var(--CTAColor);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 10px;
 }
 
-/* General <p> tag styling inside .modal was too broad and is now handled by utility classes on specific p elements */
-/* .modal p {
+.modal p {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--primaryFontColor);
-} */
+}
 
-/* Modal Header: width, display, justify, align are utilities */
 .modal .modal-header {
-  /* width: 100%; display: flex; justify-content: space-between; align-items: flex-start; -> Handled by utilities */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-/* Modal Header Close Button (X): cursor is specific. Font/color utilities applied in JSX */
-.modal .modal-header p { /* This targets the 'X' as well as paragraph in modal-header-text if not overridden */
-  cursor: pointer; /* Kept for the 'X' button usability */
+.modal .modal-header p {
+  cursor: pointer;
 }
 
-/* Modal Header Text Container: display, flex, justify, align, gap, text-align are utilities */
 .modal .modal-header .modal-header-text {
-  /* display: flex; flex-direction: column; justify-content: center; text-align: center; align-items: center; gap: 10px; -> Handled by utilities */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
 }
-
-/* Modal Header Text h1: font-size, color are utilities */
 .modal .modal-header .modal-header-text h1 {
-  /* font-size: 1.6rem; color: var(--primaryFontColor); -> Handled by utilities .fs-1-6rem .text-primary */
+  font-size: 1.6rem;
+  color: var(--primaryFontColor);
 }
 
-/* Modal Header Text p: font-size, color are utilities */
 .modal .modal-header .modal-header-text p {
-  /* font-size: 1rem; color: var(--secondaryFontColor); -> Handled by utilities .fs-1rem .text-secondary */
+  font-size: 1rem;
+  color: var(--secondaryFontColor);
 }
 
-/* Modal Form Container: width, display, place-items are utilities */
 .modal .modal-form-container {
-  /* width: 100%; display: grid; place-items: center; -> Handled by utilities .w-100 .d-grid .place-items-center */
+  width: 100%;
+  display: grid;
+  place-items: center;
 }
 
-/* Form inside Modal Form Container: width, display, place-items, gap are specific to form structure, less generic */
 .modal .modal-form-container form {
-  width: 100%; /* Could be .w-100 if form itself doesn't need more specific width control */
-  display: grid; /* Or .d-grid */
-  place-items: center; /* Or .place-items-center */
-  gap: 25px; /* Or .gap-5 */
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: 25px;
 }
 
-/* Input Container: width, display, flex, justify, align, gap are specific to this form structure */
 .modal .modal-form-container form .input-container {
-  width: 100%; /* Could be .w-100 */
-  display: flex; /* Or .d-flex */
-  flex-direction: column; /* Or .flex-column */
-  justify-content: center; /* Or .justify-content-center */
-  align-items: center; /* Or .align-items-center */
-  gap: 5px; /* Or .gap-1 */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
-
-/* Input Styling: Specific input field styles, not easily replaced by current utilities */
 .modal .modal-form-container form .input-container input {
   width: 100%;
   height: 35px;
-  border-radius: 10px; /* Could be .border-radius-md */
+  border-radius: 10px;
   border: 1px solid var(--secondaryFontColor);
   background-color: var(--sectionsBackgroundColor);
   color: var(--primaryFontColor);
-  padding: 0 0 0 10px; /* Could be .pl-2 if no other padding axes */
-  outline: none; /* Could be .outline-none */
+  padding: 0 0 0 10px;
+  outline: none;
 }
 
 .modal .modal-form-container form .input-container input::placeholder {
   color: var(--primaryFontColor);
 }
 
-/* Label Styling: font-size, weight, color could be utilities if consistent, but often form labels are specific */
 .modal .modal-form-container form .input-container label {
-  font-size: 1.2rem; /* Could be .fs-1-2rem */
-  font-weight: 600; /* Could be .font-weight-600 */
-  color: var(--primaryFontColor); /* Could be .text-primary */
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primaryFontColor);
 }
 
-/* Horizontal Inputs Container: display, justify, align, width are specific to this form structure */
 .modal .modal-form-container form .horizontal-inputs-container {
   display: flex;
   justify-content: space-between;
@@ -111,24 +117,20 @@
   width: 100%;
 }
 
-/* Input Container within Horizontal: width, align are specific */
 .modal
   .modal-form-container
   form
   .horizontal-inputs-container
   .input-container {
-  width: 40%; /* Specific width */
-  align-items: flex-start; /* Overrides parent's align-items-center for these specific inputs */
+  width: 40%;
+  align-items: flex-start;
 }
 
-/* Media Queries: Specific overrides for responsiveness */
 @media screen and (min-width: 768px) {
   .modal {
-    /* padding: 15px 20px; -> base is .py-3 .px-4 */
-    /* New padding for larger screens. Could be .md-py-5 .md-px-8 if responsive utilities existed */
-    padding: 25px 40px; /* Overwrites .py-3 .px-4 */
+    padding: 25px 40px;
   }
   .modal .modal-header .modal-header-text {
-    align-items: flex-start; /* Overrides .align-items-center from base (mobile-first) */
+    align-items: flex-start;
   }
 }

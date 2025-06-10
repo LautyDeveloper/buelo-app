@@ -1,15 +1,11 @@
-/* This class is for styles specific to this Button component variant,
-   supplementing the global .btn and .btn-primary classes. */
-.custom-button-styling {
-  width: 250px; /* Default width for this reusable button variant */
-  height: 45px; /* Default height for this reusable button variant */
-  /* Add any other styles that are truly unique to this .custom-button-styling variant
-     and not covered by .btn or .btn-primary.
-     For example, if it had a specific margin not suitable for a utility class,
-     or a unique hover/focus effect not part of btn-primary.
-     The global .btn class provides base padding, so the fixed width/height here
-     will override that if the box-sizing allows. Consider if padding or fixed size is desired.
-     If padding is preferred for flexibility, remove width/height and let content + .btn padding define size.
-     If fixed size is a strict requirement for this component, these are fine.
-  */
+.button {
+  background-color: var(--CTAColor);
+  color: white;
+  width: 250px;
+  height: 45px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

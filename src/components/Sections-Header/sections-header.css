@@ -1,20 +1,19 @@
 .sections-header {
-  /* width: 100%; -> Handled by w-100 */
-  /* display: flex; -> Handled by d-flex */
-  /* flex-direction: column; -> Handled by flex-column */
-  /* justify-content: space-between; -> Handled by justify-content-between */
-  /* align-items: center; -> Handled by align-items-center */
-  /* gap: 20px; -> Handled by gap-4 */
-  /* Specific styles for .sections-header can remain if any */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .sections-header h2 {
-  font-size: 2rem; /* Specific style, kept */
+  font-size: 2rem;
 }
 
 @media screen and (min-width: 768px) {
   .sections-header {
-    flex-direction: row; /* Overrides flex-column */
-    gap: 0; /* Overrides gap-4 */
+    flex-direction: row;
+    gap: 0;
   }
 }
