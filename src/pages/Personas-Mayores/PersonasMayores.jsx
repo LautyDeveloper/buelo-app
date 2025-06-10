@@ -5,6 +5,7 @@ import useModal from "../../hooks/useModal";
 import ModalForm from "../../components/ModalForm/ModalForm";
 import "./personas-mayores.css";
 import { AddElderlyPersonForm } from "../../components/AddForms/AddForms";
+import AnimatedWrapper from "../../components/AnimatedWrapper/AnimatedWrapper";
 
 export default function PersonasMayores({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
@@ -17,12 +18,14 @@ export default function PersonasMayores({ theme, setTheme }) {
         color={"var(--elderlyPersonColor)"}
         openModal={openModal}
       />
-      <div className="persons-container">
-        <PersonCard name={"Lucrecia Bacigalupo"} familiar={"3"} age={"65"} />
-        <PersonCard name={"Gladys Marinatto"} familiar={"4"} age={"81"} />
-        <PersonCard name={"Santiago Aquino"} familiar={"3"} age={"70"} />
-        <PersonCard name={"Jose Fedriani"} familiar={"4"} age={"85"} />
-      </div>
+      <AnimatedWrapper isVisible={true} animationType="fade">
+        <div className="persons-container">
+          <PersonCard name={"Lucrecia Bacigalupo"} familiar={"3"} age={"65"} />
+          <PersonCard name={"Gladys Marinatto"} familiar={"4"} age={"81"} />
+          <PersonCard name={"Santiago Aquino"} familiar={"3"} age={"70"} />
+          <PersonCard name={"Jose Fedriani"} familiar={"4"} age={"85"} />
+        </div>
+      </AnimatedWrapper>
       <ModalForm
         title={"Agregar Nueva Persona"}
         parragraph={

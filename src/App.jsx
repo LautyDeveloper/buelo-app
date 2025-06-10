@@ -8,9 +8,6 @@ import Familiares from "./pages/Familiares/Familiares.jsx";
 import "./styles/themes.css";
 import { useEffect, useState } from "react";
 import Medicaciones from "./pages/Medicacion/Medicaciones.jsx";
-// Demo examples for AnimatedWrapper
-import AnimatedFormExample from "./components/AnimatedFormExample/AnimatedFormExample.jsx";
-import ExpandableSectionExample from "./components/ExpandableSectionExample/ExpandableSectionExample.jsx";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -21,14 +18,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* Demo examples for AnimatedWrapper - Start */}
-      <div style={{ padding: '20px', backgroundColor: '#f0f0f0' }}>
-        <h2>AnimatedWrapper Demo Section</h2>
-        <AnimatedFormExample />
-        <ExpandableSectionExample />
-        <hr />
-      </div>
-      {/* Demo examples for AnimatedWrapper - End */}
       <Routes>
         <Route path="/" element={<Home theme={theme} setTheme={setTheme} />} />
         <Route
