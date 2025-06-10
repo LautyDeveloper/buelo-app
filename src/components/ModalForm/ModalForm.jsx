@@ -1,4 +1,5 @@
 import { Children } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./modal-form.css";
 
 export default function ModalForm({
@@ -8,14 +9,26 @@ export default function ModalForm({
   isOpen,
   onClose,
 }) {
-  if (!isOpen) return null;
-
   return (
-    <div className="modal-backdrop">
-      <div className="modal">
-        <div className="modal-header">
-          <div className="modal-header-text">
-            <h1>{title}</h1>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="modal-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <motion.div
+            className="modal"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="modal-header">
+              <div className="modal-header-text">
+                <h1>{title}</h1>
             <p>{parragraph}</p>
           </div>
           <p onClick={onClose}>X</p>
@@ -23,7 +36,9 @@ export default function ModalForm({
 
         <div className="modal-form-container">{children}</div>
         <button>Guardar</button>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
