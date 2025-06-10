@@ -1,11 +1,8 @@
-import "./button.css"; // Contains .custom-button-styling
+import "./button.css";
 
-export default function Button({ label, onClick, className }) {
-  // Combines global utility classes, component-specific styles, and any custom classes passed via props
-  const buttonClasses = `btn btn-primary custom-button-styling ${className || ''}`.trim();
-
+export default function Button({ label, onClick }) {
   return (
-    <button className={buttonClasses} onClick={onClick}>
+    <button className="button" onClick={onClick}>
       {label}
     </button>
   );

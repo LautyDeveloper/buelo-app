@@ -1,56 +1,43 @@
-/* Base styles for .layout */
 .layout {
-  /* display: flex; flex-direction: column; height: auto; -> Replaced by utilities d-flex flex-column h-auto */
-  justify-content: center; /* Kept as it's specific for mobile, overridden in tablet */
-  width: 100vw; /* Specific, kept */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  width: 100vw;
 }
-
-/* Base styles for .main-container */
 .main-container {
-  /* display: flex; flex-direction: column; width: 100%; gap: 50px; -> Replaced by utilities d-flex flex-column w-100 gap-50 */
-  background-color: var(--baseBackgroundColor); /* Kept, or could be inherited if body has it */
-  border-left: 2px solid var(--secondaryFontColor); /* Specific border */
-  /* border-top: none; border-right: none; border-bottom: none; -> These are default if only border-left is specified */
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  background-color: var(--baseBackgroundColor);
+  border: 2px solid var(--secondaryFontColor);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
 }
 
-/* Base styles for main element inside .main-container */
 .main-container main {
-  /* width: 100%; padding: 0 15px; display: flex; flex-direction: column; align-items: center; gap: 30px; height: 100%; */
-  /* -> Replaced by utilities w-100 px-3 d-flex flex-column align-items-center gap-6 h-100 */
-  /* Padding is px-3 (15px), align-items-center, gap-6 (30px) */
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  height: 100%;
 }
 
-/* Media Queries */
 @media screen and (min-width: 768px) {
   .layout {
-    flex-direction: row; /* Overrides .flex-column from base */
-    justify-content: flex-start; /* Overrides justify-content:center from base */
+    flex-direction: row;
+    justify-content: flex-start;
   }
-
-  /* .main-container width is already w-100, so no change needed unless MQ implies different width */
-  /* .main-container { */
-    /* width: 100%; */ /* Already covered by w-100 utility */
-  /* } */
-
+  .main-container {
+    width: 100%;
+  }
   .main-container main {
-    /* These override base utilities or specific styles */
-    justify-content: flex-start; /* Overrides .align-items-center (justify for main axis in flex column) from base */
-                                 /* For flex-column, align-items is for cross-axis. Here it changes to flex-start */
-    align-items: flex-start;    /* Overrides .align-items-center for cross-axis */
-    padding: 0 45px; /* Overrides .px-3, becomes .px-9 (utility class already added) */
-                     /* We can use .px-9 if no other padding properties are needed, or keep this specific rule */
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 45px;
   }
 }
-
-/* Example if we wanted to use a utility class for padding in media query directly,
-   though this is usually handled by keeping the CSS rule as above for simplicity
-   unless component's JS has viewport detection to change classes.
-*/
-/*
-@media screen and (min-width: 768px) {
-  .main-container main.px-3 { // Targeting element that HAD px-3
-    padding-left: 45px !important; // Higher specificity or !important needed
-    padding-right: 45px !important; // if utility is also present in JSX
-  }
-}
-*/

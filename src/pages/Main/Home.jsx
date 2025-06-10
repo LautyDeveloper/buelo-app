@@ -16,12 +16,29 @@ import {
 import "./home.css";
 import ModalForm from "../../components/ModalForm/ModalForm";
 
+import Layout from "../../components/Layout/Layout";
+import ElderlyPerson from "./components/Elderly-Person/ElderlyPerson";
+import MainCard from "./components/MainCard/MainCard";
+import MedicineCard from "./components/Medicine-Card/Medicine-Card";
+import NoteCard from "./components/Note-Card/NoteCard";
+import ShiftCard from "./components/Shift-Card/ShiftCard";
+import { CalendarClock } from "lucide-react";
+import { Pill } from "lucide-react";
+import { ClipboardPenLine } from "lucide-react";
+import {
+  AddShiftForm,
+  AddMedicineForm,
+  AddNoteForm,
+} from "../../components/AddForms/AddForms";
+
+import "./home.css";
+import ModalForm from "../../components/ModalForm/ModalForm";
+
 export default function Home({ theme, setTheme }) {
   return (
     <Layout page={"DashBoard"} theme={theme} setTheme={setTheme}>
       <ElderlyPerson />
-      {/* .content-container utilities applied for base (mobile) */}
-      <div className="content-container d-flex flex-column justify-content-center align-items-center w-100">
+      <div className="content-container">
         <MainCard
           icon={<CalendarClock />}
           title={"Turnos Proximos"}

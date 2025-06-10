@@ -1,16 +1,14 @@
 .content-container {
-  /* display: flex; -> Handled by d-flex */
-  /* flex-direction: column; -> Handled by flex-column */
-  /* justify-content: center; -> Handled by justify-content-center */
-  /* align-items: center; -> Handled by align-items-center */
-  /* width: 100%; -> Handled by w-100 */
-  /* Specific styles for .content-container, if any, would remain here. */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .content-container {
-    flex-direction: row; /* Overrides .flex-column */
-    justify-content: space-between; /* Overrides .justify-content-center */
-    /* align-items: center; -> Inherited from base or can be overridden if needed */
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
