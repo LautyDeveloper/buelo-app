@@ -29,13 +29,13 @@ export default function ModalForm({
             <div className="modal-header">
               <div className="modal-header-text">
                 <h1>{title}</h1>
-            <p>{parragraph}</p>
-          </div>
-          <p onClick={onClose}>X</p>
-        </div>
+                <p>{parragraph}</p>
+              </div>
+              <p onClick={onClose}>X</p>
+            </div>
 
-        <div className="modal-form-container">{children}</div>
-        <button>Guardar</button>
+            <div className="modal-form-container">{children}</div>
+            <button>Guardar</button>
           </motion.div>
         </motion.div>
       )}
