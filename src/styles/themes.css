@@ -1,6 +1,7 @@
 :root {
   --baseBackgroundColor: #f9fafb;
   --sectionsBackgroundColor: #eef3f7;
+  --CTAHeaderHovered:#d8d8d8;
   --primaryFontColor: #333333;
   --secondaryFontColor: #666666;
   --badgeFontColor: #f5f5f5;
@@ -24,6 +25,7 @@
 [data-theme="dark"] {
   --baseBackgroundColor: #1e1e1e;
   --sectionsBackgroundColor: #2c2c2c;
+  --CTAHeaderHovered:#292828;
   --badgeFontColor: #333333;
   --primaryFontColor: #f5f5f5;
   --secondaryFontColor: #b5b5b5;
