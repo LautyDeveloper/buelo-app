@@ -1,5 +1,6 @@
 import { Children } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "./modal-form.css";
 
 export default function ModalForm({
