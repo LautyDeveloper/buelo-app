@@ -5,9 +5,19 @@ import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
 import useModal from "../../hooks/useModal";
 import Medicacion from "./components/Medicacion/Medicacion";
 import "./Medicaciones.css";
-
+import { useQuery } from "@tanstack/react-query";
+import { fetchMedicaciones } from "../../api/medicaciones";
 export default function Medicaciones({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
+
+  const {
+    data: medicaciones,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["medicaciones"],
+    queryFn: fetchMedicaciones,
+  });
 
   return (
     <Layout theme={theme} setTheme={setTheme} page={"Medicaciones"}>
@@ -18,30 +28,17 @@ export default function Medicaciones({ theme, setTheme }) {
         openModal={openModal}
       />
       <div className="medicaciones-container">
-        <Medicacion
-          name={"Lorsatan 50mg"}
-          frecuency={"Todos los Dias"}
-          dosis={"2 comprimidos"}
-          schedules={["15:00", "20:00"]}
-        />
-        <Medicacion
-          name={"Lorsatan 50mg"}
-          frecuency={"Todos los Dias"}
-          dosis={"2 comprimidos"}
-          schedules={["15:00", "20:00"]}
-        />
-        <Medicacion
-          name={"Lorsatan 50mg"}
-          frecuency={"Todos los Dias"}
-          dosis={"2 comprimidos"}
-          schedules={["15:00", "20:00"]}
-        />
-        <Medicacion
-          name={"Lorsatan 50mg"}
-          frecuency={"Todos los Dias"}
-          dosis={"2 comprimidos"}
-          schedules={["15:00", "20:00"]}
-        />
+        {isLoading && <p>Cargando turnos...</p>}
+        {isError && <p>Hubo un error al cargar los turnos.</p>}
+        {medicaciones &&
+          medicaciones.map((medicacion) => (
+            <Medicacion
+              name={medicacion.nombre_medicacion}
+              frecuency={medicacion.frecuencia}
+              dosis={medicacion.dosis}
+              schedules={medicacion.horarios.split(",")}
+            />
+          ))}
       </div>
       <ModalForm
         title={"Agregar Medicacion"}
