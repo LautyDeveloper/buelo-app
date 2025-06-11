@@ -5,9 +5,21 @@ import Nota from "./components/Nota/Nota";
 import useModal from "../../hooks/useModal";
 import ModalForm from "../../components/ModalForm/ModalForm";
 import { AddNoteForm } from "../../components/AddForms/AddForms";
+import { useQuery } from "@tanstack/react-query";
+import { fetchNotas } from "../../api/notas";
+import { formatDateTime } from "../../utils/formatDateTime";
 
 export default function Notas({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
+
+  const {
+    data: notes,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["turnos"],
+    queryFn: fetchNotas,
+  });
 
   return (
     <Layout theme={theme} setTheme={setTheme} page={"Notas"}>
@@ -18,6 +30,20 @@ export default function Notas({ theme, setTheme }) {
         openModal={openModal}
       />
       <div className="notas-container">
+        {isLoading && <p>Cargando Notas...</p>}
+        {isError && <p>Hubo un error al cargar las notas.</p>}
+        {notes &&
+          notes.map((note) => {
+            const { date, time } = formatDateTime(note.fecha_hora);
+
+            <Nota
+              key={note.id}
+              title={note.titulo}
+              date={date}
+              time={time}
+              note={note.cuerpo}
+            />;
+          })}
         <Nota
           title={"Revisar la Presion"}
           date={"05 de Mayo"}
