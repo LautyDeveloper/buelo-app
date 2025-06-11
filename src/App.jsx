@@ -8,8 +8,10 @@ import Familiares from "./pages/Familiares/Familiares.jsx";
 import "./styles/themes.css";
 import { useEffect, useState } from "react";
 import Medicaciones from "./pages/Medicacion/Medicaciones.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const queryClient = new QueryClient();
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -17,31 +19,36 @@ function App() {
   }, [theme]);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home theme={theme} setTheme={setTheme} />} />
-        <Route
-          path="/personas-mayores"
-          element={<PersonasMayores theme={theme} setTheme={setTheme} />}
-        />
-        <Route
-          path="/turnos"
-          element={<Turnos theme={theme} setTheme={setTheme} />}
-        />
-        <Route
-          path="/medicacion"
-          element={<Medicaciones theme={theme} setTheme={setTheme} />}
-        />
-        <Route
-          path="/notas"
-          element={<Notas theme={theme} setTheme={setTheme} />}
-        />
-        <Route
-          path="/familiares"
-          element={<Familiares theme={theme} setTheme={setTheme} />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home theme={theme} setTheme={setTheme} />}
+          />
+          <Route
+            path="/personas-mayores"
+            element={<PersonasMayores theme={theme} setTheme={setTheme} />}
+          />
+          <Route
+            path="/turnos"
+            element={<Turnos theme={theme} setTheme={setTheme} />}
+          />
+          <Route
+            path="/medicacion"
+            element={<Medicaciones theme={theme} setTheme={setTheme} />}
+          />
+          <Route
+            path="/notas"
+            element={<Notas theme={theme} setTheme={setTheme} />}
+          />
+          <Route
+            path="/familiares"
+            element={<Familiares theme={theme} setTheme={setTheme} />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
