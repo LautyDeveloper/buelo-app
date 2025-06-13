@@ -35,47 +35,16 @@ export default function Notas({ theme, setTheme }) {
         {notes &&
           notes.map((note) => {
             const { date, time } = formatDateTime(note.fecha_hora);
-
-            <Nota
-              key={note.id}
-              title={note.titulo}
-              date={date}
-              time={time}
-              note={note.cuerpo}
-            />;
+            return (
+              <Nota
+                key={note.id}
+                title={note.titulo}
+                date={date}
+                time={time}
+                note={note.cuerpo}
+              />
+            );
           })}
-        <Nota
-          title={"Revisar la Presion"}
-          date={"05 de Mayo"}
-          time={"18:23hs"}
-          note={
-            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
-          }
-        />
-        <Nota
-          title={"Revisar la Presion"}
-          date={"05 de Mayo"}
-          time={"18:23hs"}
-          note={
-            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
-          }
-        />
-        <Nota
-          title={"Revisar la Presion"}
-          date={"05 de Mayo"}
-          time={"18:23hs"}
-          note={
-            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
-          }
-        />
-        <Nota
-          title={"Revisar la Presion"}
-          date={"05 de Mayo"}
-          time={"18:23hs"}
-          note={
-            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
-          }
-        />
       </div>
       <ModalForm
         title={"Agregar Nueva Nota"}
