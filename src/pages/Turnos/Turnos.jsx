@@ -7,6 +7,7 @@ import ModalForm from "../../components/ModalForm/ModalForm";
 import { AddShiftForm } from "../../components/AddForms/AddForms";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTurnos } from "../../api/turnos";
+import { formatDateTime, formatTime } from "../../utils/formatDateTime";
 
 export default function Turnos({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
@@ -35,16 +36,20 @@ export default function Turnos({ theme, setTheme }) {
           <p className="error">Hubo un error al cargar los turnos.</p>
         )}
         {turnos &&
-          turnos.map((t) => (
-            <Turno
-              key={t.id} // asumí que cada turno tiene un id
-              date={t.fecha} // adaptá a cómo viene tu backend
-              time={t.hora}
-              especiality={t.especialidad}
-              profesional={t.profesional}
-              spot={t.lugar}
-            />
-          ))}
+          turnos.map((t) => {
+            const { date } = formatDateTime(t.dia);
+            const { time } = formatTime(t.hora);
+            return (
+              <Turno
+                key={t.id} // asumí que cada turno tiene un id
+                date={date} // adaptá a cómo viene tu backend
+                time={time}
+                especiality={t.especialidad}
+                profesional={t.profesional}
+                spot={t.lugar}
+              />
+            );
+          })}
       </div>
 
       <ModalForm
