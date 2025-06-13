@@ -30,8 +30,10 @@ export default function Turnos({ theme, setTheme }) {
       />
 
       <div className="turnos-container">
-        {isLoading && <p>Cargando turnos...</p>}
-        {isError && <p>Hubo un error al cargar los turnos.</p>}
+        {isLoading && <p className="loading">Cargando turnos...</p>}
+        {isError && (
+          <p className="error">Hubo un error al cargar los turnos.</p>
+        )}
         {turnos &&
           turnos.map((t) => (
             <Turno

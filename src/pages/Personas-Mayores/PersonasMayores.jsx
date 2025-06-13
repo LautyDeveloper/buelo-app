@@ -29,8 +29,10 @@ export default function PersonasMayores({ theme, setTheme }) {
         openModal={openModal}
       />
       <div className="persons-container">
-        {isLoading && <p>Cargando Personas...</p>}
-        {isError && <p>Hubo un error al cargar las personas.</p>}
+        {isLoading && <p className="loading">Cargando Personas...</p>}
+        {isError && (
+          <p className="error">Hubo un error al cargar las personas.</p>
+        )}
         {persons &&
           persons.map((person) => {
             return (

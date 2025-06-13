@@ -30,8 +30,8 @@ export default function Notas({ theme, setTheme }) {
         openModal={openModal}
       />
       <div className="notas-container">
-        {isLoading && <p>Cargando Notas...</p>}
-        {isError && <p>Hubo un error al cargar las notas.</p>}
+        {isLoading && <p className="loading">Cargando Notas...</p>}
+        {isError && <p className="error">Hubo un error al cargar las notas.</p>}
         {notes &&
           notes.map((note) => {
             const { date, time } = formatDateTime(note.fecha_hora);

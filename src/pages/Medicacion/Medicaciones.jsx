@@ -28,8 +28,10 @@ export default function Medicaciones({ theme, setTheme }) {
         openModal={openModal}
       />
       <div className="medicaciones-container">
-        {isLoading && <p>Cargando turnos...</p>}
-        {isError && <p>Hubo un error al cargar los turnos.</p>}
+        {isLoading && <p className="loading">Cargando turnos...</p>}
+        {isError && (
+          <p className="error">Hubo un error al cargar los turnos.</p>
+        )}
         {medicaciones &&
           medicaciones.map((medicacion) => (
             <Medicacion
