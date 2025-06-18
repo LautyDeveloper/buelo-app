@@ -35,6 +35,11 @@ export default function Notas({ theme, setTheme }) {
       <div className="notas-container">
         {isLoading && <p className="loading">Cargando Notas...</p>}
         {isError && <p className="error">Hubo un error al cargar las notas.</p>}
+        {personaActiva === null && (
+          <p className="error">
+            No hay persona activa. Por favor, seleccioná una persona mayor.
+          </p>
+        )}
         {notes &&
           notes.map((note) => {
             const { date, time } = formatDateTime(note.fecha_hora);

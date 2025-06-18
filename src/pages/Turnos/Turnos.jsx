@@ -38,6 +38,11 @@ export default function Turnos({ theme, setTheme }) {
         {isError && (
           <p className="error">Hubo un error al cargar los turnos.</p>
         )}
+        {personaActiva === null && (
+          <p className="error">
+            No hay persona activa. Por favor, seleccioná una persona mayor.
+          </p>
+        )}
         {turnos &&
           turnos.map((t) => {
             const { date } = formatDateTime(t.dia);
