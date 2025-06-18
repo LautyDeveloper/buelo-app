@@ -8,17 +8,20 @@ import { AddShiftForm } from "../../components/AddForms/AddForms";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTurnos } from "../../api/turnos";
 import { formatDateTime, formatTime } from "../../utils/formatDateTime";
+import { usePersonaMayor } from "../../context/PersonaMayorContext";
 
 export default function Turnos({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
+  const { personaActiva } = usePersonaMayor();
 
   const {
     data: turnos,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["turnos"],
-    queryFn: fetchTurnos,
+    queryKey: ["turnos", personaActiva?.id],
+    queryFn: () => fetchTurnos(personaActiva.id),
+    enabled: !!personaActiva?.id, // Solo se ejecuta si hay una persona activa
   });
 
   return (
