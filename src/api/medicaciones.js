@@ -1,5 +1,7 @@
-export const fetchMedicaciones = async () => {
-  const res = await fetch("http://localhost:3000/medicaciones");
-  if (!res.ok) throw new Error("Error fetching Meidcations");
+export async function fetchMedicaciones(personaId) {
+  const res = await fetch(
+    `http://localhost:3000/medicaciones?personaId=${personaId}`
+  );
+  if (!res.ok) throw new Error("Error al obtener medicaciones");
   return res.json();
-};
+}

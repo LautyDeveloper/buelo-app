@@ -7,18 +7,20 @@ import Medicacion from "./components/Medicacion/Medicacion";
 import "./Medicaciones.css";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMedicaciones } from "../../api/medicaciones";
+import { usePersonaMayor } from "../../context/PersonaMayorContext";
 export default function Medicaciones({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
+  const { personaActiva } = usePersonaMayor();
 
   const {
     data: medicaciones,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["medicaciones"],
-    queryFn: fetchMedicaciones,
+    queryKey: ["medicaciones", personaActiva?.id],
+    queryFn: () => fetchMedicaciones(personaActiva.id),
+    enabled: !!personaActiva?.id, // Solo se ejecuta si hay una persona activa
   });
-
   return (
     <Layout theme={theme} setTheme={setTheme} page={"Medicaciones"}>
       <SectionsHeader
