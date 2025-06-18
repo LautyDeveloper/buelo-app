@@ -8,17 +8,20 @@ import { AddNoteForm } from "../../components/AddForms/AddForms";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNotas } from "../../api/notas";
 import { formatDateTime } from "../../utils/formatDateTime";
+import { usePersonaMayor } from "../../context/PersonaMayorContext";
 
 export default function Notas({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
+  const { personaActiva } = usePersonaMayor();
 
   const {
     data: notes,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["turnos"],
-    queryFn: fetchNotas,
+    queryKey: ["notas", personaActiva?.id],
+    queryFn: () => fetchNotas(personaActiva.id),
+    enabled: !!personaActiva?.id, // Solo se ejecuta si hay una persona activa
   });
 
   return (
