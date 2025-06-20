@@ -1,3 +1,4 @@
+// src/pages/Notas/Notas.jsx
 import "./notas.css";
 import Layout from "../../components/Layout/Layout";
 import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
@@ -9,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchNotas } from "../../api/notas";
 import { formatDateTime } from "../../utils/formatDateTime";
 import { usePersonaMayor } from "../../context/PersonaMayorContext";
+import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 
 export default function Notas({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
@@ -18,10 +20,11 @@ export default function Notas({ theme, setTheme }) {
     data: notes,
     isLoading,
     isError,
+    error,
   } = useQuery({
     queryKey: ["notas", personaActiva?.id],
     queryFn: () => fetchNotas(personaActiva.id),
-    enabled: !!personaActiva?.id, // Solo se ejecuta si hay una persona activa
+    enabled: !!personaActiva?.id,
   });
 
   return (
@@ -33,15 +36,15 @@ export default function Notas({ theme, setTheme }) {
         openModal={openModal}
       />
       <div className="notas-container">
-        {isLoading && <p className="loading">Cargando Notas...</p>}
-        {isError && <p className="error">Hubo un error al cargar las notas.</p>}
-        {personaActiva === null && (
-          <p className="error">
-            No hay persona activa. Por favor, seleccioná una persona mayor.
-          </p>
-        )}
-        {notes &&
-          notes.map((note) => {
+        <StatusDisplay
+          isLoading={isLoading}
+          isError={isError}
+          error={error}
+          noActiveUser={!personaActiva}
+          emptyCondition={!isLoading && !isError && personaActiva && (!notes || notes.length === 0)}
+          emptyDataMessage="No hay notas agregadas."
+        >
+          {notes && notes.map((note) => {
             const { date, time } = formatDateTime(note.fecha_hora);
             return (
               <Nota
@@ -53,6 +56,7 @@ export default function Notas({ theme, setTheme }) {
               />
             );
           })}
+        </StatusDisplay>
       </div>
       <ModalForm
         title={"Agregar Nueva Nota"}
