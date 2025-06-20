@@ -5,9 +5,24 @@ import Nota from "./components/Nota/Nota";
 import useModal from "../../hooks/useModal";
 import ModalForm from "../../components/ModalForm/ModalForm";
 import { AddNoteForm } from "../../components/AddForms/AddForms";
+import { useQuery } from "@tanstack/react-query";
+import { fetchNotas } from "../../api/notas";
+import { formatDateTime } from "../../utils/formatDateTime";
+import { usePersonaMayor } from "../../context/PersonaMayorContext";
 
 export default function Notas({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
+  const { personaActiva } = usePersonaMayor();
+
+  const {
+    data: notes,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["notas", personaActiva?.id],
+    queryFn: () => fetchNotas(personaActiva.id),
+    enabled: !!personaActiva?.id, // Solo se ejecuta si hay una persona activa
+  });
 
   return (
     <Layout theme={theme} setTheme={setTheme} page={"Notas"}>
@@ -18,38 +33,26 @@ export default function Notas({ theme, setTheme }) {
         openModal={openModal}
       />
       <div className="notas-container">
-        <Nota
-          title={"Revisar la Presion"}
-          date={"05 de Mayo"}
-          time={"18:23hs"}
-          note={
-            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
-          }
-        />
-        <Nota
-          title={"Revisar la Presion"}
-          date={"05 de Mayo"}
-          time={"18:23hs"}
-          note={
-            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
-          }
-        />
-        <Nota
-          title={"Revisar la Presion"}
-          date={"05 de Mayo"}
-          time={"18:23hs"}
-          note={
-            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
-          }
-        />
-        <Nota
-          title={"Revisar la Presion"}
-          date={"05 de Mayo"}
-          time={"18:23hs"}
-          note={
-            "Tenemos que revisarle la Presion antes del turno con el cardiologo. Anotarlo en el papel"
-          }
-        />
+        {isLoading && <p className="loading">Cargando Notas...</p>}
+        {isError && <p className="error">Hubo un error al cargar las notas.</p>}
+        {personaActiva === null && (
+          <p className="error">
+            No hay persona activa. Por favor, seleccioná una persona mayor.
+          </p>
+        )}
+        {notes &&
+          notes.map((note) => {
+            const { date, time } = formatDateTime(note.fecha_hora);
+            return (
+              <Nota
+                key={note.id}
+                title={note.titulo}
+                date={date}
+                time={time}
+                note={note.cuerpo}
+              />
+            );
+          })}
       </div>
       <ModalForm
         title={"Agregar Nueva Nota"}

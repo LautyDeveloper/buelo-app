@@ -1,5 +1,14 @@
 import "./side-bar.css";
 import { Link } from "react-router-dom";
+import {
+  House,
+  Users,
+  CalendarClock,
+  Pill,
+  NotepadText,
+  HeartHandshake,
+  Bot,
+} from "lucide-react";
 
 export default function SideBar({ isOpen }) {
   return (
@@ -11,30 +20,44 @@ export default function SideBar({ isOpen }) {
         <nav>
           <ul>
             <li>
-              <Link to="/">Inicio</Link>
+              <Link to="/">
+                <House /> Inicio
+              </Link>
             </li>
 
             <li>
-              <Link to="/personas-mayores">Personas Mayores</Link>
+              <Link to="/personas-mayores">
+                <Users /> Personas Mayores
+              </Link>
             </li>
 
             <li>
-              <Link to="/turnos">Turnos</Link>
+              <Link to="/turnos">
+                <CalendarClock /> Turnos
+              </Link>
             </li>
 
             <li>
-              <Link to="/medicacion">Medicaciones</Link>
+              <Link to="/medicacion">
+                <Pill /> Medicaciones
+              </Link>
             </li>
 
             <li>
-              <Link to="/notas">Notas</Link>
+              <Link to="/notas">
+                <NotepadText /> Notas
+              </Link>
             </li>
 
             <li>
-              <Link to="/familiares">Familiares</Link>
+              <Link to="/familiares">
+                <HeartHandshake /> Familiares
+              </Link>
             </li>
             <li>
-              <a href="">Bot de WhatsApp</a>
+              <a href="">
+                <Bot /> Bot de WhatsApp
+              </a>
             </li>
           </ul>
         </nav>

@@ -52,7 +52,7 @@
 
 .main-card .main-card-footer button,
 .main-card .main-card-footer a {
-  background-color: transparent;
+  background: transparent;
   border: 2px solid var(--primaryFontColor);
   border-radius: 10px;
   font-weight: 500;
@@ -60,6 +60,8 @@
   place-items: center;
   text-decoration: none;
   color: var(--primaryFontColor);
+  transition: all ease-in 0.2s;
+  cursor: pointer;
 }
 
 .main-card .main-card-footer .see-all-btn {
@@ -78,9 +80,15 @@
     width: 30%;
     height: 400px;
   }
+
   .main-card .main-card-header {
     align-items: flex-start;
     padding: 0 0 0 20px;
     height: 120px;
+  }
+
+  .main-card .main-card-footer button:hover,
+  .main-card .main-card-footer a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }

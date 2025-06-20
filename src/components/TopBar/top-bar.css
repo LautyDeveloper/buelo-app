@@ -42,20 +42,19 @@
   place-items: center;
   cursor: pointer;
 }
-.topbar-container .topbar-content .buttons-container{
+.topbar-container .topbar-content .buttons-container {
   display: flex;
   gap: 20px;
 }
-.topbar-container .topbar-content .theme-toggle-btn{
+.topbar-container .topbar-content .theme-toggle-btn {
   background-color: transparent;
   border: 2px solid var(--secondaryFontColor);
   color: var(--primaryFontColor);
   padding: 0;
   height: 60px;
   width: 60px;
-
 }
-.topbar-container .topbar-content .theme-toggle-btn:hover{
+.topbar-container .topbar-content .theme-toggle-btn:hover {
   background-color: var(--CTAHeaderHovered);
 }
 
@@ -87,11 +86,14 @@
     font-size: 1.2rem;
     font-weight: 500;
     color: white;
+    transition: all ease-in 0.2s;
   }
-  
-.topbar-container .topbar-content .theme-toggle-btn{
-  height: 50px;
-  width: 50px;
+  .topbar-container .topbar-content button:hover {
+    background-color: var(--CTAColorHovered);
+  }
 
-}
+  .topbar-container .topbar-content .theme-toggle-btn {
+    height: 50px;
+    width: 50px;
+  }
 }
