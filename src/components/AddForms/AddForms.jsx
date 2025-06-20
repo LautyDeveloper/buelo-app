@@ -69,3 +69,19 @@ export function AddNoteForm() {
     </form>
   );
 }
+
+export function AddElderlyPersonForm() {
+  return (
+    <form action="">
+      <div className="input-container">
+        <label htmlFor="">Titulo de la Nota</label>
+        <input type="text" />
+      </div>
+
+      <div className="input-container">
+        <label htmlFor="">Cuerpo de la Nota</label>
+        <input type="text" />
+      </div>
+    </form>
+  );
+}

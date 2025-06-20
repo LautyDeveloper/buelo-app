@@ -1,14 +1,18 @@
 import "./medicine-card.css";
 
-export default function MedicineCard() {
+export default function MedicineCard({ medicine }) {
   return (
     <div className="medicine">
       <div className="medicine-content">
         <div className="medicine-header">
-          <strong>Lorsatan 5mg</strong>
+          <strong>
+            {medicine.nombre_medicacion} {medicine.dosis}
+          </strong>
           <div className="medicine-badge">Proximo</div>
         </div>
-        <p>12:00 y 20:00, Todos los Dias.</p>
+        <p>
+          {medicine.horarios.split(", ")} - {medicine.frecuencia}
+        </p>
       </div>
     </div>
   );

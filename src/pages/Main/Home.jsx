@@ -12,11 +12,25 @@ import {
   AddMedicineForm,
   AddNoteForm,
 } from "../../components/AddForms/AddForms";
-
 import "./home.css";
 import ModalForm from "../../components/ModalForm/ModalForm";
+import { useQuery } from "@tanstack/react-query";
+import { fetchResumenPersona } from "../../api/resumen.js";
+import { usePersonaMayor } from "../../context/PersonaMayorContext";
 
 export default function Home({ theme, setTheme }) {
+  const { personaActiva } = usePersonaMayor();
+
+  const {
+    data: resumen,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["resumen", personaActiva?.id],
+    queryFn: () => fetchResumenPersona(personaActiva.id),
+    enabled: !!personaActiva?.id,
+  });
+
   return (
     <Layout page={"DashBoard"} theme={theme} setTheme={setTheme}>
       <ElderlyPerson />
@@ -35,7 +49,17 @@ export default function Home({ theme, setTheme }) {
           }
           form={<AddShiftForm />}
         >
-          <ShiftCard />
+          {isLoading ? (
+            <p>Cargando turnos...</p>
+          ) : isError ? (
+            <p>Error al cargar los turnos.</p>
+          ) : resumen?.turnos?.length > 0 ? (
+            resumen.turnos.map((turno) => (
+              <ShiftCard key={turno.id} turno={turno} />
+            ))
+          ) : (
+            <p>No hay turnos programados.</p>
+          )}
         </MainCard>
 
         <MainCard
@@ -45,13 +69,24 @@ export default function Home({ theme, setTheme }) {
           backColor={"var(--medicineBackgroundColor)"}
           textColor={"var(--medicineFontColor)"}
           labelButton={"Ver todas las Medicinas"}
+          url={"/medicacion"}
           modalTitle={"Agregar Nueva Medicacion"}
           modalParragraph={
             "Completa los detalles de la Medicacion. Indicando los siguientes datos"
           }
           form={<AddMedicineForm />}
         >
-          <MedicineCard />
+          {isLoading ? (
+            <p>Cargando medicaciones...</p>
+          ) : isError ? (
+            <p>Error al cargar las medicaciones.</p>
+          ) : resumen?.medicaciones?.length > 0 ? (
+            resumen.medicaciones.map((turno) => (
+              <MedicineCard key={turno.id} medicine={turno} />
+            ))
+          ) : (
+            <p>No hay medicaciones programados.</p>
+          )}
         </MainCard>
 
         <MainCard
@@ -68,7 +103,15 @@ export default function Home({ theme, setTheme }) {
           }
           form={<AddNoteForm />}
         >
-          <NoteCard />
+          {isLoading ? (
+            <p>Cargando notas...</p>
+          ) : isError ? (
+            <p>Error al cargar las notas.</p>
+          ) : resumen?.notas?.length > 0 ? (
+            resumen.notas.map((nota) => <NoteCard key={nota.id} note={nota} />)
+          ) : (
+            <p>No hay notas agregadas.</p>
+          )}
         </MainCard>
       </div>
     </Layout>

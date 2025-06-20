@@ -2,6 +2,22 @@
   display: none;
 }
 
+/* Mostrar si está "abierto" */
+.sidebar-container.open {
+  display: flex;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100vh;
+  background-color: var(--sectionsBackgroundColor);
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 2px solid var(--secondaryFontColor);
+}
+
 .sidebar-container .sidebar-logo-container {
   width: 100%;
   min-height: 85px;
@@ -19,7 +35,7 @@
   align-items: flex-start;
 }
 .sidebar-container .sidebar-nav-container nav {
-  width: 85%;
+  width: 100%;
   height: 60%;
 }
 .sidebar-container .sidebar-nav-container nav ul {
@@ -31,10 +47,22 @@
   align-items: flex-start;
   list-style: none;
 }
+.sidebar-container .sidebar-nav-container nav ul li {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 .sidebar-container .sidebar-nav-container nav ul li a {
   color: var(--primaryFontColor);
   text-decoration: none;
   font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 7px 0 7px 30px;
+  gap: 5px;
 }
 
 .sidebar-container .sidebar-account-container {
@@ -52,28 +80,37 @@
   width: 80%;
   height: 80%;
 }
-.sidebar-container .sidebar-account-container .account-info-container img{
+.sidebar-container .sidebar-account-container .account-info-container img {
   width: 60px;
   height: 60px;
   border-radius: 100%;
 }
-.sidebar-container .sidebar-account-container .account-info-container .account-text{
+.sidebar-container
+  .sidebar-account-container
+  .account-info-container
+  .account-text {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 2px;
 }
-.sidebar-container .sidebar-account-container .account-info-container .account-text h2{
+.sidebar-container
+  .sidebar-account-container
+  .account-info-container
+  .account-text
+  h2 {
   font-size: 1.4rem;
   color: var(--primaryFontColor);
   font-weight: 500;
 }
-.sidebar-container .sidebar-account-container .account-info-container .account-text p{
+.sidebar-container
+  .sidebar-account-container
+  .account-info-container
+  .account-text
+  p {
   font-size: 1rem;
   color: var(--secondaryFontColor);
 }
-
-
 
 @media screen and (min-width: 768px) {
   .sidebar-container {
@@ -84,7 +121,9 @@
     min-width: 18%;
     height: 100vh;
     background-color: var(--sectionsBackgroundColor);
-    border: 2px solid var(--secondaryFontColor);
-    border-right: none;
+    border-bottom: 2px solid var(--secondaryFontColor);
+  }
+  .sidebar-container .sidebar-nav-container nav ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }

@@ -10,3 +10,12 @@ main {
   display: grid;
   place-items: center;
 }
+
+.loading {
+  font-size: 2rem;
+}
+
+.error {
+  font-size: 2rem;
+  color: red;
+}

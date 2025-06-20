@@ -1,14 +1,19 @@
 :root {
   --baseBackgroundColor: #f9fafb;
   --sectionsBackgroundColor: #eef3f7;
+  --CTAHeaderHovered: #d8d8d8;
   --primaryFontColor: #333333;
   --secondaryFontColor: #666666;
+  --badgeFontColor: #f5f5f5;
   --CTAColor: #7b2cbf;
+  --CTAColorHovered: rgb(150, 50, 226);
 
   --shiftsBackgrounColor: #d0e6ff;
   --shiftsFontColor: #0051af;
+
   --medicineBackgroundColor: #d6f5e3;
   --medicineFontColor: #26aa5d;
+
   --notesBackgroundColor: #e8deff;
   --notesFontColor: #6d33f3;
 
@@ -16,28 +21,29 @@
   --elderlyPersonBackgroundColor: #c9edff;
 
   --familiarColor: #0681b6;
-
-  --badgeFontColor: #f5f5f5;
 }
 
 [data-theme="dark"] {
   --baseBackgroundColor: #1e1e1e;
   --sectionsBackgroundColor: #2c2c2c;
+  --CTAHeaderHovered: #292828;
+  --badgeFontColor: #333333;
   --primaryFontColor: #f5f5f5;
   --secondaryFontColor: #b5b5b5;
   --CTAColor: #5e1f8d;
+  --CTAColorHovered: #7b2cbf;
 
   --shiftsBackgrounColor: #0051af;
   --shiftsFontColor: #d0e6ff;
+
   --medicineBackgroundColor: #26aa5d;
   --medicineFontColor: #d6f5e3;
+
   --notesBackgroundColor: #6d33f3;
   --notesFontColor: #e8deff;
 
   --elderlyPersonColor: #c9edff;
   --elderlyPersonBackgroundColor: #016597;
 
-  --familiarColor: #0681b6;
-
-  --badgeFontColor: #333333;
+  --familiarColor: #57bef1;
 }

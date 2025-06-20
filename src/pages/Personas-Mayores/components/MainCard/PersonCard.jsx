@@ -2,7 +2,16 @@ import "./person-card.css";
 import PersonaMayorModal from "../Persona-Mayor-Modal/PersonaMayorModal";
 import { useState } from "react";
 
-export default function PersonCard({ image, name, familiar, age }) {
+export default function PersonCard({
+  image,
+  name,
+  familiar,
+  age,
+  dni,
+  nTramite,
+  nAfiliado,
+  os,
+}) {
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
@@ -26,10 +35,10 @@ export default function PersonCard({ image, name, familiar, age }) {
         name={name}
         age={age}
         familiar={familiar}
-        dni={"123456789"}
-        nTramite={"123456789"}
-        os={"PAMI"}
-        nAfiliado={"123456789"}
+        dni={dni}
+        nTramite={nTramite}
+        os={os}
+        nAfiliado={nAfiliado}
       />
     </div>
   );
