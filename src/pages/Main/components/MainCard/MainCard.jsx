@@ -1,4 +1,5 @@
 import "./main-card.css";
+import { Link } from "react-router-dom";
 import useModal from "../../../../hooks/useModal";
 import ModalForm from "../../../../components/ModalForm/ModalForm";
 
@@ -28,9 +29,9 @@ export default function MainCard({
       <div className="main-card-content">
         {children}
         <div className="main-card-footer">
-          <a className="see-all-btn" href={url}>
+          <Link to={url} className="see-all-btn">
             {labelButton}
-          </a>
+          </Link>
           <button onClick={openModal} className="add-btn">
             +
           </button>
