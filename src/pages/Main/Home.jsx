@@ -15,7 +15,7 @@ import "./home.css";
 // ModalForm is not used directly here anymore for data display, can be removed if not used by AddForms directly in modals
 // import ModalForm from "../../components/ModalForm/ModalForm";
 import { useQuery } from "@tanstack/react-query";
-import { fetchResumenPersona } from "../../api/resumen.js";
+import { fetchPersonSummary } from "../../api/summary.js";
 import { usePersonaMayor } from "../../context/PersonaMayorContext";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 
@@ -23,13 +23,13 @@ export default function Home({ theme, setTheme }) {
   const { personaActiva } = usePersonaMayor();
 
   const {
-    data: resumen,
+    data: summary,
     isLoading,
     isError,
     error,
   } = useQuery({
-    queryKey: ["resumen", personaActiva?.id],
-    queryFn: () => fetchResumenPersona(personaActiva.id),
+    queryKey: ["summary", personaActiva?.id],
+    queryFn: () => fetchPersonSummary(personaActiva.id),
     enabled: !!personaActiva?.id,
   });
 
@@ -56,14 +56,23 @@ export default function Home({ theme, setTheme }) {
             isError={isError}
             error={error}
             noActiveUser={!personaActiva}
-            emptyCondition={!isLoading && !isError && personaActiva && (!resumen?.turnos || resumen.turnos.length === 0)}
+            emptyCondition={
+              !isLoading &&
+              !isError &&
+              personaActiva &&
+              (!summary?.turnos || summary.turnos.length === 0)
+            }
             noActiveUserMessage="Seleccioná una persona mayor para ver sus turnos."
             emptyDataMessage="No hay turnos programados."
             // loadingMessage="Cargando turnos..." // Custom message if needed
           >
-            {resumen?.turnos?.map((turno) => ( // Check resumen.turnos before mapping
-              <ShiftCard key={turno.id} turno={turno} />
-            ))}
+            {summary?.turnos?.map(
+              (
+                turno // Check resumen.turnos before mapping
+              ) => (
+                <ShiftCard key={turno.id} turno={turno} />
+              )
+            )}
           </StatusDisplay>
         </MainCard>
 
@@ -86,11 +95,16 @@ export default function Home({ theme, setTheme }) {
             isError={isError}
             error={error}
             noActiveUser={!personaActiva}
-            emptyCondition={!isLoading && !isError && personaActiva && (!resumen?.medicaciones || resumen.medicaciones.length === 0)}
+            emptyCondition={
+              !isLoading &&
+              !isError &&
+              personaActiva &&
+              (!summary?.medicaciones || summary.medicaciones.length === 0)
+            }
             noActiveUserMessage="Seleccioná una persona mayor para ver sus medicaciones."
             emptyDataMessage="No hay medicaciones programadas."
           >
-            {resumen?.medicaciones?.map((medicacion) => (
+            {summary?.medicaciones?.map((medicacion) => (
               <MedicineCard key={medicacion.id} medicine={medicacion} />
             ))}
           </StatusDisplay>
@@ -115,11 +129,16 @@ export default function Home({ theme, setTheme }) {
             isError={isError}
             error={error}
             noActiveUser={!personaActiva}
-            emptyCondition={!isLoading && !isError && personaActiva && (!resumen?.notas || resumen.notas.length === 0)}
+            emptyCondition={
+              !isLoading &&
+              !isError &&
+              personaActiva &&
+              (!summary?.notas || summary.notas.length === 0)
+            }
             noActiveUserMessage="Seleccioná una persona mayor para ver sus notas."
             emptyDataMessage="No hay notas agregadas."
           >
-            {resumen?.notas?.map((nota) => (
+            {summary?.notas?.map((nota) => (
               <NoteCard key={nota.id} note={nota} />
             ))}
           </StatusDisplay>

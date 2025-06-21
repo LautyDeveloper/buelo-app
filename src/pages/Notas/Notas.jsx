@@ -7,7 +7,7 @@ import useModal from "../../hooks/useModal";
 import ModalForm from "../../components/ModalForm/ModalForm";
 import { AddNoteForm } from "../../components/AddForms/AddForms";
 import { useQuery } from "@tanstack/react-query";
-import { fetchNotas } from "../../api/notas";
+import { fetchNotes } from "../../api/notes.js";
 import { formatDateTime } from "../../utils/formatDateTime";
 import { usePersonaMayor } from "../../context/PersonaMayorContext";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
@@ -23,7 +23,7 @@ export default function Notas({ theme, setTheme }) {
     error,
   } = useQuery({
     queryKey: ["notas", personaActiva?.id],
-    queryFn: () => fetchNotas(personaActiva.id),
+    queryFn: () => fetchNotes(personaActiva.id),
     enabled: !!personaActiva?.id,
   });
 
@@ -41,21 +41,27 @@ export default function Notas({ theme, setTheme }) {
           isError={isError}
           error={error}
           noActiveUser={!personaActiva}
-          emptyCondition={!isLoading && !isError && personaActiva && (!notes || notes.length === 0)}
+          emptyCondition={
+            !isLoading &&
+            !isError &&
+            personaActiva &&
+            (!notes || notes.length === 0)
+          }
           emptyDataMessage="No hay notas agregadas."
         >
-          {notes && notes.map((note) => {
-            const { date, time } = formatDateTime(note.fecha_hora);
-            return (
-              <Nota
-                key={note.id}
-                title={note.titulo}
-                date={date}
-                time={time}
-                note={note.cuerpo}
-              />
-            );
-          })}
+          {notes &&
+            notes.map((note) => {
+              const { date, time } = formatDateTime(note.fecha_hora);
+              return (
+                <Nota
+                  key={note.id}
+                  title={note.titulo}
+                  date={date}
+                  time={time}
+                  note={note.cuerpo}
+                />
+              );
+            })}
         </StatusDisplay>
       </div>
       <ModalForm

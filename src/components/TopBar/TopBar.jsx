@@ -2,7 +2,7 @@ import { useState } from "react";
 import ElderlyPersonsList from "./components/Elderly-Person-List/ElderlyPersonsList";
 import "./top-bar.css";
 import { Moon, PanelRightClose, Sun, Menu } from "lucide-react";
-import { fetchPersons } from "../../api/personas";
+import { fetchElderlyPersons } from "../../api/elderly-persons.js";
 import { useQuery } from "@tanstack/react-query";
 import { usePersonaMayor } from "../../context/PersonaMayorContext";
 
@@ -15,7 +15,7 @@ export default function TopBar({ page, theme, setTheme, toggleSidebar }) {
 
   const { data: personas } = useQuery({
     queryKey: ["personas"],
-    queryFn: fetchPersons,
+    queryFn: fetchElderlyPersons,
   });
 
   return (

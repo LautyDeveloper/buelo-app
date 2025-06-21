@@ -1,4 +1,4 @@
-export async function fetchMedicaciones(personaId) {
+export async function fetchMedications(personaId) {
   const res = await fetch(
     `http://localhost:3000/medicaciones?personaId=${personaId}`
   );

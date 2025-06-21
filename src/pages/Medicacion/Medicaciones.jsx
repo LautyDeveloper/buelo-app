@@ -7,7 +7,7 @@ import useModal from "../../hooks/useModal";
 import Medicacion from "./components/Medicacion/Medicacion";
 import "./Medicaciones.css";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMedicaciones } from "../../api/medicaciones";
+import { fetchMedications } from "../../api/medications.js";
 import { usePersonaMayor } from "../../context/PersonaMayorContext";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 
@@ -16,13 +16,13 @@ export default function Medicaciones({ theme, setTheme }) {
   const { personaActiva } = usePersonaMayor();
 
   const {
-    data: medicaciones,
+    data: medication,
     isLoading,
     isError,
     error,
   } = useQuery({
-    queryKey: ["medicaciones", personaActiva?.id],
-    queryFn: () => fetchMedicaciones(personaActiva.id),
+    queryKey: ["medication", personaActiva?.id],
+    queryFn: () => fetchMedications(personaActiva.id),
     enabled: !!personaActiva?.id,
   });
 
@@ -40,18 +40,24 @@ export default function Medicaciones({ theme, setTheme }) {
           isError={isError}
           error={error}
           noActiveUser={!personaActiva}
-          emptyCondition={!isLoading && !isError && personaActiva && (!medicaciones || medicaciones.length === 0)}
+          emptyCondition={
+            !isLoading &&
+            !isError &&
+            personaActiva &&
+            (!medication || medication.length === 0)
+          }
           emptyDataMessage="No hay medicaciones programadas."
         >
-          {medicaciones && medicaciones.map((medicacion) => (
-            <Medicacion
-              key={medicacion.id}
-              name={medicacion.nombre_medicacion}
-              frecuency={medicacion.frecuencia}
-              dosis={medicacion.dosis}
-              schedules={medicacion.horarios.split(",")}
-            />
-          ))}
+          {medication &&
+            medication.map((medicacion) => (
+              <Medicacion
+                key={medicacion.id}
+                name={medicacion.nombre_medicacion}
+                frecuency={medicacion.frecuencia}
+                dosis={medicacion.dosis}
+                schedules={medicacion.horarios.split(",")}
+              />
+            ))}
         </StatusDisplay>
       </div>
       <ModalForm

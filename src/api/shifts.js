@@ -1,4 +1,4 @@
-export async function fetchTurnos(personaId) {
+export async function fetchShifts(personaId) {
   const res = await fetch(
     `http://localhost:3000/turnos?personaId=${personaId}`
   );

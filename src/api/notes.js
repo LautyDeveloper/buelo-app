@@ -1,4 +1,4 @@
-export async function fetchNotas(personaId) {
+export async function fetchNotes(personaId) {
   const res = await fetch(
     `http://localhost:3000/notas?personaId=${personaId}`,
   );
