@@ -4,7 +4,7 @@ import PersonasMayores from "./pages/Personas-Mayores/PersonasMayores.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Turnos from "./pages/Turnos/Turnos.jsx";
 import Notas from "./pages/Notas/Notas.jsx";
-import Familiares from "./pages/Familiares/Familiares.jsx";
+import Family from "./pages/Familiares/family.jsx";
 import "./styles/themes.css";
 import { useEffect, useState } from "react";
 import Medicaciones from "./pages/Medicacion/Medicaciones.jsx";
@@ -46,7 +46,7 @@ function App() {
             />
             <Route
               path="/familiares"
-              element={<Familiares theme={theme} setTheme={setTheme} />}
+              element={<Family theme={theme} setTheme={setTheme} />}
             />
           </Routes>
         </BrowserRouter>

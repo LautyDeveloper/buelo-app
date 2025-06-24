@@ -1,8 +1,8 @@
-import "./familiares.css";
-import Layout from "../../components/Layout/Layout";
-import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
-import Familiar from "./components/Familiar/Familiar.jsx";
-export default function Familiares({ theme, setTheme }) {
+import "./family.css";
+import Layout from "../../components/Layout/Layout.jsx";
+import SectionsHeader from "../../components/Sections-Header/SectionsHeader.jsx";
+import Familiar from "./components/Familiar/familiar.jsx";
+export default function Family({ theme, setTheme }) {
   return (
     <Layout theme={theme} setTheme={setTheme} page={"Familiares"}>
       <SectionsHeader
