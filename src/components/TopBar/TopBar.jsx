@@ -4,16 +4,16 @@ import "./top-bar.css";
 import { Moon, PanelRightClose, Sun, Menu } from "lucide-react";
 import { fetchElderlyPersons } from "../../api/elderly-persons.js";
 import { useQuery } from "@tanstack/react-query";
-import { usePersonaMayor } from "../../context/PersonaMayorContext";
+import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 
 export default function TopBar({ page, theme, setTheme, toggleSidebar }) {
   const [showList, setShowList] = useState(false);
-  const { personaActiva } = usePersonaMayor();
+  const { activePerson } = useElderlyPerson();
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  const { data: personas } = useQuery({
+  const { data: persons } = useQuery({
     queryKey: ["personas"],
     queryFn: fetchElderlyPersons,
   });
@@ -34,14 +34,14 @@ export default function TopBar({ page, theme, setTheme, toggleSidebar }) {
           <button onClick={() => setShowList((prev) => !prev)}>
             {window.innerWidth < 768
               ? "🤶"
-              : personaActiva
-              ? `🤶 ${personaActiva.nombre}`
+              : activePerson
+              ? `🤶 ${activePerson.nombre}`
               : "Elegí tu Persona Mayor"}
           </button>
         </div>
       </div>
 
-      {showList && <ElderlyPersonsList persons={personas} />}
+      {showList && <ElderlyPersonsList persons={persons} />}
     </div>
   );
 }

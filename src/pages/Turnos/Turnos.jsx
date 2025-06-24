@@ -9,12 +9,12 @@ import { AddShiftForm } from "../../components/AddForms/AddForms";
 import { useQuery } from "@tanstack/react-query";
 import { fetchShifts } from "../../api/shifts";
 import { formatDateTime, formatTime } from "../../utils/formatDateTime";
-import { usePersonaMayor } from "../../context/PersonaMayorContext";
+import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 
 export default function Turnos({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
-  const { personaActiva } = usePersonaMayor();
+  const { activePerson } = useElderlyPerson();
 
   const {
     data: shifts,
@@ -22,9 +22,9 @@ export default function Turnos({ theme, setTheme }) {
     isError,
     error,
   } = useQuery({
-    queryKey: ["shifts", personaActiva?.id],
-    queryFn: () => fetchShifts(personaActiva.id),
-    enabled: !!personaActiva?.id,
+    queryKey: ["shifts", activePerson?.id],
+    queryFn: () => fetchShifts(activePerson.id),
+    enabled: !!activePerson?.id,
   });
 
   return (
@@ -41,11 +41,11 @@ export default function Turnos({ theme, setTheme }) {
           isLoading={isLoading}
           isError={isError}
           error={error}
-          noActiveUser={!personaActiva}
+          noActiveUser={!activePerson}
           emptyCondition={
             !isLoading &&
             !isError &&
-            personaActiva &&
+            activePerson &&
             (!shifts || shifts.length === 0)
           }
           emptyDataMessage="No hay turnos programados."

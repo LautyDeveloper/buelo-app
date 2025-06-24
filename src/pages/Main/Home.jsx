@@ -16,11 +16,11 @@ import "./home.css";
 // import ModalForm from "../../components/ModalForm/ModalForm";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPersonSummary } from "../../api/summary.js";
-import { usePersonaMayor } from "../../context/PersonaMayorContext";
+import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 
 export default function Home({ theme, setTheme }) {
-  const { personaActiva } = usePersonaMayor();
+  const { activePerson } = useElderlyPerson();
 
   const {
     data: summary,
@@ -28,9 +28,9 @@ export default function Home({ theme, setTheme }) {
     isError,
     error,
   } = useQuery({
-    queryKey: ["summary", personaActiva?.id],
-    queryFn: () => fetchPersonSummary(personaActiva.id),
-    enabled: !!personaActiva?.id,
+    queryKey: ["summary", activePerson?.id],
+    queryFn: () => fetchPersonSummary(activePerson.id),
+    enabled: !!activePerson?.id,
   });
 
   return (
@@ -55,11 +55,11 @@ export default function Home({ theme, setTheme }) {
             isLoading={isLoading}
             isError={isError}
             error={error}
-            noActiveUser={!personaActiva}
+            noActiveUser={!activePerson}
             emptyCondition={
               !isLoading &&
               !isError &&
-              personaActiva &&
+              activePerson &&
               (!summary?.turnos || summary.turnos.length === 0)
             }
             noActiveUserMessage="Seleccioná una persona mayor para ver sus turnos."
@@ -94,11 +94,11 @@ export default function Home({ theme, setTheme }) {
             isLoading={isLoading}
             isError={isError}
             error={error}
-            noActiveUser={!personaActiva}
+            noActiveUser={!activePerson}
             emptyCondition={
               !isLoading &&
               !isError &&
-              personaActiva &&
+              activePerson &&
               (!summary?.medicaciones || summary.medicaciones.length === 0)
             }
             noActiveUserMessage="Seleccioná una persona mayor para ver sus medicaciones."
@@ -128,11 +128,11 @@ export default function Home({ theme, setTheme }) {
             isLoading={isLoading}
             isError={isError}
             error={error}
-            noActiveUser={!personaActiva}
+            noActiveUser={!activePerson}
             emptyCondition={
               !isLoading &&
               !isError &&
-              personaActiva &&
+              activePerson &&
               (!summary?.notas || summary.notas.length === 0)
             }
             noActiveUserMessage="Seleccioná una persona mayor para ver sus notas."

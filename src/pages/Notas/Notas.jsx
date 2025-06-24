@@ -9,12 +9,12 @@ import { AddNoteForm } from "../../components/AddForms/AddForms";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNotes } from "../../api/notes.js";
 import { formatDateTime } from "../../utils/formatDateTime";
-import { usePersonaMayor } from "../../context/PersonaMayorContext";
+import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 
 export default function Notas({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
-  const { personaActiva } = usePersonaMayor();
+  const { activePerson } = useElderlyPerson();
 
   const {
     data: notes,
@@ -22,9 +22,9 @@ export default function Notas({ theme, setTheme }) {
     isError,
     error,
   } = useQuery({
-    queryKey: ["notas", personaActiva?.id],
-    queryFn: () => fetchNotes(personaActiva.id),
-    enabled: !!personaActiva?.id,
+    queryKey: ["notas", activePerson?.id],
+    queryFn: () => fetchNotes(activePerson.id),
+    enabled: !!activePerson?.id,
   });
 
   return (
@@ -40,11 +40,11 @@ export default function Notas({ theme, setTheme }) {
           isLoading={isLoading}
           isError={isError}
           error={error}
-          noActiveUser={!personaActiva}
+          noActiveUser={!activePerson}
           emptyCondition={
             !isLoading &&
             !isError &&
-            personaActiva &&
+            activePerson &&
             (!notes || notes.length === 0)
           }
           emptyDataMessage="No hay notas agregadas."

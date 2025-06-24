@@ -9,7 +9,7 @@ import "./styles/themes.css";
 import { useEffect, useState } from "react";
 import Medicaciones from "./pages/Medicacion/Medicaciones.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { PersonaMayorProvider } from "./context/PersonaMayorContext.jsx";
+import { ElderlyPersonProvider } from "./context/ElderlyPersonContext.jsx";
 
 function App() {
   const queryClient = new QueryClient();
@@ -20,7 +20,7 @@ function App() {
   }, [theme]);
 
   return (
-    <PersonaMayorProvider>
+    <ElderlyPersonProvider>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
@@ -51,7 +51,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
-    </PersonaMayorProvider>
+    </ElderlyPersonProvider>
   );
 }
 

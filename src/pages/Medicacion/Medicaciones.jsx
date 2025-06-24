@@ -8,22 +8,22 @@ import Medicacion from "./components/Medicacion/Medicacion";
 import "./Medicaciones.css";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMedications } from "../../api/medications.js";
-import { usePersonaMayor } from "../../context/PersonaMayorContext";
+import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 
 export default function Medicaciones({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
-  const { personaActiva } = usePersonaMayor();
+  const { activePerson } = useElderlyPerson();
 
   const {
-    data: medication,
+    data: medications,
     isLoading,
     isError,
     error,
   } = useQuery({
-    queryKey: ["medication", personaActiva?.id],
-    queryFn: () => fetchMedications(personaActiva.id),
-    enabled: !!personaActiva?.id,
+    queryKey: ["medications", activePerson?.id],
+    queryFn: () => fetchMedications(activePerson.id),
+    enabled: !!activePerson?.id,
   });
 
   return (
@@ -39,23 +39,23 @@ export default function Medicaciones({ theme, setTheme }) {
           isLoading={isLoading}
           isError={isError}
           error={error}
-          noActiveUser={!personaActiva}
+          noActiveUser={!activePerson}
           emptyCondition={
             !isLoading &&
             !isError &&
-            personaActiva &&
-            (!medication || medication.length === 0)
+            activePerson &&
+            (!medications || medications.length === 0)
           }
           emptyDataMessage="No hay medicaciones programadas."
         >
-          {medication &&
-            medication.map((medicacion) => (
+          {medications &&
+            medications.map((medication) => (
               <Medicacion
-                key={medicacion.id}
-                name={medicacion.nombre_medicacion}
-                frecuency={medicacion.frecuencia}
-                dosis={medicacion.dosis}
-                schedules={medicacion.horarios.split(",")}
+                key={medication.id}
+                name={medication.nombre_medicacion}
+                frecuency={medication.frecuencia}
+                dosis={medication.dosis}
+                schedules={medication.horarios.split(",")}
               />
             ))}
         </StatusDisplay>
