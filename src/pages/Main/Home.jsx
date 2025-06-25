@@ -18,7 +18,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchPersonSummary } from "../../api/summary.js";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
-import { act } from "react";
 
 export default function Home({ theme, setTheme }) {
   const { activePerson } = useElderlyPerson();
@@ -61,17 +60,17 @@ export default function Home({ theme, setTheme }) {
               !isLoading &&
               !isError &&
               activePerson &&
-              (!summary?.turnos || summary.turnos.length === 0)
+              (!summary?.shifts || summary.shifts.length === 0)
             }
             noActiveUserMessage="Seleccioná una persona mayor para ver sus turnos."
             emptyDataMessage="No hay turnos programados."
             // loadingMessage="Cargando turnos..." // Custom message if needed
           >
-            {summary?.turnos?.map(
+            {summary?.shifts?.map(
               (
-                turno // Check resumen.turnos before mapping
+                shift // Check resumen.turnos before mapping
               ) => (
-                <ShiftCard key={turno.id} turno={turno} />
+                <ShiftCard key={shift.id} turno={shift} />
               )
             )}
           </StatusDisplay>
@@ -100,13 +99,13 @@ export default function Home({ theme, setTheme }) {
               !isLoading &&
               !isError &&
               activePerson &&
-              (!summary?.medicaciones || summary.medicaciones.length === 0)
+              (!summary?.medications || summary.medications.length === 0)
             }
             noActiveUserMessage="Seleccioná una persona mayor para ver sus medicaciones."
             emptyDataMessage="No hay medicaciones programadas."
           >
-            {summary?.medicaciones?.map((medicacion) => (
-              <MedicineCard key={medicacion.id} medicine={medicacion} />
+            {summary?.medications?.map((medication) => (
+              <MedicineCard key={medication.id} medicine={medication} />
             ))}
           </StatusDisplay>
         </MainCard>
@@ -134,13 +133,13 @@ export default function Home({ theme, setTheme }) {
               !isLoading &&
               !isError &&
               activePerson &&
-              (!summary?.notas || summary.notas.length === 0)
+              (!summary?.notes || summary.notes.length === 0)
             }
             noActiveUserMessage="Seleccioná una persona mayor para ver sus notas."
             emptyDataMessage="No hay notas agregadas."
           >
-            {summary?.notas?.map((nota) => (
-              <NoteCard key={nota.id} note={nota} />
+            {summary?.notes?.map((note) => (
+              <NoteCard key={note.id} note={note} />
             ))}
           </StatusDisplay>
         </MainCard>

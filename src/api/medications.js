@@ -1,6 +1,6 @@
-export async function fetchMedications(personaId) {
+export async function fetchMedications(personId) {
   const res = await fetch(
-    `http://localhost:3000/medications?personaId=${personaId}`
+    `http://localhost:3000/medications?personId=${personId}`
   );
   if (!res.ok) throw new Error("Error al obtener medicaciones");
   return res.json();
