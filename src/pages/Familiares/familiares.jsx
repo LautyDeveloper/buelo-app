@@ -1,4 +1,4 @@
-import "./family.css";
+import "./familiares.css";
 import Layout from "../../components/Layout/Layout.jsx";
 import SectionsHeader from "../../components/Sections-Header/SectionsHeader.jsx";
 import Familiar from "./components/Familiar/familiar.jsx";
