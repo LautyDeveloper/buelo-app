@@ -18,6 +18,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchPersonSummary } from "../../api/summary.js";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
+import { act } from "react";
 
 export default function Home({ theme, setTheme }) {
   const { activePerson } = useElderlyPerson();
@@ -35,7 +36,7 @@ export default function Home({ theme, setTheme }) {
 
   return (
     <Layout page={"DashBoard"} theme={theme} setTheme={setTheme}>
-      <ElderlyPerson />
+      {activePerson && <ElderlyPerson person={activePerson} />}
       <div className="content-container">
         <MainCard
           icon={<CalendarClock />}
