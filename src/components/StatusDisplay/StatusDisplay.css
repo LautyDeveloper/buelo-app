@@ -1,0 +1,41 @@
+/* src/components/StatusDisplay/StatusDisplay.css */
+.status-display-loading,
+.status-display-error,
+.status-display-empty,
+.status-display-no-active-user {
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.status-display-loading {
+  background-color: #e0f7fa; /* Light cyan */
+  color: #00796b; /* Dark cyan */
+  border: 1px solid #b2ebf2; /* Lighter cyan border */
+}
+
+.status-display-error {
+  background-color: #ffebee; /* Light pink */
+  color: #c62828; /* Dark red */
+  border: 1px solid #ffcdd2; /* Lighter pink border */
+}
+
+.status-display-empty {
+  background-color: #fffde7; /* Light yellow */
+  color: #f57f17; /* Dark yellow/orange */
+  border: 1px solid #fff9c4; /* Lighter yellow border */
+}
+
+.status-display-no-active-user {
+  background-color: #f3e5f5; /* Light purple */
+  color: #6a1b9a; /* Dark purple */
+  border: 1px solid #e1bee7; /* Lighter purple border */
+}
+
+.status-display-error p {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #b71c1c; /* Darker red for error details */
+}
