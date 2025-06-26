@@ -100,8 +100,12 @@ export default function Home({ theme, setTheme }) {
             noActiveUserMessage="Seleccioná una persona mayor para ver sus medicaciones."
             emptyDataMessage="No hay medicaciones programadas."
           >
-            {summary?.medications?.slice(0, 2).map((medication) => (
-              <MedicineCard key={medication.id} medicine={medication} />
+            {summary?.medications?.slice(0, 2).map((medication, index) => (
+              <MedicineCard
+                key={medication.id}
+                medicine={medication}
+                isNext={index === 0}
+              />
             ))}
           </StatusDisplay>
         </MainCard>

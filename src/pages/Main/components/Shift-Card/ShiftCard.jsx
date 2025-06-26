@@ -1,7 +1,7 @@
 import { formatDateTime, formatTime } from "../../../../utils/formatDateTime";
 import "./shift-card.css";
 
-export default function ShiftCard({ turno }) {
+export default function ShiftCard({ turno, isNext }) {
   const { date } = formatDateTime(turno.dia);
   const { time } = formatTime(turno.hora);
   return (
@@ -11,7 +11,7 @@ export default function ShiftCard({ turno }) {
           <strong>
             {date}, {time}
           </strong>
-          <div className="shift-badge">Proximo</div>
+          {isNext && <span className="shift-badge">Próximo</span>}
         </div>
         <p>
           {turno.especialidad} ({turno.profesional})
