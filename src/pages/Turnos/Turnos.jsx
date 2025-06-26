@@ -53,10 +53,12 @@ export default function Turnos({ theme, setTheme }) {
           // errorMessage="Hubo un error al cargar los turnos." // Example of custom message
         >
           {shifts &&
-            shifts.map((shift) => {
+            shifts.map((shift, index) => {
               // Render only if turnos has data
               const { date } = formatDateTime(shift.dia);
               const { time } = formatTime(shift.hora);
+              const isNext = index === 0; // Solo el primer turno es el próximo
+
               return (
                 <Turno
                   key={shift.id}
@@ -65,6 +67,7 @@ export default function Turnos({ theme, setTheme }) {
                   especiality={shift.especialidad}
                   profesional={shift.profesional}
                   spot={shift.lugar}
+                  isNext={isNext} // pasamos la prop
                 />
               );
             })}

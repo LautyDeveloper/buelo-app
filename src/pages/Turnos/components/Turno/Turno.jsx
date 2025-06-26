@@ -1,7 +1,14 @@
 import "./turno.css";
 import { CalendarClock } from "lucide-react";
 
-export default function Turno({ date, time, especiality, profesional, spot }) {
+export default function Turno({
+  date,
+  time,
+  especiality,
+  profesional,
+  spot,
+  isNext,
+}) {
   return (
     <div className="turno">
       <div className="turno-header">
@@ -9,7 +16,7 @@ export default function Turno({ date, time, especiality, profesional, spot }) {
           <h2>
             <CalendarClock /> {date}, {time}
           </h2>
-          <div className="turno-header-badge">Proximo</div>
+          {isNext && <div className="turno-header-badge">Próximo</div>}
         </div>
         <p>{especiality}</p>
       </div>
