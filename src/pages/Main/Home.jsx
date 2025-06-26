@@ -134,7 +134,7 @@ export default function Home({ theme, setTheme }) {
             noActiveUserMessage="Seleccioná una persona mayor para ver sus notas."
             emptyDataMessage="No hay notas agregadas."
           >
-            {summary?.notes?.map((note) => (
+            {summary?.notes?.slice(0, 2).map((note) => (
               <NoteCard key={note.id} note={note} />
             ))}
           </StatusDisplay>
