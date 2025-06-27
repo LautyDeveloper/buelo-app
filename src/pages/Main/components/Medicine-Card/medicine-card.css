@@ -4,7 +4,13 @@
   border-radius: 10px;
   display: grid;
   place-items: center;
+}
+
+.medicine.next {
   background-color: var(--medicineBackgroundColor);
+}
+.medicine.normal {
+  background-color: transparent;
 }
 
 .medicine-content {
@@ -23,7 +29,12 @@
 }
 .medicine-content .medicine-header strong {
   font-size: 1.4rem;
+}
+.medicine.next .medicine-content .medicine-header strong {
   color: var(--medicineFontColor);
+}
+.medicine.normal .medicine-content .medicine-header strong {
+  color: var(--primaryFontColor);
 }
 
 .medicine-content .medicine-header .medicine-badge {
@@ -31,7 +42,7 @@
   display: grid;
   place-items: center;
   border-radius: 20px;
-    color: var(--badgeFontColor);
+  color: var(--badgeFontColor);
 
   font-weight: 600;
   background-color: var(--medicineFontColor);

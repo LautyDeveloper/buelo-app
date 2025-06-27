@@ -2,7 +2,7 @@ import "./medicine-card.css";
 
 export default function MedicineCard({ medicine, isNext }) {
   return (
-    <div className="medicine">
+    <div className={isNext ? "medicine next" : "medicine normal"}>
       <div className="medicine-content">
         <div className="medicine-header">
           <strong>
