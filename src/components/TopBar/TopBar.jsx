@@ -41,7 +41,12 @@ export default function TopBar({ page, theme, setTheme, toggleSidebar }) {
         </div>
       </div>
 
-      {showList && <ElderlyPersonsList persons={persons} />}
+      {showList && (
+        <ElderlyPersonsList
+          persons={persons}
+          onSelect={() => setShowList(false)} // 👈 esto cierra la lista al hacer clic
+        />
+      )}
     </div>
   );
 }

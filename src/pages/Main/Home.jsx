@@ -66,13 +66,9 @@ export default function Home({ theme, setTheme }) {
             emptyDataMessage="No hay turnos programados."
             // loadingMessage="Cargando turnos..." // Custom message if needed
           >
-            {summary?.shifts?.map(
-              (
-                shift // Check resumen.turnos before mapping
-              ) => (
-                <ShiftCard key={shift.id} turno={shift} />
-              )
-            )}
+            {summary?.shifts?.slice(0, 2).map((shift, index) => (
+              <ShiftCard key={shift.id} turno={shift} isNext={index === 0} />
+            ))}
           </StatusDisplay>
         </MainCard>
 
@@ -104,8 +100,12 @@ export default function Home({ theme, setTheme }) {
             noActiveUserMessage="Seleccioná una persona mayor para ver sus medicaciones."
             emptyDataMessage="No hay medicaciones programadas."
           >
-            {summary?.medications?.map((medication) => (
-              <MedicineCard key={medication.id} medicine={medication} />
+            {summary?.medications?.slice(0, 2).map((medication, index) => (
+              <MedicineCard
+                key={medication.id}
+                medicine={medication}
+                isNext={index === 0}
+              />
             ))}
           </StatusDisplay>
         </MainCard>
@@ -138,7 +138,7 @@ export default function Home({ theme, setTheme }) {
             noActiveUserMessage="Seleccioná una persona mayor para ver sus notas."
             emptyDataMessage="No hay notas agregadas."
           >
-            {summary?.notes?.map((note) => (
+            {summary?.notes?.slice(0, 2).map((note) => (
               <NoteCard key={note.id} note={note} />
             ))}
           </StatusDisplay>

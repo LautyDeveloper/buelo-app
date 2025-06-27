@@ -1,14 +1,14 @@
 import "./medicine-card.css";
 
-export default function MedicineCard({ medicine }) {
+export default function MedicineCard({ medicine, isNext }) {
   return (
-    <div className="medicine">
+    <div className={isNext ? "medicine next" : "medicine normal"}>
       <div className="medicine-content">
         <div className="medicine-header">
           <strong>
             {medicine.nombre_medicacion} {medicine.dosis}
           </strong>
-          <div className="medicine-badge">Proximo</div>
+          {isNext && <span className="medicine-badge">Próximo</span>}
         </div>
         <p>
           {medicine.horarios.split(", ")} - {medicine.frecuencia}

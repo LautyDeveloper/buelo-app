@@ -49,15 +49,19 @@ export default function Medicaciones({ theme, setTheme }) {
           emptyDataMessage="No hay medicaciones programadas."
         >
           {medications &&
-            medications.map((medication) => (
-              <Medicacion
-                key={medication.id}
-                name={medication.nombre_medicacion}
-                frecuency={medication.frecuencia}
-                dosis={medication.dosis}
-                schedules={medication.horarios.split(",")}
-              />
-            ))}
+            medications.map((medication, index) => {
+              const isNext = index === 0; // Solo el primer turno es el próximo
+              return (
+                <Medicacion
+                  key={medication.id}
+                  name={medication.nombre_medicacion}
+                  frecuency={medication.frecuencia}
+                  dosis={medication.dosis}
+                  schedules={medication.horarios.split(",")}
+                  isNext={isNext} // pasamos la prop
+                />
+              );
+            })}
         </StatusDisplay>
       </div>
       <ModalForm
