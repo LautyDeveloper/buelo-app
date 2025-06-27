@@ -4,7 +4,14 @@
   border-radius: 10px;
   display: grid;
   place-items: center;
+}
+
+.shift.next {
   background-color: var(--shiftsBackgrounColor);
+}
+
+.shift.normal {
+  background-color: transparent;
 }
 
 .shift-content {
@@ -23,9 +30,14 @@
 }
 .shift-content .shift-header strong {
   font-size: 1.1rem;
-  color: var(--shiftsFontColor);
 }
 
+.shift.next .shift-content .shift-header strong {
+  color: var(--shiftsFontColor);
+}
+.shift.normal .shift-content .shift-header strong {
+  color: var(--primaryFontColor);
+}
 .shift-content .shift-header .shift-badge {
   width: 30%;
   display: grid;

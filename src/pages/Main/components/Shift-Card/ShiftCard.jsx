@@ -5,7 +5,7 @@ export default function ShiftCard({ turno, isNext }) {
   const { date } = formatDateTime(turno.dia);
   const { time } = formatTime(turno.hora);
   return (
-    <div className="shift">
+    <div className={isNext ? "shift next" : "shift normal"}>
       <div className="shift-content">
         <div className="shift-header">
           <strong>
