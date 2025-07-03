@@ -1,0 +1,58 @@
+/* src/components/NotificationDisplay/NotificationDisplay.css */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification-item {
+  padding: 12px 18px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 250px;
+  max-width: 350px;
+}
+
+.notification-item p {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.notification-item--info {
+  background-color: #2196f3; /* Blue */
+}
+
+.notification-item--success {
+  background-color: #4caf50; /* Green */
+}
+
+.notification-item--error {
+  background-color: #f44336; /* Red */
+}
+
+.notification-item--warning {
+  background-color: #ff9800; /* Orange */
+}
+
+.notification-dismiss-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+}
+
+.notification-dismiss-btn:hover {
+  opacity: 0.8;
+}

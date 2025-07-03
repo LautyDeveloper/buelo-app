@@ -83,6 +83,23 @@
   color: var(--primaryFontColor);
 }
 
+.delete-button {
+  margin-top: 0.5rem;
+  padding: 4px 8px;
+  background-color: #ffe0e0;
+  color: #d30000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.delete-button:hover {
+  background-color: #ffcccc;
+}
+
 @media screen and (min-width: 768px) {
   .turno {
     width: 35%;

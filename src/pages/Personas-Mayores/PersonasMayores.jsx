@@ -6,7 +6,7 @@ import ModalForm from "../../components/ModalForm/ModalForm";
 import "./personas-mayores.css";
 import { AddElderlyPersonForm } from "../../components/AddForms/AddForms";
 import { useQuery } from "@tanstack/react-query";
-import { fetchPersons } from "../../api/personas";
+import { fetchElderlyPersons } from "../../api/elderly-persons.js";
 
 export default function PersonasMayores({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
@@ -17,7 +17,7 @@ export default function PersonasMayores({ theme, setTheme }) {
     isError,
   } = useQuery({
     queryKey: ["persons"],
-    queryFn: fetchPersons,
+    queryFn: fetchElderlyPersons,
   });
 
   return (

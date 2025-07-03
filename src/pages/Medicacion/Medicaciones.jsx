@@ -1,3 +1,4 @@
+// src/pages/Medicacion/Medicaciones.jsx
 import { AddMedicineForm } from "../../components/AddForms/AddForms";
 import Layout from "../../components/Layout/Layout";
 import ModalForm from "../../components/ModalForm/ModalForm";
@@ -6,21 +7,25 @@ import useModal from "../../hooks/useModal";
 import Medicacion from "./components/Medicacion/Medicacion";
 import "./Medicaciones.css";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMedicaciones } from "../../api/medicaciones";
-import { usePersonaMayor } from "../../context/PersonaMayorContext";
+import { fetchMedications } from "../../api/medications.js";
+import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
+import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
+
 export default function Medicaciones({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
-  const { personaActiva } = usePersonaMayor();
+  const { activePerson } = useElderlyPerson();
 
   const {
-    data: medicaciones,
+    data: medications,
     isLoading,
     isError,
+    error,
   } = useQuery({
-    queryKey: ["medicaciones", personaActiva?.id],
-    queryFn: () => fetchMedicaciones(personaActiva.id),
-    enabled: !!personaActiva?.id, // Solo se ejecuta si hay una persona activa
+    queryKey: ["medications", activePerson?.id],
+    queryFn: () => fetchMedications(activePerson.id),
+    enabled: !!activePerson?.id,
   });
+
   return (
     <Layout theme={theme} setTheme={setTheme} page={"Medicaciones"}>
       <SectionsHeader
@@ -30,24 +35,34 @@ export default function Medicaciones({ theme, setTheme }) {
         openModal={openModal}
       />
       <div className="medicaciones-container">
-        {isLoading && <p className="loading">Cargando turnos...</p>}
-        {isError && (
-          <p className="error">Hubo un error al cargar los turnos.</p>
-        )}
-        {personaActiva === null && (
-          <p className="error">
-            No hay persona activa. Por favor, seleccioná una persona mayor.
-          </p>
-        )}
-        {medicaciones &&
-          medicaciones.map((medicacion) => (
-            <Medicacion
-              name={medicacion.nombre_medicacion}
-              frecuency={medicacion.frecuencia}
-              dosis={medicacion.dosis}
-              schedules={medicacion.horarios.split(",")}
-            />
-          ))}
+        <StatusDisplay
+          isLoading={isLoading}
+          isError={isError}
+          error={error}
+          noActiveUser={!activePerson}
+          emptyCondition={
+            !isLoading &&
+            !isError &&
+            activePerson &&
+            (!medications || medications.length === 0)
+          }
+          emptyDataMessage="No hay medicaciones programadas."
+        >
+          {medications &&
+            medications.map((medication, index) => {
+              const isNext = index === 0; // Solo el primer turno es el próximo
+              return (
+                <Medicacion
+                  key={medication.id}
+                  name={medication.nombre_medicacion}
+                  frecuency={medication.frecuencia}
+                  dosis={medication.dosis}
+                  schedules={medication.horarios.split(",")}
+                  isNext={isNext} // pasamos la prop
+                />
+              );
+            })}
+        </StatusDisplay>
       </div>
       <ModalForm
         title={"Agregar Medicacion"}

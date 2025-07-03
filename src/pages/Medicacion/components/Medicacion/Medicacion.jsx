@@ -1,12 +1,18 @@
 import "./Medicacion.css";
 
-export default function Medicacion({ name, frecuency, dosis, schedules }) {
+export default function Medicacion({
+  name,
+  frecuency,
+  dosis,
+  schedules,
+  isNext,
+}) {
   return (
     <div className="medicacion">
       <div className="medicacion-header">
         <div className="header-top">
           <h2>{name}</h2>
-          <div className="badge">Proximo</div>
+          {isNext && <div className="badge">Próximo</div>}
         </div>
         <p>
           {frecuency}, {dosis}

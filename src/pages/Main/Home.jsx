@@ -1,39 +1,41 @@
+// src/pages/Main/Home.jsx
 import Layout from "../../components/Layout/Layout";
 import ElderlyPerson from "./components/Elderly-Person/ElderlyPerson";
 import MainCard from "./components/MainCard/MainCard";
 import MedicineCard from "./components/Medicine-Card/Medicine-Card";
 import NoteCard from "./components/Note-Card/NoteCard";
 import ShiftCard from "./components/Shift-Card/ShiftCard";
-import { CalendarClock } from "lucide-react";
-import { Pill } from "lucide-react";
-import { ClipboardPenLine } from "lucide-react";
+import { CalendarClock, Pill, ClipboardPenLine } from "lucide-react"; // Combined imports
 import {
   AddShiftForm,
   AddMedicineForm,
   AddNoteForm,
 } from "../../components/AddForms/AddForms";
 import "./home.css";
-import ModalForm from "../../components/ModalForm/ModalForm";
+// ModalForm is not used directly here anymore for data display, can be removed if not used by AddForms directly in modals
+// import ModalForm from "../../components/ModalForm/ModalForm";
 import { useQuery } from "@tanstack/react-query";
-import { fetchResumenPersona } from "../../api/resumen.js";
-import { usePersonaMayor } from "../../context/PersonaMayorContext";
+import { fetchPersonSummary } from "../../api/summary.js";
+import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
+import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 
 export default function Home({ theme, setTheme }) {
-  const { personaActiva } = usePersonaMayor();
+  const { activePerson } = useElderlyPerson();
 
   const {
-    data: resumen,
+    data: summary,
     isLoading,
     isError,
+    error,
   } = useQuery({
-    queryKey: ["resumen", personaActiva?.id],
-    queryFn: () => fetchResumenPersona(personaActiva.id),
-    enabled: !!personaActiva?.id,
+    queryKey: ["summary", activePerson?.id],
+    queryFn: () => fetchPersonSummary(activePerson.id),
+    enabled: !!activePerson?.id,
   });
 
   return (
     <Layout page={"DashBoard"} theme={theme} setTheme={setTheme}>
-      <ElderlyPerson />
+      {activePerson && <ElderlyPerson person={activePerson} />}
       <div className="content-container">
         <MainCard
           icon={<CalendarClock />}
@@ -49,17 +51,25 @@ export default function Home({ theme, setTheme }) {
           }
           form={<AddShiftForm />}
         >
-          {isLoading ? (
-            <p>Cargando turnos...</p>
-          ) : isError ? (
-            <p>Error al cargar los turnos.</p>
-          ) : resumen?.turnos?.length > 0 ? (
-            resumen.turnos.map((turno) => (
-              <ShiftCard key={turno.id} turno={turno} />
-            ))
-          ) : (
-            <p>No hay turnos programados.</p>
-          )}
+          <StatusDisplay
+            isLoading={isLoading}
+            isError={isError}
+            error={error}
+            noActiveUser={!activePerson}
+            emptyCondition={
+              !isLoading &&
+              !isError &&
+              activePerson &&
+              (!summary?.shifts || summary.shifts.length === 0)
+            }
+            noActiveUserMessage="Seleccioná una persona mayor para ver sus turnos."
+            emptyDataMessage="No hay turnos programados."
+            // loadingMessage="Cargando turnos..." // Custom message if needed
+          >
+            {summary?.shifts?.slice(0, 2).map((shift, index) => (
+              <ShiftCard key={shift.id} turno={shift} isNext={index === 0} />
+            ))}
+          </StatusDisplay>
         </MainCard>
 
         <MainCard
@@ -76,17 +86,28 @@ export default function Home({ theme, setTheme }) {
           }
           form={<AddMedicineForm />}
         >
-          {isLoading ? (
-            <p>Cargando medicaciones...</p>
-          ) : isError ? (
-            <p>Error al cargar las medicaciones.</p>
-          ) : resumen?.medicaciones?.length > 0 ? (
-            resumen.medicaciones.map((turno) => (
-              <MedicineCard key={turno.id} medicine={turno} />
-            ))
-          ) : (
-            <p>No hay medicaciones programados.</p>
-          )}
+          <StatusDisplay
+            isLoading={isLoading}
+            isError={isError}
+            error={error}
+            noActiveUser={!activePerson}
+            emptyCondition={
+              !isLoading &&
+              !isError &&
+              activePerson &&
+              (!summary?.medications || summary.medications.length === 0)
+            }
+            noActiveUserMessage="Seleccioná una persona mayor para ver sus medicaciones."
+            emptyDataMessage="No hay medicaciones programadas."
+          >
+            {summary?.medications?.slice(0, 2).map((medication, index) => (
+              <MedicineCard
+                key={medication.id}
+                medicine={medication}
+                isNext={index === 0}
+              />
+            ))}
+          </StatusDisplay>
         </MainCard>
 
         <MainCard
@@ -103,15 +124,24 @@ export default function Home({ theme, setTheme }) {
           }
           form={<AddNoteForm />}
         >
-          {isLoading ? (
-            <p>Cargando notas...</p>
-          ) : isError ? (
-            <p>Error al cargar las notas.</p>
-          ) : resumen?.notas?.length > 0 ? (
-            resumen.notas.map((nota) => <NoteCard key={nota.id} note={nota} />)
-          ) : (
-            <p>No hay notas agregadas.</p>
-          )}
+          <StatusDisplay
+            isLoading={isLoading}
+            isError={isError}
+            error={error}
+            noActiveUser={!activePerson}
+            emptyCondition={
+              !isLoading &&
+              !isError &&
+              activePerson &&
+              (!summary?.notes || summary.notes.length === 0)
+            }
+            noActiveUserMessage="Seleccioná una persona mayor para ver sus notas."
+            emptyDataMessage="No hay notas agregadas."
+          >
+            {summary?.notes?.slice(0, 2).map((note) => (
+              <NoteCard key={note.id} note={note} />
+            ))}
+          </StatusDisplay>
         </MainCard>
       </div>
     </Layout>

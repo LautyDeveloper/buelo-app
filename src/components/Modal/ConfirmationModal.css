@@ -1,0 +1,94 @@
+/* src/components/Modal/ConfirmationModal.css */
+.confirmation-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Similar to modal-backdrop */
+  display: grid;
+  place-items: center;
+  z-index: 1050; /* Higher than notification z-index */
+}
+
+.confirmation-modal-content {
+  background-color: var(--baseBackgroundColor);
+  width: 90vw;
+  max-width: 450px; /* Generally smaller than a form modal */
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: var(--primaryFontColor);
+}
+
+.confirmation-modal-content h2 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--primaryFontColor);
+  text-align: center;
+}
+
+.confirmation-modal-content p {
+  font-size: 1rem;
+  color: var(--secondaryFontColor); /* Or primaryFontColor if more emphasis needed */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.confirmation-modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--secondaryFontColor);
+  cursor: pointer;
+}
+
+.confirmation-modal-actions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.confirmation-modal-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.confirmation-modal-btn--cancel {
+  background-color: var(--secondaryButtonColor, #6c757d); /* Fallback color */
+  color: var(--secondaryButtonFontColor, #fff);
+  border: 1px solid var(--secondaryButtonBorderColor, transparent);
+}
+
+.confirmation-modal-btn--cancel:hover {
+  background-color: var(--secondaryButtonHoverColor, #5a6268);
+}
+
+.confirmation-modal-btn--confirm {
+  background-color: var(--dangerColor, #dc3545); /* Specific color for confirm/delete */
+  color: #fff;
+}
+
+.confirmation-modal-btn--confirm:hover {
+  background-color: var(--dangerHoverColor, #c82333);
+}
+
+/* Assuming theme variables like --dangerColor exist or can be added to themes.css */
+/* If not, use explicit colors like:
+.confirmation-modal-btn--confirm {
+  background-color: #dc3545; red
+  color: #fff;
+}
+.confirmation-modal-btn--confirm:hover {
+  background-color: #c82333;
+}
+*/
