@@ -77,10 +77,10 @@ export default function Turnos({ theme, setTheme }) {
                   onDelete={async () => {
                     // Make onDelete async
                     const confirmed = await showConfirmation({
-                      title: "Delete Shift",
-                      message: `Are you sure you want to delete the shift for ${shift.especialidad} on ${date} at ${time}? This action cannot be undone.`,
-                      confirmText: "Delete",
-                      cancelText: "Cancel",
+                      title: "Borrar Turno",
+                      message: `Estas seguro que quieres borrar el turno de${shift.especialidad} el dia ${date} a las ${time}? Esta accion no se puede deshacer.`,
+                      confirmText: "Borrar",
+                      cancelText: "Cancelar",
                     });
 
                     if (confirmed) {
