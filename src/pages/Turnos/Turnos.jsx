@@ -6,27 +6,24 @@ import Turno from "./components/Turno/Turno";
 import useModal from "../../hooks/useModal";
 import ModalForm from "../../components/ModalForm/ModalForm";
 import { AddShiftForm } from "../../components/AddForms/AddForms";
-import { fetchShifts } from "../../api/shifts";
 import { formatDateTime, formatTime } from "../../utils/formatDateTime";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
-import { useQuery } from "@tanstack/react-query";
-import { useShiftsMutations } from "../../hooks/useShiftsMutations"; // Import the custom hook
+// import { useQuery } from "@tanstack/react-query"; // No longer needed directly
+import { useShiftsMutations } from "../../hooks/useShiftsMutations";
+import { useShiftsQuery } from "../../hooks/useShiftsQuery"; // Import the new query hook
 
 export default function Turnos({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
   const { activePerson } = useElderlyPerson();
 
+  // Use the custom hook to fetch shifts
   const {
     data: shifts,
     isLoading,
     isError,
     error,
-  } = useQuery({
-    queryKey: ["shifts", activePerson?.id],
-    queryFn: () => fetchShifts(activePerson.id),
-    enabled: !!activePerson?.id,
-  });
+  } = useShiftsQuery(activePerson?.id);
 
   // Get the delete mutation function from the custom hook
   const { deleteShiftMutation } = useShiftsMutations();
