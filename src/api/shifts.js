@@ -22,3 +22,12 @@ export async function addShift(shiftData) {
 
   return res.json(); // esto devuelve el turno creado
 }
+
+export async function deleteShift(id) {
+  const res = await fetch(`http://localhost:3000/shifts/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) throw new Error("Error al eliminar turno");
+  return res.json();
+}

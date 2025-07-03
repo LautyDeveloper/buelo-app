@@ -1,13 +1,15 @@
 import "./turno.css";
-import { CalendarClock } from "lucide-react";
+import { CalendarClock, Trash2 } from "lucide-react";
 
 export default function Turno({
+  id,
   date,
   time,
   especiality,
   profesional,
   spot,
   isNext,
+  onDelete,
 }) {
   return (
     <div className="turno">
@@ -29,6 +31,9 @@ export default function Turno({
             <b>Lugar:</b> {spot}
           </li>
         </ul>
+        <button className="delete-button" onClick={onDelete}>
+          <Trash2 size={16} /> Eliminar
+        </button>
       </div>
     </div>
   );
