@@ -78,7 +78,7 @@ export default function Turnos({ theme, setTheme }) {
                     // Make onDelete async
                     const confirmed = await showConfirmation({
                       title: "Borrar Turno",
-                      message: `Estas seguro que quieres borrar el turno de${shift.especialidad} el dia ${date} a las ${time}? Esta accion no se puede deshacer.`,
+                      message: `Estas seguro que quieres borrar el turno de ${shift.especialidad} el dia ${date} a las ${time}? Esta accion no se puede deshacer.`,
                       confirmText: "Borrar",
                       cancelText: "Cancelar",
                     });
