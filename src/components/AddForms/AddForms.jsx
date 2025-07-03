@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext";
 import { useShiftsMutations } from "../../hooks/useShiftsMutations"; // Import the custom hook
+import { useNotification } from "../../context/NotificationContext"; // Import useNotification
 
 export function AddShiftForm({ onSuccess }) {
   const { activePerson } = useElderlyPerson();
   const { addShiftMutation } = useShiftsMutations(); // Get the mutation from the hook
+  const { addNotification } = useNotification(); // Get addNotification
 
   const [formData, setFormData] = useState({
     lugar: "",
@@ -35,6 +37,13 @@ export function AddShiftForm({ onSuccess }) {
       {
         onSuccess: () => {
           if (onSuccess) onSuccess(); // Call the original onSuccess (e.g., to close modal)
+        },
+        onError: (error) => {
+          console.error("Error creating shift:", error);
+          addNotification(
+            `Error creating shift: ${error.message || "Please try again."}`,
+            "error"
+          );
         },
       }
     );

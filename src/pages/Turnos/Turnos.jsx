@@ -12,10 +12,12 @@ import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 // import { useQuery } from "@tanstack/react-query"; // No longer needed directly
 import { useShiftsMutations } from "../../hooks/useShiftsMutations";
 import { useShiftsQuery } from "../../hooks/useShiftsQuery"; // Import the new query hook
+import { useNotification } from "../../context/NotificationContext"; // Import useNotification
 
 export default function Turnos({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
   const { activePerson } = useElderlyPerson();
+  const { addNotification } = useNotification(); // Get addNotification
 
   // Use the custom hook to fetch shifts
   const {
@@ -76,9 +78,15 @@ export default function Turnos({ theme, setTheme }) {
                     ) {
                       deleteShiftMutation.mutate(shift.id, {
                         onError: (err) => {
-                          console.error("Error eliminando turno", err);
+                          console.error("Error eliminando turno:", err);
+                          addNotification(
+                            `Error deleting shift: ${err.message || "Please try again."}`,
+                            "error"
+                          );
                         },
                       });
+                    } else {
+                      addNotification("Deletion cancelled.", "info");
                     }
                   }}
                 />

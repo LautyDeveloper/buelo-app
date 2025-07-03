@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import Medicaciones from "./pages/Medicacion/Medicaciones.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ElderlyPersonProvider } from "./context/ElderlyPersonContext.jsx";
+import { NotificationProvider } from "./context/NotificationContext.jsx"; // Import NotificationProvider
+import NotificationDisplay from "./components/NotificationDisplay/NotificationDisplay.jsx"; // Import NotificationDisplay
 
 function App() {
   const queryClient = new QueryClient();
@@ -20,38 +22,41 @@ function App() {
   }, [theme]);
 
   return (
-    <ElderlyPersonProvider>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={<Home theme={theme} setTheme={setTheme} />}
-            />
-            <Route
-              path="/personas-mayores"
-              element={<PersonasMayores theme={theme} setTheme={setTheme} />}
-            />
-            <Route
-              path="/turnos"
-              element={<Turnos theme={theme} setTheme={setTheme} />}
-            />
-            <Route
-              path="/medicacion"
-              element={<Medicaciones theme={theme} setTheme={setTheme} />}
-            />
-            <Route
-              path="/notas"
-              element={<Notas theme={theme} setTheme={setTheme} />}
-            />
-            <Route
-              path="/familiares"
-              element={<Familiares theme={theme} setTheme={setTheme} />}
-            />
-          </Routes>
-        </BrowserRouter>
-      </QueryClientProvider>
-    </ElderlyPersonProvider>
+    <NotificationProvider> {/* Wrap with NotificationProvider */}
+      <ElderlyPersonProvider>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <NotificationDisplay /> {/* Add NotificationDisplay component */}
+            <Routes>
+              <Route
+                path="/"
+                element={<Home theme={theme} setTheme={setTheme} />}
+              />
+              <Route
+                path="/personas-mayores"
+                element={<PersonasMayores theme={theme} setTheme={setTheme} />}
+              />
+              <Route
+                path="/turnos"
+                element={<Turnos theme={theme} setTheme={setTheme} />}
+              />
+              <Route
+                path="/medicacion"
+                element={<Medicaciones theme={theme} setTheme={setTheme} />}
+              />
+              <Route
+                path="/notas"
+                element={<Notas theme={theme} setTheme={setTheme} />}
+              />
+              <Route
+                path="/familiares"
+                element={<Familiares theme={theme} setTheme={setTheme} />}
+              />
+            </Routes>
+          </BrowserRouter>
+        </QueryClientProvider>
+      </ElderlyPersonProvider>
+    </NotificationProvider>
   );
 }
 
