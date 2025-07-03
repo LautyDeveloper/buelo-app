@@ -10,8 +10,8 @@ import { fetchShifts } from "../../api/shifts";
 import { formatDateTime, formatTime } from "../../utils/formatDateTime";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteShift } from "../../api/shifts.js"; // donde tengas la función
+import { useQuery } from "@tanstack/react-query";
+import { useShiftsMutations } from "../../hooks/useShiftsMutations"; // Import the custom hook
 
 export default function Turnos({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
@@ -28,17 +28,8 @@ export default function Turnos({ theme, setTheme }) {
     enabled: !!activePerson?.id,
   });
 
-  const queryClient = useQueryClient();
-
-  const { mutate: removeShift } = useMutation({
-    mutationFn: deleteShift,
-    onSuccess: () => {
-      queryClient.invalidateQueries(["shifts", activePerson]); // refresca la data
-    },
-    onError: (err) => {
-      console.error("Error eliminando turno", err);
-    },
-  });
+  // Get the delete mutation function from the custom hook
+  const { deleteShiftMutation } = useShiftsMutations();
 
   return (
     <Layout theme={theme} setTheme={setTheme} page={"Turnos"}>
@@ -86,7 +77,11 @@ export default function Turnos({ theme, setTheme }) {
                     if (
                       confirm("¿Estás seguro que querés eliminar este turno?")
                     ) {
-                      removeShift(shift.id);
+                      deleteShiftMutation.mutate(shift.id, {
+                        onError: (err) => {
+                          console.error("Error eliminando turno", err);
+                        },
+                      });
                     }
                   }}
                 />

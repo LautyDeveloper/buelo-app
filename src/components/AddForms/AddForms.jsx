@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addShift } from "../../api/shifts"; // tu función POST al backend
 import { useElderlyPerson } from "../../context/ElderlyPersonContext";
+import { useShiftsMutations } from "../../hooks/useShiftsMutations"; // Import the custom hook
 
 export function AddShiftForm({ onSuccess }) {
   const { activePerson } = useElderlyPerson();
-  const queryClient = useQueryClient();
+  const { addShiftMutation } = useShiftsMutations(); // Get the mutation from the hook
 
   const [formData, setFormData] = useState({
     lugar: "",
@@ -15,13 +14,9 @@ export function AddShiftForm({ onSuccess }) {
     especialidad: "",
   });
 
-  const mutation = useMutation({
-    mutationFn: addShift,
-    onSuccess: () => {
-      queryClient.invalidateQueries(["shifts", activePerson.id]);
-      if (onSuccess) onSuccess(); // Para cerrar el modal
-    },
-  });
+  // The useMutation call is now inside useShiftsMutations hook
+  // The onSuccess for invalidation is handled there.
+  // The component-specific onSuccess (to close modal) is passed to mutate.
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,10 +27,17 @@ export function AddShiftForm({ onSuccess }) {
     e.preventDefault();
     if (!activePerson) return;
 
-    mutation.mutate({
-      ...formData,
-      persona_mayor_id: activePerson.id,
-    });
+    addShiftMutation.mutate(
+      {
+        ...formData,
+        persona_mayor_id: activePerson.id,
+      },
+      {
+        onSuccess: () => {
+          if (onSuccess) onSuccess(); // Call the original onSuccess (e.g., to close modal)
+        },
+      }
+    );
   };
 
   return (
