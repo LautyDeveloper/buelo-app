@@ -13,11 +13,13 @@ import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
 import { useShiftsMutations } from "../../hooks/useShiftsMutations";
 import { useShiftsQuery } from "../../hooks/useShiftsQuery"; // Import the new query hook
 import { useNotification } from "../../context/NotificationContext"; // Import useNotification
+import { useConfirmationModal } from "../../context/ConfirmationModalContext"; // Import useConfirmationModal
 
 export default function Turnos({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
   const { activePerson } = useElderlyPerson();
   const { addNotification } = useNotification(); // Get addNotification
+  const { showConfirmation } = useConfirmationModal(); // Get showConfirmation
 
   // Use the custom hook to fetch shifts
   const {
@@ -72,13 +74,19 @@ export default function Turnos({ theme, setTheme }) {
                   profesional={shift.profesional}
                   spot={shift.lugar}
                   isNext={isNext} // pasamos la prop
-                  onDelete={() => {
-                    if (
-                      confirm("¿Estás seguro que querés eliminar este turno?")
-                    ) {
+                  onDelete={async () => { // Make onDelete async
+                    const confirmed = await showConfirmation({
+                      title: "Delete Shift",
+                      message: `Are you sure you want to delete the shift for ${shift.especialidad} on ${date} at ${time}? This action cannot be undone.`,
+                      confirmText: "Delete",
+                      cancelText: "Cancel",
+                    });
+
+                    if (confirmed) {
                       deleteShiftMutation.mutate(shift.id, {
                         onError: (err) => {
-                          console.error("Error eliminando turno:", err);
+                          // Success notification is handled by the hook
+                          console.error("Error deleting shift:", err);
                           addNotification(
                             `Error deleting shift: ${err.message || "Please try again."}`,
                             "error"

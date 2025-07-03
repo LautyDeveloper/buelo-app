@@ -10,8 +10,10 @@ import { useEffect, useState } from "react";
 import Medicaciones from "./pages/Medicacion/Medicaciones.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ElderlyPersonProvider } from "./context/ElderlyPersonContext.jsx";
-import { NotificationProvider } from "./context/NotificationContext.jsx"; // Import NotificationProvider
-import NotificationDisplay from "./components/NotificationDisplay/NotificationDisplay.jsx"; // Import NotificationDisplay
+import { NotificationProvider } from "./context/NotificationContext.jsx";
+import NotificationDisplay from "./components/NotificationDisplay/NotificationDisplay.jsx";
+import { ConfirmationModalProvider } from "./context/ConfirmationModalContext.jsx"; // Import ConfirmationModalProvider
+import ConfirmationModal from "./components/Modal/ConfirmationModal.jsx"; // Import ConfirmationModal
 
 function App() {
   const queryClient = new QueryClient();
@@ -22,14 +24,16 @@ function App() {
   }, [theme]);
 
   return (
-    <NotificationProvider> {/* Wrap with NotificationProvider */}
-      <ElderlyPersonProvider>
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <NotificationDisplay /> {/* Add NotificationDisplay component */}
-            <Routes>
-              <Route
-                path="/"
+    <ConfirmationModalProvider> {/* Wrap with ConfirmationModalProvider */}
+      <NotificationProvider>
+        <ElderlyPersonProvider>
+          <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+              <NotificationDisplay />
+              <ConfirmationModal /> {/* Add ConfirmationModal component */}
+              <Routes>
+                <Route
+                  path="/"
                 element={<Home theme={theme} setTheme={setTheme} />}
               />
               <Route
