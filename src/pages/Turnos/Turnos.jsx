@@ -74,7 +74,8 @@ export default function Turnos({ theme, setTheme }) {
                   profesional={shift.profesional}
                   spot={shift.lugar}
                   isNext={isNext} // pasamos la prop
-                  onDelete={async () => { // Make onDelete async
+                  onDelete={async () => {
+                    // Make onDelete async
                     const confirmed = await showConfirmation({
                       title: "Delete Shift",
                       message: `Are you sure you want to delete the shift for ${shift.especialidad} on ${date} at ${time}? This action cannot be undone.`,
@@ -88,7 +89,9 @@ export default function Turnos({ theme, setTheme }) {
                           // Success notification is handled by the hook
                           console.error("Error deleting shift:", err);
                           addNotification(
-                            `Error deleting shift: ${err.message || "Please try again."}`,
+                            `Error deleting shift: ${
+                              err.message || "Please try again."
+                            }`,
                             "error"
                           );
                         },

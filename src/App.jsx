@@ -24,43 +24,46 @@ function App() {
   }, [theme]);
 
   return (
-    <ConfirmationModalProvider> {/* Wrap with ConfirmationModalProvider */}
+    <ConfirmationModalProvider>
       <NotificationProvider>
         <ElderlyPersonProvider>
           <QueryClientProvider client={queryClient}>
             <BrowserRouter>
               <NotificationDisplay />
-              <ConfirmationModal /> {/* Add ConfirmationModal component */}
+              <ConfirmationModal />
               <Routes>
                 <Route
                   path="/"
-                element={<Home theme={theme} setTheme={setTheme} />}
-              />
-              <Route
-                path="/personas-mayores"
-                element={<PersonasMayores theme={theme} setTheme={setTheme} />}
-              />
-              <Route
-                path="/turnos"
-                element={<Turnos theme={theme} setTheme={setTheme} />}
-              />
-              <Route
-                path="/medicacion"
-                element={<Medicaciones theme={theme} setTheme={setTheme} />}
-              />
-              <Route
-                path="/notas"
-                element={<Notas theme={theme} setTheme={setTheme} />}
-              />
-              <Route
-                path="/familiares"
-                element={<Familiares theme={theme} setTheme={setTheme} />}
-              />
-            </Routes>
-          </BrowserRouter>
-        </QueryClientProvider>
-      </ElderlyPersonProvider>
-    </NotificationProvider>
+                  element={<Home theme={theme} setTheme={setTheme} />}
+                />
+                <Route
+                  path="/personas-mayores"
+                  element={
+                    <PersonasMayores theme={theme} setTheme={setTheme} />
+                  }
+                />
+                <Route
+                  path="/turnos"
+                  element={<Turnos theme={theme} setTheme={setTheme} />}
+                />
+                <Route
+                  path="/medicacion"
+                  element={<Medicaciones theme={theme} setTheme={setTheme} />}
+                />
+                <Route
+                  path="/notas"
+                  element={<Notas theme={theme} setTheme={setTheme} />}
+                />
+                <Route
+                  path="/familiares"
+                  element={<Familiares theme={theme} setTheme={setTheme} />}
+                />
+              </Routes>
+            </BrowserRouter>
+          </QueryClientProvider>
+        </ElderlyPersonProvider>
+      </NotificationProvider>
+    </ConfirmationModalProvider>
   );
 }
 
