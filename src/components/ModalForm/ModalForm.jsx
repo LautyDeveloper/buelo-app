@@ -35,7 +35,6 @@ export default function ModalForm({
             </div>
 
             <div className="modal-form-container">{children}</div>
-            <button>Guardar</button>
           </motion.div>
         </motion.div>
       )}
