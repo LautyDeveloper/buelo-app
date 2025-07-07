@@ -111,30 +111,87 @@ export function AddShiftForm({ onSuccess }) {
 
 export function AddMedicineForm() {
   const { activePerson } = useElderlyPerson();
-  const { addMedicationMutarion } = useMedicationsMutations();
+  const { addMedicationMutation } = useMedicationsMutations();
   const { addNotification } = useNotification();
+
+  const [formData, setFormData] = useState({
+    nombre_medicacion: "",
+    dosis: "",
+    frecuencia: "",
+    horarios: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!activePerson) return;
+
+    addMedicationMutation.mutate(
+      {
+        ...formData,
+        persona_mayor_id: activePerson.id,
+      },
+      {
+        // onSuccess: () => {
+        //   if (onSuccess) onSuccess(); // Call the original onSuccess (e.g., to close modal)
+        // },
+        onError: (error) => {
+          console.error("Error creating medication:", error);
+          addNotification(
+            `Error creating shift: ${error.message || "Please try again."}`,
+            "error"
+          );
+        },
+      }
+    );
+  };
+
   return (
-    <form action="">
+    <form action="" onSubmit={handleSubmit}>
       <div className="input-container">
         <label htmlFor="">Nombre del Medicamento</label>
-        <input type="text" />
+        <input
+          type="text"
+          name="nombre_medicacion"
+          value={formData.nombre_medicacion}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="horizontal-inputs-container">
         <div className="input-container">
           <label htmlFor="">Dosis</label>
-          <input type="text" />
+          <input
+            type="text"
+            name="dosis"
+            value={formData.dosis}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="input-container">
           <label htmlFor="">Frecuencia</label>
-          <input type="text" />
+          <input
+            type="text"
+            name="frecuencia"
+            value={formData.frecuencia}
+            onChange={handleChange}
+          />
         </div>
       </div>
 
       <div className="input-container">
         <label htmlFor="">Horarios</label>
-        <input type="text" />
+        <input
+          type="text"
+          name="horarios"
+          value={formData.horarios}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="input-container">
