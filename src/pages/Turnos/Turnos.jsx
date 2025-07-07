@@ -9,7 +9,6 @@ import { AddShiftForm } from "../../components/AddForms/AddForms";
 import { formatDateTime, formatTime } from "../../utils/formatDateTime";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
-// import { useQuery } from "@tanstack/react-query"; // No longer needed directly
 import { useShiftsMutations } from "../../hooks/useShiftsMutations";
 import { useShiftsQuery } from "../../hooks/useShiftsQuery"; // Import the new query hook
 import { useNotification } from "../../context/NotificationContext"; // Import useNotification
@@ -78,7 +77,7 @@ export default function Turnos({ theme, setTheme }) {
                     // Make onDelete async
                     const confirmed = await showConfirmation({
                       title: "Borrar Turno",
-                      message: `Estas seguro que quieres borrar el turno de${shift.especialidad} el dia ${date} a las ${time}? Esta accion no se puede deshacer.`,
+                      message: `Estas seguro que quieres borrar el turno de ${shift.especialidad} el dia ${date} a las ${time}? Esta accion no se puede deshacer.`,
                       confirmText: "Borrar",
                       cancelText: "Cancelar",
                     });

@@ -6,25 +6,27 @@ import SectionsHeader from "../../components/Sections-Header/SectionsHeader";
 import useModal from "../../hooks/useModal";
 import Medicacion from "./components/Medicacion/Medicacion";
 import "./Medicaciones.css";
-import { useQuery } from "@tanstack/react-query";
-import { fetchMedications } from "../../api/medications.js";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
+import { useNotification } from "../../context/NotificationContext.jsx";
+import { useMedicationsQuery } from "../../hooks/useMedicationsQuery.js";
+import { useMedicationsMutations } from "../../hooks/useMedicationsMutations.js";
+import { useConfirmationModal } from "../../context/ConfirmationModalContext.jsx";
 
 export default function Medicaciones({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
   const { activePerson } = useElderlyPerson();
+  const { addNotification } = useNotification();
+  const { showConfirmation } = useConfirmationModal(); // Get showConfirmation
 
   const {
     data: medications,
     isLoading,
     isError,
     error,
-  } = useQuery({
-    queryKey: ["medications", activePerson?.id],
-    queryFn: () => fetchMedications(activePerson.id),
-    enabled: !!activePerson?.id,
-  });
+  } = useMedicationsQuery(activePerson?.id);
+
+  const { deleteMedicationMutation } = useMedicationsMutations();
 
   return (
     <Layout theme={theme} setTheme={setTheme} page={"Medicaciones"}>
@@ -59,6 +61,32 @@ export default function Medicaciones({ theme, setTheme }) {
                   dosis={medication.dosis}
                   schedules={medication.horarios.split(",")}
                   isNext={isNext} // pasamos la prop
+                  onDelete={async () => {
+                    // Make onDelete async
+                    const confirmed = await showConfirmation({
+                      title: "Borrar Medicacion",
+                      message: `¿Estás seguro de que quieres borrar la medicación "${medication.nombre_medicacion}"?`,
+                      confirmText: "Borrar",
+                      cancelText: "Cancelar",
+                    });
+
+                    if (confirmed) {
+                      deleteMedicationMutation.mutate(medication.id, {
+                        onError: (err) => {
+                          // Success notification is handled by the hook
+                          console.error("Error deleting medication:", err);
+                          addNotification(
+                            `Error deleting medication: ${
+                              err.message || "Please try again."
+                            }`,
+                            "error"
+                          );
+                        },
+                      });
+                    } else {
+                      addNotification("Deletion cancelled.", "info");
+                    }
+                  }}
                 />
               );
             })}
