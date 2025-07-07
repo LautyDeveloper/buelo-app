@@ -9,7 +9,6 @@ import { AddShiftForm } from "../../components/AddForms/AddForms";
 import { formatDateTime, formatTime } from "../../utils/formatDateTime";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
-// import { useQuery } from "@tanstack/react-query"; // No longer needed directly
 import { useShiftsMutations } from "../../hooks/useShiftsMutations";
 import { useShiftsQuery } from "../../hooks/useShiftsQuery"; // Import the new query hook
 import { useNotification } from "../../context/NotificationContext"; // Import useNotification

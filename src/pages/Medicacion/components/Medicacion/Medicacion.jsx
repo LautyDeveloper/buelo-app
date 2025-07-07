@@ -1,3 +1,4 @@
+import { Trash2 } from "lucide-react";
 import "./Medicacion.css";
 
 export default function Medicacion({
@@ -6,6 +7,7 @@ export default function Medicacion({
   dosis,
   schedules,
   isNext,
+  onDelete,
 }) {
   return (
     <div className="medicacion">
@@ -25,6 +27,9 @@ export default function Medicacion({
             return <div className="schedule">{schedule}</div>;
           })}
         </div>
+        <button className="delete-button" onClick={onDelete}>
+          <Trash2 size={16} /> Eliminar
+        </button>
       </div>
     </div>
   );
