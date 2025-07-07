@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext";
 import { useShiftsMutations } from "../../hooks/useShiftsMutations"; // Import the custom hook
 import { useNotification } from "../../context/NotificationContext"; // Import useNotification
+import { useMedicationsMutations } from "../../hooks/useMedicationsMutations";
 
 export function AddShiftForm({ onSuccess }) {
   const { activePerson } = useElderlyPerson();
@@ -109,6 +110,9 @@ export function AddShiftForm({ onSuccess }) {
 }
 
 export function AddMedicineForm() {
+  const { activePerson } = useElderlyPerson();
+  const { addMedicationMutarion } = useMedicationsMutations();
+  const { addNotification } = useNotification();
   return (
     <form action="">
       <div className="input-container">
