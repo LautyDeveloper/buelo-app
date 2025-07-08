@@ -1,7 +1,7 @@
 import "./nota.css";
-import { ClipboardPenLine } from "lucide-react";
+import { ClipboardPenLine, Trash2 } from "lucide-react";
 
-export default function Nota({ title, date, time, note }) {
+export default function Nota({ title, date, time, note, onDelete }) {
   return (
     <div className="nota">
       <div className="nota-header">
@@ -14,6 +14,9 @@ export default function Nota({ title, date, time, note }) {
       </div>
       <div className="nota-main">
         <p>{note}</p>
+        <button className="delete-button" onClick={onDelete}>
+          <Trash2 size={16} /> Eliminar
+        </button>
       </div>
     </div>
   );

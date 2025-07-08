@@ -6,26 +6,29 @@ import Nota from "./components/Nota/Nota";
 import useModal from "../../hooks/useModal";
 import ModalForm from "../../components/ModalForm/ModalForm";
 import { AddNoteForm } from "../../components/AddForms/AddForms";
-import { useQuery } from "@tanstack/react-query";
-import { fetchNotes } from "../../api/notes.js";
 import { formatDateTime } from "../../utils/formatDateTime";
 import { useElderlyPerson } from "../../context/ElderlyPersonContext.jsx";
 import StatusDisplay from "../../components/StatusDisplay/StatusDisplay";
-
+import { useNotesQuery } from "../../hooks/useNotesQuery"; // Import the new query hook
+import { useNotesMutations } from "../../hooks/useNotesMutations.js";
+import { useNotification } from "../../context/NotificationContext.jsx";
+import { useConfirmationModal } from "../../context/ConfirmationModalContext.jsx";
 export default function Notas({ theme, setTheme }) {
   const { isOpen, openModal, closeModal } = useModal();
   const { activePerson } = useElderlyPerson();
 
+  const { addNotification } = useNotification(); // Get addNotification
+  const { showConfirmation } = useConfirmationModal(); // Get showConfirmation
+
+  // Use the custom hook to fetch shifts
   const {
     data: notes,
     isLoading,
     isError,
     error,
-  } = useQuery({
-    queryKey: ["notas", activePerson?.id],
-    queryFn: () => fetchNotes(activePerson.id),
-    enabled: !!activePerson?.id,
-  });
+  } = useNotesQuery(activePerson?.id);
+
+  const { deleteNoteMutation } = useNotesMutations();
 
   return (
     <Layout theme={theme} setTheme={setTheme} page={"Notas"}>
@@ -59,6 +62,32 @@ export default function Notas({ theme, setTheme }) {
                   date={date}
                   time={time}
                   note={note.cuerpo}
+                  onDelete={async () => {
+                    // Make onDelete async
+                    const confirmed = await showConfirmation({
+                      title: "Borrar Nota",
+                      message: `¿Estás seguro de que quieres borrar la nota "${note.titulo}"?`,
+                      confirmText: "Borrar",
+                      cancelText: "Cancelar",
+                    });
+
+                    if (confirmed) {
+                      deleteNoteMutation.mutate(note.id, {
+                        onError: (err) => {
+                          // Success notification is handled by the hook
+                          console.error("Error deleting note:", err);
+                          addNotification(
+                            `Error deleting shift: ${
+                              err.message || "Please try again."
+                            }`,
+                            "error"
+                          );
+                        },
+                      });
+                    } else {
+                      addNotification("Deletion cancelled.", "info");
+                    }
+                  }}
                 />
               );
             })}
