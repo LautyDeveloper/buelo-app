@@ -3,6 +3,7 @@ import { useElderlyPerson } from "../../context/ElderlyPersonContext";
 import { useShiftsMutations } from "../../hooks/useShiftsMutations"; // Import the custom hook
 import { useNotification } from "../../context/NotificationContext"; // Import useNotification
 import { useMedicationsMutations } from "../../hooks/useMedicationsMutations";
+import { useNotesMutations } from "../../hooks/useNotesMutations";
 
 export function AddShiftForm({ onSuccess }) {
   const { activePerson } = useElderlyPerson();
@@ -202,16 +203,66 @@ export function AddMedicineForm() {
 }
 
 export function AddNoteForm() {
+  const { activePerson } = useElderlyPerson();
+  const { addNoteMutation } = useNotesMutations(); // Assuming this hook is also used for notes
+  const { addNotification } = useNotification(); // Import useNotification
+
+  const [formData, setFormData] = useState({
+    titulo: "",
+    cuerpo: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!activePerson) return;
+
+    addNoteMutation.mutate(
+      {
+        ...formData,
+        persona_mayor_id: activePerson.id,
+      },
+      {
+        // onSuccess: () => {
+        //   if (onSuccess) onSuccess(); // Call the original onSuccess (e.g., to close modal)
+        // },
+        onError: (error) => {
+          console.error("Error creating medication:", error);
+          addNotification(
+            `Error creating shift: ${error.message || "Please try again."}`,
+            "error"
+          );
+        },
+      }
+    );
+  };
   return (
-    <form action="">
+    <form action="" onSubmit={handleSubmit}>
       <div className="input-container">
         <label htmlFor="">Titulo de la Nota</label>
-        <input type="text" />
+        <input
+          type="text"
+          name="titulo"
+          value={formData.titulo}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="input-container">
         <label htmlFor="">Cuerpo de la Nota</label>
-        <input type="text" />
+        <input
+          type="text"
+          name="cuerpo"
+          value={formData.cuerpo}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="input-container">
+        <button type="submit">Guardar</button>
       </div>
     </form>
   );
