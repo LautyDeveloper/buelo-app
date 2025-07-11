@@ -2,6 +2,60 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--sectionsBackgroundColor);
+}
+
+.login-form-container {
+  display: flex;
+  width: 80%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-container .form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 55%;
+  height: 100%;
+  border-radius: 60px;
+  background-color: var(--baseBackgroundColor);
+  gap: 30px;
+  padding: 0 60px;
+}
+.login-form-container .form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 60px;
+}
+.login-form-container .form-container form .inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.login-form-container .form-container .other-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.login-form-container .form-container .other-options .options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.login-form-container .form-container .other-options .options .option {
+  background-color: var(--CTAColor);
+  height: 70px;
+  width: 70px;
+  border-radius: 20px;
 }
