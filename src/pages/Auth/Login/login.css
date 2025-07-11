@@ -14,7 +14,7 @@
   height: 80%;
   justify-content: center;
   align-items: center;
-  background-color: violet;
+  background-color: #e8deff;
   border-top-left-radius: 70px;
   border-bottom-left-radius: 70px;
   border-top-right-radius: 60px;
@@ -30,7 +30,7 @@
   height: 100%;
   border-radius: 60px;
   background-color: var(--baseBackgroundColor);
-  gap: 30px;
+  gap: 40px;
   padding: 0 60px;
   z-index: 100;
 }
@@ -40,19 +40,58 @@
   width: 100%;
   gap: 60px;
 }
+.login-form-container .form-container form input[type="submit"] {
+  width: 100%;
+  height: 40px;
+  background-color: var(--CTAColor);
+  color: white;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
 .login-form-container .form-container form .inputs-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
 }
+.login-form-container .form-container form .inputs-container input {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--secondaryFontColor);
+  padding: 0 0 10px 5px;
+  background-color: transparent;
+  height: auto;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.login-form-container
+  .form-container
+  form
+  .inputs-container
+  input::placeholder {
+  color: var(--secondaryFontColor);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
 .login-form-container .form-container .other-options {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
 }
+.login-form-container .form-container .other-options strong {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--primaryFontColor);
+}
+
 .login-form-container .form-container .other-options .options {
   display: flex;
   justify-content: center;
@@ -87,13 +126,27 @@
   width: 100%;
   gap: 10px;
 }
+.login-form-container .aside-container .aside-header p:first-child {
+  background-color: var(--CTAColor);
+  padding: 7px;
+  border-radius: 12px;
+}
+
+.login-form-container .aside-container .aside-header p {
+  font-size: 1.8rem;
+  width: auto;
+}
+
 .login-form-container .aside-container p {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
+  font-weight: 600;
   text-align: center;
+  color: var(--CTAColor);
+  width: 80%;
 }
 .login-form-container .aside-container .aside-image {
   width: 100%;
-  height: 70%;
+  height: 65%;
 }
 .login-form-container .aside-container .aside-image img {
   width: 100%;

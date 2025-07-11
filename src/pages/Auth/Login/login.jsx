@@ -9,7 +9,7 @@ export default function Login() {
           <form action="">
             <div className="inputs-container">
               <input type="text" placeholder="Nombre de Usuario" />
-              <input type="text" placeholder="Contraseña" />
+              <input type="password" placeholder="Contraseña" />
             </div>
             <input type="submit" value="INICIAR SESION" />
           </form>
