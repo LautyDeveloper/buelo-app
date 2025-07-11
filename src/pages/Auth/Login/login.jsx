@@ -1,4 +1,5 @@
 import "./login.css";
+import formAsideImage from "../media/form-aside-image.png";
 export default function Login() {
   return (
     <div className="container">
@@ -26,8 +27,9 @@ export default function Login() {
             <p>🤶</p>
             <p>BueloApp</p>
           </div>
+          <p>El bienestar de tus abuelos, en manos de toda la familia</p>
           <div className="aside-image">
-            <img src="" alt="" />
+            <img src={formAsideImage} alt="" />
           </div>
         </div>
       </div>
